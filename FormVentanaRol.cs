@@ -31,8 +31,8 @@ namespace ProyectoRolesConCrystal
 
         private void subirTrabajadoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormSubirTrabajadores formConsultarBases = new FormSubirTrabajadores();
-            formConsultarBases.ShowDialog();
+            FormSubirTrabajadores formSubirTrabajadores = new FormSubirTrabajadores();
+            formSubirTrabajadores.ShowDialog();
         }
 
         private void subirRolesToolStripMenuItem_Click(object sender, EventArgs e)
