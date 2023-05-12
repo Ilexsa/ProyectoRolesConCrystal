@@ -231,6 +231,12 @@
     <Compile Include="FormUtilidadesExcel.Designer.cs">
       <DependentUpon>FormUtilidadesExcel.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReporteColaboradores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReporteColaboradores.Designer.cs">
+      <DependentUpon>frmReporteColaboradores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operaciones.cs" />
     <Compile Include="FormVentanaRol.cs">
       <SubType>Form</SubType>
@@ -240,6 +246,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteColaboradores.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReporteColaboradores.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ReportePrueba1.0.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -258,6 +270,9 @@
     <EmbeddedResource Include="FormUtilidadesExcel.resx">
       <DependentUpon>FormUtilidadesExcel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmReporteColaboradores.resx">
+      <DependentUpon>frmReporteColaboradores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -270,6 +285,10 @@
     </Compile>
     <EmbeddedResource Include="FormVentanaRol.resx">
       <DependentUpon>FormVentanaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteColaboradores.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReporteColaboradores.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportePrueba1.0.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
