@@ -284,21 +284,53 @@ namespace ProyectoRolesConCrystal
 
         private void btnInactivar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("¿Está seguro de inactivar al trabajador?","Advertencia",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
-            try
+            DialogResult respuesta = MessageBox.Show("¿Está seguro de inactivar al trabajador?","Advertencia",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+            if (respuesta == DialogResult.Yes)
             {
-                conexion.Open();
-                string inactivar = "UPDATE TRABAJADORES SET ESTADO=0, FECHA_INACTIVO= GETDATE() WHERE CEDULA =@CEDULA";
-                SqlCommand comando = new SqlCommand(inactivar, conexion);
-                comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
+                try
+                {
+                    conexion.Open();
+                    string inactivar = "UPDATE TRABAJADORES SET ESTADO=0, FECHA_INACTIVO= GETDATE() WHERE CEDULA =@CEDULA";
+                    SqlCommand comando = new SqlCommand(inactivar, conexion);
+                    comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
+                    comando.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error:", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    recargarTabla();
+                    conexion.Close();
+                }
+            }
+        }
 
-            }
-            catch(Exception ex)
+        private void btnReactivar_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Está seguro de reactivar al trabajador?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (respuesta == DialogResult.Yes)
             {
-                MessageBox.Show("Error:", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                conexion.Close();
+                try
+                {
+                    conexion.Open();
+                    string reingreso = "UPDATE TRABAJADORES SET ESTADO=1, FECHA_REINGRESO= GETDATE() WHERE CEDULA =@CEDULA";
+                    SqlCommand comando = new SqlCommand(reingreso, conexion);
+                    comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
+                    comando.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error:", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    recargarTabla();
+                    conexion.Close();
+                }
             }
-            
+
         }
     }
 }

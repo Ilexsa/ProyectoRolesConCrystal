@@ -54,6 +54,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnInactivar = new System.Windows.Forms.Button();
+            this.btnReactivar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaTabla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -301,7 +302,7 @@
             // 
             // btnInactivar
             // 
-            this.btnInactivar.Location = new System.Drawing.Point(478, 441);
+            this.btnInactivar.Location = new System.Drawing.Point(403, 442);
             this.btnInactivar.Name = "btnInactivar";
             this.btnInactivar.Size = new System.Drawing.Size(75, 23);
             this.btnInactivar.TabIndex = 25;
@@ -309,12 +310,23 @@
             this.btnInactivar.UseVisualStyleBackColor = true;
             this.btnInactivar.Click += new System.EventHandler(this.btnInactivar_Click);
             // 
+            // btnReactivar
+            // 
+            this.btnReactivar.Location = new System.Drawing.Point(484, 442);
+            this.btnReactivar.Name = "btnReactivar";
+            this.btnReactivar.Size = new System.Drawing.Size(75, 23);
+            this.btnReactivar.TabIndex = 26;
+            this.btnReactivar.Text = "Reactivar";
+            this.btnReactivar.UseVisualStyleBackColor = true;
+            this.btnReactivar.Click += new System.EventHandler(this.btnReactivar_Click);
+            // 
             // FormSubirTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1538, 476);
+            this.Controls.Add(this.btnReactivar);
             this.Controls.Add(this.btnInactivar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
@@ -384,5 +396,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnInactivar;
+        private System.Windows.Forms.Button btnReactivar;
     }
 }
