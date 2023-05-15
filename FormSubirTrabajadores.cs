@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using ProyectoRoles;
+using System.Transactions;
+using Microsoft.Identity.Client;
 
 namespace ProyectoRolesConCrystal
 {
@@ -60,7 +62,11 @@ namespace ProyectoRolesConCrystal
             try
             {
                 double sueldo = Convert.ToDouble(txtSueldo.Text);
-                string add = "insert into TRABAJADORES values (@CEDULA, @IdLocalidad, @IdDepartamento, @NOMBRES, @FECHA_INGRESO, @CARGO, @SUELDO_BASE, @PER_DISCAPACIDAD, @CORREO)";
+                double pagoHora = (sueldo/30)/8;
+                double H_E25 = Math.Round((pagoHora/4)+pagoHora,2);
+                double H_E50 = Math.Round((pagoHora/2) + pagoHora,2);
+                double H_E100 = Math.Round((pagoHora)*2,2);
+                string add = "insert into TRABAJADORES values (@CEDULA, @IdLocalidad, @IdDepartamento, @NOMBRES, @FECHA_INGRESO, @CARGO, @SUELDO_BASE, @PER_DISCAPACIDAD, @CORREO ,@H_E25, @H_E50, @H_E100, DEFAULT, @FECHA_INACTIVO, @FECHA_REINGRESO)";
                 SqlCommand comando = new SqlCommand(add, conexion);
                 comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
                 comando.Parameters.AddWithValue("@IdLocalidad", cmbLocalidad.SelectedValue);
@@ -71,6 +77,12 @@ namespace ProyectoRolesConCrystal
                 comando.Parameters.AddWithValue("@SUELDO_BASE", sueldo);
                 comando.Parameters.AddWithValue("@PER_DISCAPACIDAD", txtDiscapacidad.Text.ToUpper());
                 comando.Parameters.AddWithValue("@CORREO", txtCorreo.Text.ToLower());
+                comando.Parameters.AddWithValue("@H_E25", H_E25);
+                comando.Parameters.AddWithValue("@H_E50", H_E50);
+                comando.Parameters.AddWithValue("@H_E100", H_E100);
+                //comando.Parameters.AddWithValue("@ESTADO", DB);
+                comando.Parameters.AddWithValue("@FECHA_INACTIVO", DBNull.Value);
+                comando.Parameters.AddWithValue("@FECHA_REINGRESO",DBNull.Value);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Registro Exitoso", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 recargarTabla();
@@ -122,10 +134,14 @@ namespace ProyectoRolesConCrystal
             try
             {
                 double sueldo = Convert.ToDouble(txtSueldo.Text);
+                double pagoHora = (sueldo / 30) / 8;
+                double H_E25 = Math.Round((pagoHora / 4) + pagoHora, 2);
+                double H_E50 = Math.Round((pagoHora / 2) + pagoHora, 2);
+                double H_E100 = Math.Round((pagoHora) * 2, 2);
                 int flag = 0;
                 string mod = "update TRABAJADORES set Idlocalidad=@Idlocalidad, IdDepartamento=@IdDepartamento, NOMBRES=@NOMBRES," +
                 "FECHA_INGRESO=@FECHA_INGRESO, CARGO=@CARGO, SUELDO_BASE=@SUELDO_BASE, PER_DISCAPACIDAD=@PER_DISCAPACIDAD, CORREO=@CORREO " +
-                "where CEDULA=@CEDULA";
+                ", H_E25=@H_E25, H_E50=@H_E50, H_E100=@H_E100 where CEDULA=@CEDULA";
                 SqlCommand comando = new SqlCommand(mod, conexion);
                 comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
                 comando.Parameters.AddWithValue("@IdLocalidad", cmbLocalidad.SelectedValue);
@@ -136,6 +152,12 @@ namespace ProyectoRolesConCrystal
                 comando.Parameters.AddWithValue("@SUELDO_BASE", sueldo);
                 comando.Parameters.AddWithValue("@PER_DISCAPACIDAD", txtDiscapacidad.Text.ToUpper());
                 comando.Parameters.AddWithValue("@CORREO", txtCorreo.Text.ToLower());
+                comando.Parameters.AddWithValue("@H_E25", H_E25);
+                comando.Parameters.AddWithValue("@H_E50", H_E50);
+                comando.Parameters.AddWithValue("@H_E100", H_E100);
+                //comando.Parameters.AddWithValue("@FECHA_INACTIVO", DBNull.Value);
+                //comando.Parameters.AddWithValue("@FECHA_REINGRESO", DBNull.Value);
+
                 flag = comando.ExecuteNonQuery(); // 1 es que funko 0 es que no funko
                 // Buscamos la fila que deseamos actualizar
                 string consulta = "select count(*) from TRABAJADORES where CEDULA=@CEDULA";
@@ -159,6 +181,7 @@ namespace ProyectoRolesConCrystal
                         MessageBox.Show("No se pudo modificar el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     recargarTabla();
+                    LimpiarDatos();
                 }
             }
             catch (Exception ex)
@@ -200,6 +223,7 @@ namespace ProyectoRolesConCrystal
                         //MessageBox.Show("No se pudo borrar el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     recargarTabla();
+                    LimpiarDatos();
                 }
                 catch (Exception ex)
                 {
@@ -211,14 +235,7 @@ namespace ProyectoRolesConCrystal
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            txtCargo.Clear();
-            txtDiscapacidad.Clear();
-            txtNombre.Clear();
-            txtCargo.Clear();
-            txtNombre.Clear();
-            txtSueldo.Clear();
-            txtCedula.Clear();
-            txtCorreo.Clear();
+            LimpiarDatos();
         }
 
         private void chkDiscapacidad_CheckedChanged(object sender, EventArgs e)
@@ -251,6 +268,37 @@ namespace ProyectoRolesConCrystal
         private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+        public void LimpiarDatos()
+        {
+            txtCargo.Clear();
+            txtDiscapacidad.Clear();
+            txtNombre.Clear();
+            txtCargo.Clear();
+            txtNombre.Clear();
+            txtSueldo.Clear();
+            txtCedula.Clear();
+            txtCorreo.Clear();
+            txtDiscapacidad.Clear();
+        }
+
+        private void btnInactivar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("¿Está seguro de inactivar al trabajador?","Advertencia",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+            try
+            {
+                conexion.Open();
+                string inactivar = "UPDATE TRABAJADORES SET ESTADO=0, FECHA_INACTIVO= GETDATE() WHERE CEDULA =@CEDULA";
+                SqlCommand comando = new SqlCommand(inactivar, conexion);
+                comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error:", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                conexion.Close();
+            }
+            
         }
     }
 }

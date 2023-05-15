@@ -53,6 +53,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnInactivar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaTabla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -298,12 +299,23 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "Fecha de Ingreso :";
             // 
+            // btnInactivar
+            // 
+            this.btnInactivar.Location = new System.Drawing.Point(478, 441);
+            this.btnInactivar.Name = "btnInactivar";
+            this.btnInactivar.Size = new System.Drawing.Size(75, 23);
+            this.btnInactivar.TabIndex = 25;
+            this.btnInactivar.Text = "Inactivar";
+            this.btnInactivar.UseVisualStyleBackColor = true;
+            this.btnInactivar.Click += new System.EventHandler(this.btnInactivar_Click);
+            // 
             // FormSubirTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1538, 476);
+            this.Controls.Add(this.btnInactivar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -371,5 +383,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnInactivar;
     }
 }
