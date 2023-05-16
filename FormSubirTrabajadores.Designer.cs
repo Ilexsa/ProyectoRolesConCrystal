@@ -55,6 +55,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnInactivar = new System.Windows.Forms.Button();
             this.btnReactivar = new System.Windows.Forms.Button();
+            this.btnInforme = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaTabla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -320,12 +321,23 @@
             this.btnReactivar.UseVisualStyleBackColor = true;
             this.btnReactivar.Click += new System.EventHandler(this.btnReactivar_Click);
             // 
+            // btnInforme
+            // 
+            this.btnInforme.Location = new System.Drawing.Point(484, 413);
+            this.btnInforme.Name = "btnInforme";
+            this.btnInforme.Size = new System.Drawing.Size(75, 23);
+            this.btnInforme.TabIndex = 27;
+            this.btnInforme.Text = "button1";
+            this.btnInforme.UseVisualStyleBackColor = true;
+            this.btnInforme.Click += new System.EventHandler(this.btnInforme_Click);
+            // 
             // FormSubirTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1538, 476);
+            this.Controls.Add(this.btnInforme);
             this.Controls.Add(this.btnReactivar);
             this.Controls.Add(this.btnInactivar);
             this.Controls.Add(this.label9);
@@ -397,5 +409,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnInactivar;
         private System.Windows.Forms.Button btnReactivar;
+        private System.Windows.Forms.Button btnInforme;
     }
 }

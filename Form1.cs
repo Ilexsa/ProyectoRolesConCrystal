@@ -1,5 +1,4 @@
-﻿using CrystalDecisions.CrystalReports.Engine;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,16 +10,11 @@ using System.Windows.Forms;
 
 namespace ProyectoRolesConCrystal
 {
-    public partial class frmReporteColaboradores : Form
+    public partial class Form1 : Form
     {
-        public frmReporteColaboradores()
+        public Form1()
         {
             InitializeComponent();
-        }
-
-        private void frmReporteColaboradores_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

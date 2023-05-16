@@ -96,7 +96,7 @@ namespace ProyectoRolesConCrystal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormReporte formReport = new FormReporte();
+            frmReporteColaboradores formReport = new frmReporteColaboradores();
             formReport.ShowDialog();
         }
     }

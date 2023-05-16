@@ -11,6 +11,8 @@ using System.Data.SqlClient;
 using ProyectoRoles;
 using System.Transactions;
 using Microsoft.Identity.Client;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Windows.Forms;
 
 namespace ProyectoRolesConCrystal
 {
@@ -331,6 +333,14 @@ namespace ProyectoRolesConCrystal
                 }
             }
 
+        }
+
+        public void btnInforme_Click(object sender, EventArgs e)
+        {
+        }
+        public void fInforme()
+        {
+          
         }
     }
 }
