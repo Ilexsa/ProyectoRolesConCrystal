@@ -38,13 +38,13 @@
             this.txtOtrosIngresosNA = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnPrimerN = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnEditarN = new System.Windows.Forms.Button();
+            this.btnNewN = new System.Windows.Forms.Button();
+            this.btnAddN = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.btnUltimaN = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -105,68 +105,69 @@
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 7;
             // 
-            // button1
+            // btnPrimerN
             // 
-            this.button1.Location = new System.Drawing.Point(60, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPrimerN.Location = new System.Drawing.Point(60, 21);
+            this.btnPrimerN.Name = "btnPrimerN";
+            this.btnPrimerN.Size = new System.Drawing.Size(75, 23);
+            this.btnPrimerN.TabIndex = 8;
+            this.btnPrimerN.Text = "button1";
+            this.btnPrimerN.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAnterior
             // 
-            this.button2.Location = new System.Drawing.Point(141, 21);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAnterior.Location = new System.Drawing.Point(141, 21);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 23);
+            this.btnAnterior.TabIndex = 9;
+            this.btnAnterior.Text = "button2";
+            this.btnAnterior.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnEditarN
             // 
-            this.button3.Location = new System.Drawing.Point(222, 21);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnEditarN.Location = new System.Drawing.Point(222, 21);
+            this.btnEditarN.Name = "btnEditarN";
+            this.btnEditarN.Size = new System.Drawing.Size(75, 23);
+            this.btnEditarN.TabIndex = 10;
+            this.btnEditarN.Text = "button3";
+            this.btnEditarN.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnNewN
             // 
-            this.button4.Location = new System.Drawing.Point(303, 21);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnNewN.Location = new System.Drawing.Point(303, 21);
+            this.btnNewN.Name = "btnNewN";
+            this.btnNewN.Size = new System.Drawing.Size(75, 23);
+            this.btnNewN.TabIndex = 11;
+            this.btnNewN.Text = "button4";
+            this.btnNewN.UseVisualStyleBackColor = true;
+            this.btnNewN.Click += new System.EventHandler(this.btnNewN_Click);
             // 
-            // button5
+            // btnAddN
             // 
-            this.button5.Location = new System.Drawing.Point(384, 21);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnAddN.Location = new System.Drawing.Point(384, 21);
+            this.btnAddN.Name = "btnAddN";
+            this.btnAddN.Size = new System.Drawing.Size(75, 23);
+            this.btnAddN.TabIndex = 12;
+            this.btnAddN.Text = "button5";
+            this.btnAddN.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnSiguiente
             // 
-            this.button6.Location = new System.Drawing.Point(465, 21);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 13;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Location = new System.Drawing.Point(465, 21);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
+            this.btnSiguiente.TabIndex = 13;
+            this.btnSiguiente.Text = "button6";
+            this.btnSiguiente.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnUltimaN
             // 
-            this.button7.Location = new System.Drawing.Point(546, 21);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 14;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnUltimaN.Location = new System.Drawing.Point(546, 21);
+            this.btnUltimaN.Name = "btnUltimaN";
+            this.btnUltimaN.Size = new System.Drawing.Size(75, 23);
+            this.btnUltimaN.TabIndex = 14;
+            this.btnUltimaN.Text = "button7";
+            this.btnUltimaN.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
@@ -193,13 +194,13 @@
             this.ClientSize = new System.Drawing.Size(680, 771);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnUltimaN);
+            this.Controls.Add(this.btnSiguiente);
+            this.Controls.Add(this.btnAddN);
+            this.Controls.Add(this.btnNewN);
+            this.Controls.Add(this.btnEditarN);
+            this.Controls.Add(this.btnAnterior);
+            this.Controls.Add(this.btnPrimerN);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.txtOtrosIngresosNA);
@@ -210,6 +211,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSubirRoles";
             this.Text = "Registro de Nomina";
+            this.Load += new System.EventHandler(this.FormSubirRoles_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,13 +227,13 @@
         private System.Windows.Forms.TextBox txtOtrosIngresosNA;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnPrimerN;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnEditarN;
+        private System.Windows.Forms.Button btnNewN;
+        private System.Windows.Forms.Button btnAddN;
+        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Button btnUltimaN;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
     }
