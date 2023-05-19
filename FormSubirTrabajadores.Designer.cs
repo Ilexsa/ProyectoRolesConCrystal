@@ -56,6 +56,7 @@
             this.btnInactivar = new System.Windows.Forms.Button();
             this.btnReactivar = new System.Windows.Forms.Button();
             this.btnInforme = new System.Windows.Forms.Button();
+            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConsultaTabla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -331,12 +332,24 @@
             this.btnInforme.UseVisualStyleBackColor = true;
             this.btnInforme.Click += new System.EventHandler(this.btnInforme_Click);
             // 
+            // crystalReportViewer1
+            // 
+            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer1.Location = new System.Drawing.Point(12, 487);
+            this.crystalReportViewer1.Name = "crystalReportViewer1";
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1399, 529);
+            this.crystalReportViewer1.TabIndex = 28;
+            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            // 
             // FormSubirTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
-            this.ClientSize = new System.Drawing.Size(1538, 476);
+            this.ClientSize = new System.Drawing.Size(1538, 1062);
+            this.Controls.Add(this.crystalReportViewer1);
             this.Controls.Add(this.btnInforme);
             this.Controls.Add(this.btnReactivar);
             this.Controls.Add(this.btnInactivar);
@@ -410,5 +423,6 @@
         private System.Windows.Forms.Button btnInactivar;
         private System.Windows.Forms.Button btnReactivar;
         private System.Windows.Forms.Button btnInforme;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }

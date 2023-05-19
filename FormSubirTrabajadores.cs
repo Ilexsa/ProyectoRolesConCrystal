@@ -98,6 +98,7 @@ namespace ProyectoRolesConCrystal
 
         private void FormSubirTrabajadores_Load(object sender, EventArgs e)
         {
+            string cedula = txtCedula.Text;
             // generamos un string que tiene los valores del select par la base 
             string consultaBase = "select * from TRABAJADORES";
             // vamos a generar un adaptador para que adapte la tablas y columnas de la base,usa como parametros la consulta
@@ -334,9 +335,13 @@ namespace ProyectoRolesConCrystal
             }
 
         }
-
         public void btnInforme_Click(object sender, EventArgs e)
         {
+            string cedula = txtCedula.Text;
+            ReportDocument report = new ReportDocument();
+            report.Load("C:\\Users\\jayala\\source\\repos\\ProyectoRolesConCrystal\\ReporteColaboradores.rpt");
+            report.SetParameterValue("Cedula",cedula);
+            crystalReportViewer1.ReportSource = report;
         }
         public void fInforme()
         {

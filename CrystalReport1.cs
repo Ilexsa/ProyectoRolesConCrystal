@@ -16,14 +16,14 @@ namespace ProyectoRolesConCrystal {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReporteColaboradores : ReportClass {
+    public class CrystalReport1 : ReportClass {
         
-        public ReporteColaboradores() {
+        public CrystalReport1() {
         }
         
         public override string ResourceName {
             get {
-                return "ReporteColaboradores.rpt";
+                return "CrystalReport1.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ProyectoRolesConCrystal {
         
         public override string FullResourceName {
             get {
-                return "ProyectoRolesConCrystal.ReporteColaboradores.rpt";
+                return "ProyectoRolesConCrystal.CrystalReport1.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace ProyectoRolesConCrystal {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_Cedula {
+        public CrystalDecisions.Shared.IParameterField Parameter_CEDULA {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,7 +98,7 @@ namespace ProyectoRolesConCrystal {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ID_DEPARTAMENTO {
+        public CrystalDecisions.Shared.IParameterField Parameter_MES_ROL {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }
@@ -106,9 +106,9 @@ namespace ProyectoRolesConCrystal {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReporteColaboradores : Component, ICachedReport {
+    public class CachedCrystalReport1 : Component, ICachedReport {
         
-        public CachedReporteColaboradores() {
+        public CachedCrystalReport1() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace ProyectoRolesConCrystal {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReporteColaboradores rpt = new ReporteColaboradores();
+            CrystalReport1 rpt = new CrystalReport1();
             rpt.Site = this.Site;
             return rpt;
         }
