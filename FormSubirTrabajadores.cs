@@ -341,6 +341,7 @@ namespace ProyectoRolesConCrystal
             ReportDocument report = new ReportDocument();
             report.Load("C:\\Users\\jayala\\source\\repos\\ProyectoRolesConCrystal\\ReporteColaboradores.rpt");
             report.SetParameterValue("Cedula",cedula);
+            ParameterFieldDefinition parameter = report.DataDefinition;
             crystalReportViewer1.ReportSource = report;
         }
         public void fInforme()

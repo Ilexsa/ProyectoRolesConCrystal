@@ -1,4 +1,5 @@
-﻿using ExcelDataReader;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using ExcelDataReader;
 using ProyectoRoles;
 using System;
 using System.Collections.Generic;
@@ -96,8 +97,13 @@ namespace ProyectoRolesConCrystal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmReporteColaboradores formReport = new frmReporteColaboradores();
-            formReport.ShowDialog();
+            frmReporteColaboradores ventana = new frmReporteColaboradores();
+            ReportDocument report = new ReportDocument();
+            string dir = "C:\\Users\\jayala\\source\\repos\\ProyectoRolesConCrystal\\CrystalReport1.rpt";
+            report.Load(dir);
+            crystalReportViewer1.ReportSource = report;
+            crystalReportViewer1.RefreshReport();
         }
     }
 }
+ 
