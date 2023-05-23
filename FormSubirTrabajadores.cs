@@ -83,7 +83,7 @@ namespace ProyectoRolesConCrystal
                 comando.Parameters.AddWithValue("@H_E50", H_E50);
                 comando.Parameters.AddWithValue("@H_E100", H_E100);
                 //comando.Parameters.AddWithValue("@ESTADO", DB);
-                comando.Parameters.AddWithValue("@FECHA_INACTIVO", DBNull.Value);
+                comando.Parameters.AddWithValue("@FECHA_INACTIVO",DBNull.Value);
                 comando.Parameters.AddWithValue("@FECHA_REINGRESO",DBNull.Value);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Registro Exitoso", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -337,12 +337,13 @@ namespace ProyectoRolesConCrystal
         }
         public void btnInforme_Click(object sender, EventArgs e)
         {
-            string cedula = txtCedula.Text;
+            frmReporteColaboradores reporteColaboradores = new frmReporteColaboradores();
             ReportDocument report = new ReportDocument();
             report.Load("C:\\Users\\jayala\\source\\repos\\ProyectoRolesConCrystal\\ReporteColaboradores.rpt");
-            report.SetParameterValue("Cedula",cedula);
-            ParameterFieldDefinition parameter = report.DataDefinition;
-            crystalReportViewer1.ReportSource = report;
+            report.SetParameterValue("@ID_DEPARTAMENTO", cmbDepartamento.SelectedValue);
+            reporteColaboradores.crystalReportViewer1.ReportSource = report;
+            reporteColaboradores.Show();
+            //crystalReportViewer1.ReportSource = report;
         }
         public void fInforme()
         {
