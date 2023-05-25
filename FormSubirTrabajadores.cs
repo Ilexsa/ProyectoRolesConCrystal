@@ -211,7 +211,7 @@ namespace ProyectoRolesConCrystal
                         "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (respuesta == DialogResult.Yes)
                     {
-                        string consultaBorrar = "DELETE FROM TRABAJADORES WHERE CEDULA=@CEDULA";
+                        string consultaBorrar = "DELETE FROM TRABAJADORES WHERE CEDULA=@CEDULA222";
                         SqlCommand comando = new SqlCommand(consultaBorrar, conexion);
                         comando.Parameters.AddWithValue("@CEDULA", cedula);
                         flag = comando.ExecuteNonQuery(); // 1 es que funko 0 es que no funko
@@ -286,7 +286,7 @@ namespace ProyectoRolesConCrystal
         }
 
         private void btnInactivar_Click(object sender, EventArgs e)
-        {
+        { 
             DialogResult respuesta = MessageBox.Show("¿Está seguro de inactivar al trabajador?","Advertencia",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
             if (respuesta == DialogResult.Yes)
             {

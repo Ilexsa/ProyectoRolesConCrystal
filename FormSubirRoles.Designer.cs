@@ -100,13 +100,14 @@
             this.txtFechaIngEm = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.txtCedula = new System.Windows.Forms.TextBox();
+            this.btnBusqueda = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNomina
             // 
             this.txtNomina.Location = new System.Drawing.Point(88, 64);
             this.txtNomina.Name = "txtNomina";
-            this.txtNomina.Size = new System.Drawing.Size(100, 20);
+            this.txtNomina.Size = new System.Drawing.Size(76, 20);
             this.txtNomina.TabIndex = 0;
             // 
             // label1
@@ -203,7 +204,7 @@
             this.btnAddN.Name = "btnAddN";
             this.btnAddN.Size = new System.Drawing.Size(75, 23);
             this.btnAddN.TabIndex = 12;
-            this.btnAddN.Text = "button5";
+            this.btnAddN.Text = "Agregar";
             this.btnAddN.UseVisualStyleBackColor = true;
             this.btnAddN.Click += new System.EventHandler(this.btnAddN_Click);
             // 
@@ -233,6 +234,7 @@
             this.button8.TabIndex = 15;
             this.button8.Text = "button8";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -246,6 +248,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Enabled = false;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 103);
             this.label2.Name = "label2";
@@ -256,6 +259,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Enabled = false;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(28, 129);
             this.label3.Name = "label3";
@@ -369,6 +373,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.Enabled = false;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(332, 129);
             this.label15.Name = "label15";
@@ -379,6 +384,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.Enabled = false;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(397, 103);
             this.label16.Name = "label16";
@@ -566,6 +572,7 @@
             // 
             // txtCargoEmpleado
             // 
+            this.txtCargoEmpleado.Enabled = false;
             this.txtCargoEmpleado.Location = new System.Drawing.Point(451, 100);
             this.txtCargoEmpleado.Name = "txtCargoEmpleado";
             this.txtCargoEmpleado.Size = new System.Drawing.Size(217, 20);
@@ -650,6 +657,7 @@
             // 
             // txtEmpleado
             // 
+            this.txtEmpleado.Enabled = false;
             this.txtEmpleado.Location = new System.Drawing.Point(88, 100);
             this.txtEmpleado.Name = "txtEmpleado";
             this.txtEmpleado.Size = new System.Drawing.Size(185, 20);
@@ -657,6 +665,7 @@
             // 
             // txtSueldoEmpleado
             // 
+            this.txtSueldoEmpleado.Enabled = false;
             this.txtSueldoEmpleado.Location = new System.Drawing.Point(88, 126);
             this.txtSueldoEmpleado.Name = "txtSueldoEmpleado";
             this.txtSueldoEmpleado.Size = new System.Drawing.Size(76, 20);
@@ -664,6 +673,7 @@
             // 
             // txtFechaIngEm
             // 
+            this.txtFechaIngEm.Enabled = false;
             this.txtFechaIngEm.Location = new System.Drawing.Point(451, 126);
             this.txtFechaIngEm.Name = "txtFechaIngEm";
             this.txtFechaIngEm.Size = new System.Drawing.Size(76, 20);
@@ -683,15 +693,28 @@
             // txtCedula
             // 
             this.txtCedula.Location = new System.Drawing.Point(276, 64);
+            this.txtCedula.MaxLength = 10;
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(118, 20);
             this.txtCedula.TabIndex = 69;
+            this.txtCedula.Enter += new System.EventHandler(this.txtCedula_Enter);
+            // 
+            // btnBusqueda
+            // 
+            this.btnBusqueda.Location = new System.Drawing.Point(400, 62);
+            this.btnBusqueda.Name = "btnBusqueda";
+            this.btnBusqueda.Size = new System.Drawing.Size(75, 23);
+            this.btnBusqueda.TabIndex = 71;
+            this.btnBusqueda.Text = "Buscar";
+            this.btnBusqueda.UseVisualStyleBackColor = true;
+            this.btnBusqueda.Click += new System.EventHandler(this.btnBusqueda_Click);
             // 
             // FormSubirRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 606);
+            this.Controls.Add(this.btnBusqueda);
             this.Controls.Add(this.txtCedula);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.txtFechaIngEm);
@@ -841,6 +864,7 @@
         private System.Windows.Forms.TextBox txtSueldoEmpleado;
         private System.Windows.Forms.TextBox txtFechaIngEm;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox txtCedula;
+        private System.Windows.Forms.Button btnBusqueda;
+        public System.Windows.Forms.TextBox txtCedula;
     }
 }
