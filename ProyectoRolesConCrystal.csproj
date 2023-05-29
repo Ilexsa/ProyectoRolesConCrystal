@@ -243,6 +243,12 @@
     <Compile Include="FormUtilidadesExcel.Designer.cs">
       <DependentUpon>FormUtilidadesExcel.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBusquedaN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBusquedaN.Designer.cs">
+      <DependentUpon>frmBusquedaN.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBusquedaSR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUtilidadesExcel.resx">
       <DependentUpon>FormUtilidadesExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBusquedaN.resx">
+      <DependentUpon>frmBusquedaN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBusquedaSR.resx">
       <DependentUpon>frmBusquedaSR.cs</DependentUpon>

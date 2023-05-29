@@ -129,10 +129,98 @@ namespace ProyectoRolesConCrystal
             string cedulaSeleccionada = busquedaSR.cedulaSeleccionada;
             txtCedula.Text = cedulaSeleccionada;
         }
-
-        private void txtCedula_Enter(object sender, EventArgs e)
+        //private void leerDatosT()
+        //{
+        //    try
+        //    {
+        //        double vHorasExtras50;
+        //        double vHorasExtras100;
+        //        conexion.Open();
+        //        SqlCommand command = new SqlCommand("sp_leerDatosTrabajador", conexion);
+        //        command.CommandType = System.Data.CommandType.StoredProcedure;
+        //        command.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
+        //        SqlDataReader reader = command.ExecuteReader();
+        //        if (reader.Read())
+        //        {
+        //            txtEmpleado.Text = reader["NOMBRES"].ToString();
+        //            txtCargoEmpleado.Text = reader["CARGO"].ToString();
+        //            txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
+        //            txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
+        //            vHorasExtras50 = Convert.ToDouble(reader["H_E50"].ToString());
+        //            vHorasExtras100 = Convert.ToDouble(reader["H_E100"].ToString());
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    conexion.Close();
+        //}
+        private void txtCedula_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                double vHorasExtras50;
+                double vHorasExtras100;
+                conexion.Open();
+                SqlCommand command = new SqlCommand("sp_leerDatosTrabajador", conexion);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
+                SqlDataReader reader = command.ExecuteReader();
+                if(reader.Read()){
+                    txtEmpleado.Text = reader["NOMBRES"].ToString();
+                    txtCargoEmpleado.Text = reader["CARGO"].ToString();
+                    txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
+                    txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
+                    vHorasExtras50 = Convert.ToDouble(reader["H_E50"].ToString());
+                    vHorasExtras100 = Convert.ToDouble(reader["H_E100"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            conexion.Close();
+        }
 
+        private void btnPruebas_Click(object sender, EventArgs e)
+        {
+            //leerDatosT();
+        }
+
+        private void btnBuscarN_Click(object sender, EventArgs e)
+        {
+            frmBusquedaN frmBusquedaN = new frmBusquedaN();
+            frmBusquedaN.ShowDialog();
+            txtNomina.Text = frmBusquedaN.IdSeleccionado;
+            txtCedula.Text = frmBusquedaN.cedulaSeleccionada;
+        }
+
+        private void txtNomina_TextChanged(object sender, EventArgs e)
+        {
+            SqlCommand command = new SqlCommand("sp_leerrOL", conexion);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
+            SqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                txtEmpleado.Text = reader["NOMBRES"].ToString();
+                txtCargoEmpleado.Text = reader["CARGO"].ToString();
+                txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
+                txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
+                txtEmpleado.Text = reader["NOMBRES"].ToString();
+                txtCargoEmpleado.Text = reader["CARGO"].ToString();
+                txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
+                txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
+                txtEmpleado.Text = reader["NOMBRES"].ToString();
+                txtCargoEmpleado.Text = reader["CARGO"].ToString();
+                txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
+                txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
+                txtEmpleado.Text = reader["NOMBRES"].ToString();
+                txtCargoEmpleado.Text = reader["CARGO"].ToString();
+                txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
+                txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
+            }
         }
     }
 }

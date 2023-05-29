@@ -32,25 +32,33 @@ namespace ProyectoRolesConCrystal
             cmbOpcionesBusqueda.DisplayMember = "Key";
             cmbOpcionesBusqueda.ValueMember = "Value";
         }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            conexion.Open();
-            string cadenaBusqueda = cmbOpcionesBusqueda.SelectedValue.ToString();
-            SqlCommand cmd = new SqlCommand(cadenaBusqueda,conexion);
-            cmd.Parameters.AddWithValue("@PARAMETRO","%"+ txtBusqueda.Text + "%");
-            cmd.ExecuteNonQuery();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dataTable = new DataTable();
-            da.Fill(dataTable);
-            dgvResultadoBusqueda.DataSource = dataTable;
-            conexion.Close();
-        }
-
         private void dgvResultadoBusqueda_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             cedulaSeleccionada= dgvResultadoBusqueda.SelectedCells[1].Value.ToString();
             Close();
+        }
+
+        private void txtBusqueda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                try { 
+                conexion.Open();
+                string cadenaBusqueda = cmbOpcionesBusqueda.SelectedValue.ToString();
+                SqlCommand cmd = new SqlCommand(cadenaBusqueda, conexion);
+                cmd.Parameters.AddWithValue("@PARAMETRO", "%" + txtBusqueda.Text + "%");
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dataTable = new DataTable();
+                da.Fill(dataTable);
+                dgvResultadoBusqueda.DataSource = dataTable;
+                conexion.Close();
+                }catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+                conexion.Close();
+            }
         }
     }
 }

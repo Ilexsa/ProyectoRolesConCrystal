@@ -101,6 +101,8 @@
             this.label31 = new System.Windows.Forms.Label();
             this.txtCedula = new System.Windows.Forms.TextBox();
             this.btnBusqueda = new System.Windows.Forms.Button();
+            this.btnPruebas = new System.Windows.Forms.Button();
+            this.btnBuscarN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNomina
@@ -109,6 +111,7 @@
             this.txtNomina.Name = "txtNomina";
             this.txtNomina.Size = new System.Drawing.Size(76, 20);
             this.txtNomina.TabIndex = 0;
+            this.txtNomina.TextChanged += new System.EventHandler(this.txtNomina_TextChanged);
             // 
             // label1
             // 
@@ -676,7 +679,7 @@
             this.txtFechaIngEm.Enabled = false;
             this.txtFechaIngEm.Location = new System.Drawing.Point(451, 126);
             this.txtFechaIngEm.Name = "txtFechaIngEm";
-            this.txtFechaIngEm.Size = new System.Drawing.Size(76, 20);
+            this.txtFechaIngEm.Size = new System.Drawing.Size(66, 20);
             this.txtFechaIngEm.TabIndex = 67;
             // 
             // label31
@@ -684,7 +687,7 @@
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label31.Location = new System.Drawing.Point(198, 67);
+            this.label31.Location = new System.Drawing.Point(306, 67);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(72, 13);
             this.label31.TabIndex = 68;
@@ -692,16 +695,17 @@
             // 
             // txtCedula
             // 
-            this.txtCedula.Location = new System.Drawing.Point(276, 64);
+            this.txtCedula.Location = new System.Drawing.Point(384, 64);
             this.txtCedula.MaxLength = 10;
             this.txtCedula.Name = "txtCedula";
+            this.txtCedula.ReadOnly = true;
             this.txtCedula.Size = new System.Drawing.Size(118, 20);
             this.txtCedula.TabIndex = 69;
-            this.txtCedula.Enter += new System.EventHandler(this.txtCedula_Enter);
+            this.txtCedula.TextChanged += new System.EventHandler(this.txtCedula_TextChanged);
             // 
             // btnBusqueda
             // 
-            this.btnBusqueda.Location = new System.Drawing.Point(400, 62);
+            this.btnBusqueda.Location = new System.Drawing.Point(508, 62);
             this.btnBusqueda.Name = "btnBusqueda";
             this.btnBusqueda.Size = new System.Drawing.Size(75, 23);
             this.btnBusqueda.TabIndex = 71;
@@ -709,11 +713,33 @@
             this.btnBusqueda.UseVisualStyleBackColor = true;
             this.btnBusqueda.Click += new System.EventHandler(this.btnBusqueda_Click);
             // 
+            // btnPruebas
+            // 
+            this.btnPruebas.Location = new System.Drawing.Point(589, 61);
+            this.btnPruebas.Name = "btnPruebas";
+            this.btnPruebas.Size = new System.Drawing.Size(75, 23);
+            this.btnPruebas.TabIndex = 72;
+            this.btnPruebas.Text = "Pruebas";
+            this.btnPruebas.UseVisualStyleBackColor = true;
+            this.btnPruebas.Click += new System.EventHandler(this.btnPruebas_Click);
+            // 
+            // btnBuscarN
+            // 
+            this.btnBuscarN.Location = new System.Drawing.Point(170, 61);
+            this.btnBuscarN.Name = "btnBuscarN";
+            this.btnBuscarN.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscarN.TabIndex = 73;
+            this.btnBuscarN.Text = "Buscar";
+            this.btnBuscarN.UseVisualStyleBackColor = true;
+            this.btnBuscarN.Click += new System.EventHandler(this.btnBuscarN_Click);
+            // 
             // FormSubirRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 606);
+            this.Controls.Add(this.btnBuscarN);
+            this.Controls.Add(this.btnPruebas);
             this.Controls.Add(this.btnBusqueda);
             this.Controls.Add(this.txtCedula);
             this.Controls.Add(this.label31);
@@ -866,5 +892,7 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button btnBusqueda;
         public System.Windows.Forms.TextBox txtCedula;
+        private System.Windows.Forms.Button btnPruebas;
+        private System.Windows.Forms.Button btnBuscarN;
     }
 }
