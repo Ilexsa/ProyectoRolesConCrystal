@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSubirRoles));
             this.txtNomina = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.txtRNocturno = new System.Windows.Forms.TextBox();
             this.txtSueldoDT = new System.Windows.Forms.TextBox();
             this.txtNumE50 = new System.Windows.Forms.TextBox();
@@ -109,6 +107,7 @@
             // 
             this.txtNomina.Location = new System.Drawing.Point(88, 64);
             this.txtNomina.Name = "txtNomina";
+            this.txtNomina.ReadOnly = true;
             this.txtNomina.Size = new System.Drawing.Size(76, 20);
             this.txtNomina.TabIndex = 0;
             this.txtNomina.TextChanged += new System.EventHandler(this.txtNomina_TextChanged);
@@ -124,71 +123,68 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "N° Nomina :";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // txtRNocturno
             // 
             this.txtRNocturno.Location = new System.Drawing.Point(160, 211);
             this.txtRNocturno.Name = "txtRNocturno";
             this.txtRNocturno.Size = new System.Drawing.Size(101, 20);
-            this.txtRNocturno.TabIndex = 3;
+            this.txtRNocturno.TabIndex = 2;
             // 
             // txtSueldoDT
             // 
             this.txtSueldoDT.Location = new System.Drawing.Point(160, 185);
             this.txtSueldoDT.Name = "txtSueldoDT";
             this.txtSueldoDT.Size = new System.Drawing.Size(101, 20);
-            this.txtSueldoDT.TabIndex = 4;
+            this.txtSueldoDT.TabIndex = 1;
             // 
             // txtNumE50
             // 
             this.txtNumE50.Location = new System.Drawing.Point(160, 237);
             this.txtNumE50.Name = "txtNumE50";
             this.txtNumE50.Size = new System.Drawing.Size(101, 20);
-            this.txtNumE50.TabIndex = 5;
+            this.txtNumE50.TabIndex = 3;
             // 
             // txtFondosR
             // 
             this.txtFondosR.Location = new System.Drawing.Point(160, 289);
             this.txtFondosR.Name = "txtFondosR";
             this.txtFondosR.Size = new System.Drawing.Size(101, 20);
-            this.txtFondosR.TabIndex = 6;
+            this.txtFondosR.TabIndex = 5;
             // 
             // txtNumE100
             // 
             this.txtNumE100.Location = new System.Drawing.Point(160, 263);
             this.txtNumE100.Name = "txtNumE100";
             this.txtNumE100.Size = new System.Drawing.Size(101, 20);
-            this.txtNumE100.TabIndex = 7;
+            this.txtNumE100.TabIndex = 4;
             // 
             // btnPrimerN
             // 
             this.btnPrimerN.Location = new System.Drawing.Point(60, 21);
             this.btnPrimerN.Name = "btnPrimerN";
             this.btnPrimerN.Size = new System.Drawing.Size(75, 23);
-            this.btnPrimerN.TabIndex = 8;
-            this.btnPrimerN.Text = "button1";
+            this.btnPrimerN.TabIndex = 100;
+            this.btnPrimerN.Text = "<<";
             this.btnPrimerN.UseVisualStyleBackColor = true;
+            this.btnPrimerN.Click += new System.EventHandler(this.btnPrimerN_Click);
             // 
             // btnAnterior
             // 
             this.btnAnterior.Location = new System.Drawing.Point(141, 21);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(75, 23);
-            this.btnAnterior.TabIndex = 9;
-            this.btnAnterior.Text = "button2";
+            this.btnAnterior.TabIndex = 101;
+            this.btnAnterior.Text = "<";
             this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
             // btnEditarN
             // 
             this.btnEditarN.Location = new System.Drawing.Point(222, 21);
             this.btnEditarN.Name = "btnEditarN";
             this.btnEditarN.Size = new System.Drawing.Size(75, 23);
-            this.btnEditarN.TabIndex = 10;
-            this.btnEditarN.Text = "button3";
+            this.btnEditarN.TabIndex = 102;
+            this.btnEditarN.Text = "Editar";
             this.btnEditarN.UseVisualStyleBackColor = true;
             // 
             // btnNewN
@@ -196,8 +192,8 @@
             this.btnNewN.Location = new System.Drawing.Point(303, 21);
             this.btnNewN.Name = "btnNewN";
             this.btnNewN.Size = new System.Drawing.Size(75, 23);
-            this.btnNewN.TabIndex = 11;
-            this.btnNewN.Text = "button4";
+            this.btnNewN.TabIndex = 103;
+            this.btnNewN.Text = "Nuevo";
             this.btnNewN.UseVisualStyleBackColor = true;
             this.btnNewN.Click += new System.EventHandler(this.btnNewN_Click);
             // 
@@ -206,7 +202,7 @@
             this.btnAddN.Location = new System.Drawing.Point(384, 21);
             this.btnAddN.Name = "btnAddN";
             this.btnAddN.Size = new System.Drawing.Size(75, 23);
-            this.btnAddN.TabIndex = 12;
+            this.btnAddN.TabIndex = 104;
             this.btnAddN.Text = "Agregar";
             this.btnAddN.UseVisualStyleBackColor = true;
             this.btnAddN.Click += new System.EventHandler(this.btnAddN_Click);
@@ -216,25 +212,27 @@
             this.btnSiguiente.Location = new System.Drawing.Point(465, 21);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(75, 23);
-            this.btnSiguiente.TabIndex = 13;
-            this.btnSiguiente.Text = "button6";
+            this.btnSiguiente.TabIndex = 105;
+            this.btnSiguiente.Text = ">";
             this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // btnUltimaN
             // 
             this.btnUltimaN.Location = new System.Drawing.Point(546, 21);
             this.btnUltimaN.Name = "btnUltimaN";
             this.btnUltimaN.Size = new System.Drawing.Size(75, 23);
-            this.btnUltimaN.TabIndex = 14;
-            this.btnUltimaN.Text = "button7";
+            this.btnUltimaN.TabIndex = 106;
+            this.btnUltimaN.Text = ">>";
             this.btnUltimaN.UseVisualStyleBackColor = true;
+            this.btnUltimaN.Click += new System.EventHandler(this.btnUltimaN_Click);
             // 
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(593, 555);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 15;
+            this.button8.TabIndex = 108;
             this.button8.Text = "button8";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
@@ -244,7 +242,7 @@
             this.button9.Location = new System.Drawing.Point(512, 555);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 16;
+            this.button9.TabIndex = 107;
             this.button9.Text = "button9";
             this.button9.UseVisualStyleBackColor = true;
             // 
@@ -529,28 +527,28 @@
             this.txtOtrosIA.Location = new System.Drawing.Point(160, 315);
             this.txtOtrosIA.Name = "txtOtrosIA";
             this.txtOtrosIA.Size = new System.Drawing.Size(101, 20);
-            this.txtOtrosIA.TabIndex = 46;
+            this.txtOtrosIA.TabIndex = 6;
             // 
             // txtOtrosINA
             // 
             this.txtOtrosINA.Location = new System.Drawing.Point(160, 341);
             this.txtOtrosINA.Name = "txtOtrosINA";
             this.txtOtrosINA.Size = new System.Drawing.Size(101, 20);
-            this.txtOtrosINA.TabIndex = 47;
+            this.txtOtrosINA.TabIndex = 7;
             // 
             // txtAlimentacion
             // 
             this.txtAlimentacion.Location = new System.Drawing.Point(160, 367);
             this.txtAlimentacion.Name = "txtAlimentacion";
             this.txtAlimentacion.Size = new System.Drawing.Size(101, 20);
-            this.txtAlimentacion.TabIndex = 48;
+            this.txtAlimentacion.TabIndex = 8;
             // 
             // txtMovilizacion
             // 
             this.txtMovilizacion.Location = new System.Drawing.Point(160, 393);
             this.txtMovilizacion.Name = "txtMovilizacion";
             this.txtMovilizacion.Size = new System.Drawing.Size(101, 20);
-            this.txtMovilizacion.TabIndex = 49;
+            this.txtMovilizacion.TabIndex = 9;
             // 
             // txtTotalIngresos
             // 
@@ -586,77 +584,77 @@
             this.txtSupa.Location = new System.Drawing.Point(496, 393);
             this.txtSupa.Name = "txtSupa";
             this.txtSupa.Size = new System.Drawing.Size(101, 20);
-            this.txtSupa.TabIndex = 62;
+            this.txtSupa.TabIndex = 18;
             // 
             // txtDescuadres
             // 
             this.txtDescuadres.Location = new System.Drawing.Point(496, 367);
             this.txtDescuadres.Name = "txtDescuadres";
             this.txtDescuadres.Size = new System.Drawing.Size(101, 20);
-            this.txtDescuadres.TabIndex = 61;
+            this.txtDescuadres.TabIndex = 17;
             // 
             // txtSubsidioEG
             // 
             this.txtSubsidioEG.Location = new System.Drawing.Point(496, 341);
             this.txtSubsidioEG.Name = "txtSubsidioEG";
             this.txtSubsidioEG.Size = new System.Drawing.Size(101, 20);
-            this.txtSubsidioEG.TabIndex = 60;
+            this.txtSubsidioEG.TabIndex = 16;
             // 
             // txtSubsidioM
             // 
             this.txtSubsidioM.Location = new System.Drawing.Point(496, 315);
             this.txtSubsidioM.Name = "txtSubsidioM";
             this.txtSubsidioM.Size = new System.Drawing.Size(101, 20);
-            this.txtSubsidioM.TabIndex = 59;
+            this.txtSubsidioM.TabIndex = 15;
             // 
             // txtOtrosD
             // 
             this.txtOtrosD.Location = new System.Drawing.Point(496, 263);
             this.txtOtrosD.Name = "txtOtrosD";
             this.txtOtrosD.Size = new System.Drawing.Size(101, 20);
-            this.txtOtrosD.TabIndex = 58;
+            this.txtOtrosD.TabIndex = 13;
             // 
             // txtConsumoPersonal
             // 
             this.txtConsumoPersonal.Location = new System.Drawing.Point(496, 289);
             this.txtConsumoPersonal.Name = "txtConsumoPersonal";
             this.txtConsumoPersonal.Size = new System.Drawing.Size(101, 20);
-            this.txtConsumoPersonal.TabIndex = 57;
+            this.txtConsumoPersonal.TabIndex = 14;
             // 
             // txtPrestamosH
             // 
             this.txtPrestamosH.Location = new System.Drawing.Point(496, 237);
             this.txtPrestamosH.Name = "txtPrestamosH";
             this.txtPrestamosH.Size = new System.Drawing.Size(101, 20);
-            this.txtPrestamosH.TabIndex = 56;
+            this.txtPrestamosH.TabIndex = 12;
             // 
             // txtAnticipoSueldo
             // 
             this.txtAnticipoSueldo.Location = new System.Drawing.Point(496, 185);
             this.txtAnticipoSueldo.Name = "txtAnticipoSueldo";
             this.txtAnticipoSueldo.Size = new System.Drawing.Size(101, 20);
-            this.txtAnticipoSueldo.TabIndex = 55;
+            this.txtAnticipoSueldo.TabIndex = 10;
             // 
             // txtPrestamosQ
             // 
             this.txtPrestamosQ.Location = new System.Drawing.Point(496, 211);
             this.txtPrestamosQ.Name = "txtPrestamosQ";
             this.txtPrestamosQ.Size = new System.Drawing.Size(101, 20);
-            this.txtPrestamosQ.TabIndex = 54;
+            this.txtPrestamosQ.TabIndex = 11;
             // 
             // txtAtrasos
             // 
             this.txtAtrasos.Location = new System.Drawing.Point(496, 419);
             this.txtAtrasos.Name = "txtAtrasos";
             this.txtAtrasos.Size = new System.Drawing.Size(101, 20);
-            this.txtAtrasos.TabIndex = 63;
+            this.txtAtrasos.TabIndex = 19;
             // 
             // txtIESS
             // 
             this.txtIESS.Location = new System.Drawing.Point(496, 445);
             this.txtIESS.Name = "txtIESS";
             this.txtIESS.Size = new System.Drawing.Size(101, 20);
-            this.txtIESS.TabIndex = 64;
+            this.txtIESS.TabIndex = 20;
             // 
             // txtEmpleado
             // 
@@ -823,7 +821,6 @@
 
         private System.Windows.Forms.TextBox txtNomina;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox txtRNocturno;
         private System.Windows.Forms.TextBox txtSueldoDT;
         private System.Windows.Forms.TextBox txtNumE50;

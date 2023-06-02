@@ -15,30 +15,63 @@ namespace ProyectoRolesConCrystal
 {
     public partial class FormSubirRoles : Form
     {
+        double vHorasExtras50;
+        double vHorasExtras100;
         SqlConnection conexion = new SqlConnection(ConexionBase.cadenaConexion);
-        frmBusquedaSR busquedaSR = new frmBusquedaSR();
+
         public FormSubirRoles()
         {
-
             InitializeComponent();
         }
 
         private void FormSubirRoles_Load(object sender, EventArgs e)
         {
-            conexion.Open();
-            string callLastR = "SELECT ID FROM NOMINA WHERE ID = (SELECT MAX(ID) FROM NOMINA)";
-            SqlCommand comando = new SqlCommand(callLastR, conexion);
-            SqlDataReader reader = comando.ExecuteReader();
-            if (reader.Read())
-            {
-                txtNomina.Text = reader["ID"].ToString();
-            }
-            conexion.Close();
-
+            MostrarLastID();
+            MostrarLastCedula();
         }
-        private void ObtenerIdBusqueda()
+        private void MostrarLastCedula()
         {
-            
+            conexion.Open();
+            try
+            {
+                string callLastR = "SELECT ID, CEDULA FROM NOMINA WHERE ID = (SELECT MAX(ID) FROM NOMINA)";
+                SqlCommand comando = new SqlCommand(callLastR, conexion);
+                SqlDataReader lector = comando.ExecuteReader();
+                if (lector.Read())
+                {
+                    txtCedula.Text = lector["CEDULA"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR");
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+        private void MostrarLastID()
+        {
+            conexion.Open();
+            try
+            {
+                string callLastR = "SELECT ID, CEDULA FROM NOMINA WHERE ID = (SELECT MAX(ID) FROM NOMINA)";
+                SqlCommand comando = new SqlCommand(callLastR, conexion);
+                SqlDataReader lector = comando.ExecuteReader();
+                if (lector.Read())
+                {
+                    txtNomina.Text = lector["ID"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR");
+            }
+            finally
+            {
+                conexion.Close();
+            }
         }
         private int ObtenerUltimoID()
         {
@@ -55,6 +88,7 @@ namespace ProyectoRolesConCrystal
                 {
                     lastID = Convert.ToInt32(result);
                 }
+                connection.Close();
             }
             return lastID;
         }
@@ -64,6 +98,7 @@ namespace ProyectoRolesConCrystal
             int ultimoID = ObtenerUltimoID();
             int nuevoID = ultimoID + 1;
             txtNomina.Text = nuevoID.ToString();
+            limpiarTxts();
         }
 
         private void btnAddN_Click(object sender, EventArgs e)
@@ -107,67 +142,41 @@ namespace ProyectoRolesConCrystal
                 comando.Parameters.AddWithValue("@H_50", (Convert.ToDouble(txtNumE50.Text)));
                 comando.Parameters.AddWithValue("@H_100", (Convert.ToDouble(txtNumE100.Text)));
                 comando.Parameters.AddWithValue("@OTROS_DESCUENTOS", (Convert.ToDouble(txtOtrosD.Text)));
-                comando.Parameters.AddWithValue("@ATRASOS",((Convert.ToDouble(txtAtrasos.Text) * 0.25)));
+                comando.Parameters.AddWithValue("@ATRASOS", ((Convert.ToDouble(txtAtrasos.Text) * 0.25)));
                 comando.Parameters.AddWithValue("@FONDOS_RESERVA", ((Convert.ToDouble(txtAtrasos.Text) * 0.25)));
                 comando.ExecuteNonQuery();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             conexion.Close();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();  
+            Form2 form2 = new Form2();
             form2.ShowDialog();
         }
         private void btnBusqueda_Click(object sender, EventArgs e)
         {
+            frmBusquedaSR busquedaSR = new frmBusquedaSR();
             busquedaSR.ShowDialog();
             string cedulaSeleccionada = busquedaSR.cedulaSeleccionada;
             txtCedula.Text = cedulaSeleccionada;
         }
-        //private void leerDatosT()
-        //{
-        //    try
-        //    {
-        //        double vHorasExtras50;
-        //        double vHorasExtras100;
-        //        conexion.Open();
-        //        SqlCommand command = new SqlCommand("sp_leerDatosTrabajador", conexion);
-        //        command.CommandType = System.Data.CommandType.StoredProcedure;
-        //        command.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
-        //        SqlDataReader reader = command.ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            txtEmpleado.Text = reader["NOMBRES"].ToString();
-        //            txtCargoEmpleado.Text = reader["CARGO"].ToString();
-        //            txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
-        //            txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
-        //            vHorasExtras50 = Convert.ToDouble(reader["H_E50"].ToString());
-        //            vHorasExtras100 = Convert.ToDouble(reader["H_E100"].ToString());
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    conexion.Close();
-        //}
         private void txtCedula_TextChanged(object sender, EventArgs e)
         {
+            conexion.Close();
             try
             {
-                double vHorasExtras50;
-                double vHorasExtras100;
                 conexion.Open();
-                SqlCommand command = new SqlCommand("sp_leerDatosTrabajador", conexion);
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
-                SqlDataReader reader = command.ExecuteReader();
-                if(reader.Read()){
+                SqlCommand comandoLT = new SqlCommand("sp_leerDatosTrabajador", conexion);
+                comandoLT.CommandType = System.Data.CommandType.StoredProcedure;
+                comandoLT.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
+                SqlDataReader reader = comandoLT.ExecuteReader();
+                if (reader.Read())
+                {
                     txtEmpleado.Text = reader["NOMBRES"].ToString();
                     txtCargoEmpleado.Text = reader["CARGO"].ToString();
                     txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
@@ -178,7 +187,7 @@ namespace ProyectoRolesConCrystal
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             conexion.Close();
         }
@@ -198,29 +207,265 @@ namespace ProyectoRolesConCrystal
 
         private void txtNomina_TextChanged(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand("sp_leerrOL", conexion);
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.Read())
+            conexion.Close();
+            try
             {
-                txtEmpleado.Text = reader["NOMBRES"].ToString();
-                txtCargoEmpleado.Text = reader["CARGO"].ToString();
-                txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
-                txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
-                txtEmpleado.Text = reader["NOMBRES"].ToString();
-                txtCargoEmpleado.Text = reader["CARGO"].ToString();
-                txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
-                txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
-                txtEmpleado.Text = reader["NOMBRES"].ToString();
-                txtCargoEmpleado.Text = reader["CARGO"].ToString();
-                txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
-                txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
-                txtEmpleado.Text = reader["NOMBRES"].ToString();
-                txtCargoEmpleado.Text = reader["CARGO"].ToString();
-                txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
-                txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
+                conexion.Open();
+                SqlCommand comandoLR = new SqlCommand("sp_leerRol", conexion);
+                comandoLR.CommandType = System.Data.CommandType.StoredProcedure;
+                comandoLR.Parameters.AddWithValue("@ID_ROL", Convert.ToInt32(txtNomina.Text));
+                SqlDataReader lectorr = comandoLR.ExecuteReader();
+                if (lectorr.Read())
+                {
+                    txtSueldoDT.Text = lectorr["SUELDO_DIAS_TRABAJADOS"].ToString();
+                    txtRNocturno.Text = lectorr["R_NOCTURNO"].ToString();
+                    txtNumE50.Text = lectorr["H_50"].ToString();
+                    txtNumE100.Text = lectorr["H_100"].ToString();
+                    txtFondosR.Text = lectorr["FONDOS_RESERVA"].ToString();
+                    txtOtrosIA.Text = lectorr["OTROS_INGRESOS_A"].ToString();
+                    txtOtrosINA.Text = lectorr["OTROS_INGRESOS_NA"].ToString();
+                    txtAlimentacion.Text = lectorr["ALIMENTACION"].ToString();
+                    txtMovilizacion.Text = lectorr["MOVILIZACION"].ToString();
+                    txtAnticipoSueldo.Text = lectorr["A_QUINCENA"].ToString();
+                    txtPrestamosQ.Text = lectorr["P_QUIROGRAFARIOS"].ToString();
+                    txtPrestamosH.Text = lectorr["P_HIPOTECARIOS"].ToString();
+                    txtOtrosD.Text = lectorr["OTROS_DESCUENTOS"].ToString();
+                    txtConsumoPersonal.Text = lectorr["CxP"].ToString();
+                    txtSubsidioM.Text = lectorr["MATER_ENFG"].ToString();
+                    txtSubsidioEG.Text = lectorr["DESCUENTO_PERMISOS_MEDICOS"].ToString();
+                    txtDescuadres.Text = lectorr["DESCUADRES"].ToString();
+                    txtSupa.Text = lectorr["SUPA"].ToString();
+                    txtAtrasos.Text = lectorr["ATRASOS"].ToString();
+                    txtIESS.Text = lectorr["EGRESOS_IESS"].ToString();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            conexion.Close();
+        }
+
+        private void btnUltimaN_Click(object sender, EventArgs e)
+        {
+            MostrarLastID();
+            MostrarLastCedula();
+        }
+        private void mostrarFirtsID()
+        {
+            conexion.Open();
+            try
+            {
+                string consulta = "SELECT ID FROM NOMINA WHERE ID=(SELECT MIN(ID) FROM NOMINA)";
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
+                {
+                    txtNomina.Text = reader["ID"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void mostrarFirtsCedula()
+        {
+            conexion.Open();
+            try
+            {
+                string consulta = "SELECT CEDULA FROM NOMINA WHERE ID=(SELECT MIN(ID) FROM NOMINA)";
+                SqlCommand comando = new SqlCommand(consulta, conexion);
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
+                {
+                    txtNomina.Text = reader["CEDULA"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void mostrarNextId()
+        {
+            conexion.Open();
+            try
+            {
+                SqlCommand comando = new SqlCommand("sp_NextID", conexion);
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@ID",Convert.ToInt32(txtNomina.Text));
+                SqlDataReader reader = comando.ExecuteReader();
+                if(reader.Read())
+                {
+                    txtNomina.Text = reader["ID"].ToString();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            finally 
+            { 
+                conexion.Close(); 
+            }
+        }
+        private void mostrarNextCedula()
+        {
+            conexion.Open();
+            try
+            {
+                SqlCommand comando = new SqlCommand("sp_NextID", conexion);
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@ID", Convert.ToInt32(txtNomina.Text));
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
+                {
+                    txtCedula.Text = reader["CEDULA"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+        private void mostrarPreviousID()
+        {
+            conexion.Open();
+            try
+            {
+                SqlCommand comando = new SqlCommand("sp_previousID", conexion);
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@ID", Convert.ToInt32(txtNomina.Text));
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
+                {
+                    txtNomina.Text = reader["ID"].ToString();
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+        private void mostrarPreviousCedula()
+        {
+            conexion.Open();
+            try
+            {
+                SqlCommand comando = new SqlCommand("sp_previousID", conexion);
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@ID", Convert.ToInt32(txtNomina.Text));
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
+                {
+                    txtCedula.Text = reader["CEDULA"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+        private void agregarRol()
+        {
+            conexion.Open();
+            try
+            {
+                SqlCommand comando = new SqlCommand("sp_registrarRol", conexion);
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("", "");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void limpiarTxts()
+        {
+            txtCedula.Clear();
+            txtAlimentacion.Clear();
+            txtAnticipoSueldo.Clear();
+            txtCargoEmpleado.Clear();
+            txtConsumoPersonal.Clear();
+            txtTotalIngresos.Clear();
+            txtAtrasos.Clear();
+            txtConsumoPersonal.Clear();
+            txtDescuadres.Clear();
+            txtEmpleado.Clear();
+            txtFechaIngEm.Clear();
+            txtFondosR.Clear();
+            txtIESS.Clear();
+            txtMovilizacion.Clear();
+            txtNetoRecibir.Clear();
+            txtNumE100.Clear();
+            txtNumE50.Clear();
+            txtOtrosD.Clear();
+            txtOtrosIA.Clear();
+            txtOtrosINA.Clear();
+            txtPrestamosH.Clear();
+            txtPrestamosQ.Clear();
+            txtRNocturno.Clear();
+            txtSubsidioEG.Clear();
+            txtSubsidioM.Clear();
+            txtSueldoDT.Clear();
+            txtSueldoEmpleado.Clear();
+            txtSupa.Clear();
+            txtTEgresos.Clear();
+            txtTotalIngresos.Clear();
+        }
+        private void btnPrimerN_Click(object sender, EventArgs e)
+        {
+            mostrarFirtsCedula();
+            mostrarFirtsID();
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            mostrarNextCedula();
+            mostrarNextId();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            mostrarPreviousCedula();
+            mostrarPreviousID();
         }
     }
 }
