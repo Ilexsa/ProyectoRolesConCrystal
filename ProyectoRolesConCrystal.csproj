@@ -207,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionBase.cs" />
+    <Compile Include="EnviarCorreosAutomaticos.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

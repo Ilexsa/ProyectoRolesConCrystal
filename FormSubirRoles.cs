@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using ProyectoRoles;
 using System.Data.SqlTypes;
+using Microsoft.Identity.Client;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+
 
 namespace ProyectoRolesConCrystal
 {
@@ -466,6 +470,20 @@ namespace ProyectoRolesConCrystal
         {
             mostrarPreviousCedula();
             mostrarPreviousID();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            GenerarReportes generarPdfs = new GenerarReportes();
+            try
+            {
+                generarPdfs.generarPDFS();
+                MessageBox.Show("Se han generado los roles individuales correctamente", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
     }
 }
