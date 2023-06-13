@@ -13,6 +13,9 @@ using System.Transactions;
 using Microsoft.Identity.Client;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Windows.Forms;
+using System.Media;
+using System.Web.UI.WebControls;
+using CrystalDecisions.CrystalReports.ViewerObjectModel;
 
 namespace ProyectoRolesConCrystal
 {
@@ -33,7 +36,7 @@ namespace ProyectoRolesConCrystal
                 txtNombre.Text = dgvConsultaTabla.SelectedCells[3].Value.ToString();
                 txtCargo.Text = dgvConsultaTabla.SelectedCells[5].Value.ToString();
                 txtSueldo.Text = dgvConsultaTabla.SelectedCells[6].Value.ToString();
-                txtDiscapacidad.Text = dgvConsultaTabla.SelectedCells[7].Value.ToString();
+                //txtDiscapacidad.Text = dgvConsultaTabla.SelectedCells[7].Value.ToString();
                 txtCorreo.Text = dgvConsultaTabla.SelectedCells[8].Value.ToString();
                 dtpFechaI.Value = fecha;
                 cmbLocalidad.SelectedValue = dgvConsultaTabla.SelectedCells[1].Value.ToString();
@@ -68,7 +71,7 @@ namespace ProyectoRolesConCrystal
                 double H_E25 = Math.Round((pagoHora/4)+pagoHora,2);
                 double H_E50 = Math.Round((pagoHora/2) + pagoHora,2);
                 double H_E100 = Math.Round((pagoHora)*2,2);
-                string add = "insert into TRABAJADORES values (@CEDULA, @IdLocalidad, @IdDepartamento, @NOMBRES, @FECHA_INGRESO, @CARGO, @SUELDO_BASE, @PER_DISCAPACIDAD, @CORREO ,@H_E25, @H_E50, @H_E100, DEFAULT, @FECHA_INACTIVO, @FECHA_REINGRESO)";
+                string add = "insert into TRABAJADORES values (@CEDULA, @IdLocalidad, @IdDepartamento, @NOMBRES, @FECHA_INGRESO, @CARGO, @SUELDO_BASE, @PER_DISCAPACIDAD, @CORREO ,@H_E25, @H_E50, @H_E100, DEFAULT, @FECHA_INACTIVO, @FECHA_REINGRESO,  @DT)";
                 SqlCommand comando = new SqlCommand(add, conexion);
                 comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
                 comando.Parameters.AddWithValue("@IdLocalidad", cmbLocalidad.SelectedValue);
@@ -77,7 +80,7 @@ namespace ProyectoRolesConCrystal
                 comando.Parameters.AddWithValue("@FECHA_INGRESO", dtpFechaI.Value);
                 comando.Parameters.AddWithValue("@CARGO", txtCargo.Text.ToUpper());
                 comando.Parameters.AddWithValue("@SUELDO_BASE", sueldo);
-                comando.Parameters.AddWithValue("@PER_DISCAPACIDAD", txtDiscapacidad.Text.ToUpper());
+                //comando.Parameters.AddWithValue("@PER_DISCAPACIDAD", txtDiscapacidad.Text.ToUpper());
                 comando.Parameters.AddWithValue("@CORREO", txtCorreo.Text.ToLower());
                 comando.Parameters.AddWithValue("@H_E25", H_E25);
                 comando.Parameters.AddWithValue("@H_E50", H_E50);
@@ -98,6 +101,20 @@ namespace ProyectoRolesConCrystal
 
         private void FormSubirTrabajadores_Load(object sender, EventArgs e)
         {
+            List<KeyValuePair<string, string>> discapacidades = new List<KeyValuePair<string, string>>{
+                new KeyValuePair<string, string>("1.Fisica" , "Fisica"),
+                new KeyValuePair<string, string>("2.Intelectual" , "Intelectual"),
+                new KeyValuePair<string, string>("3.Mental" , "Mental"),
+                new KeyValuePair<string, string>("4.Psicosocial" , "Psicosocial"),
+                new KeyValuePair<string, string>("5.Multiple" , "Multiple"),
+                new KeyValuePair<string, string>("6.Sensorial" , "Sensorial"),
+                new KeyValuePair<string, string>("7.Auditiva" , "Auditiva"),
+                new KeyValuePair<string, string>("8.Visual" , "Visual")
+            };
+            cmbDiscapacidad.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbDiscapacidad.DataSource = discapacidades;
+            cmbDiscapacidad.ValueMember = "Value";
+            cmbDiscapacidad.DisplayMember = "Key";
             string cedula = txtCedula.Text;
             // generamos un string que tiene los valores del select par la base 
             string consultaBase = "select * from TRABAJADORES";
@@ -153,7 +170,7 @@ namespace ProyectoRolesConCrystal
                 comando.Parameters.AddWithValue("@FECHA_INGRESO", dtpFechaI.Value);
                 comando.Parameters.AddWithValue("@CARGO", txtCargo.Text);
                 comando.Parameters.AddWithValue("@SUELDO_BASE", sueldo);
-                comando.Parameters.AddWithValue("@PER_DISCAPACIDAD", txtDiscapacidad.Text.ToUpper());
+                //comando.Parameters.AddWithValue("@PER_DISCAPACIDAD", txtDiscapacidad.Text.ToUpper());
                 comando.Parameters.AddWithValue("@CORREO", txtCorreo.Text.ToLower());
                 comando.Parameters.AddWithValue("@H_E25", H_E25);
                 comando.Parameters.AddWithValue("@H_E50", H_E50);
@@ -243,8 +260,10 @@ namespace ProyectoRolesConCrystal
 
         private void chkDiscapacidad_CheckedChanged(object sender, EventArgs e)
         {
-            txtDiscapacidad.Enabled = chkDiscapacidad.Checked;
-            label8.Enabled = chkDiscapacidad.Checked;
+            txtPorcentajeD.Enabled = chkDiscapacidad.Checked;
+            label10.Enabled = chkDiscapacidad.Checked;
+            label11.Enabled = chkDiscapacidad.Checked;
+            cmbDiscapacidad.Enabled = chkDiscapacidad.Checked;
         }
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
@@ -275,14 +294,14 @@ namespace ProyectoRolesConCrystal
         public void LimpiarDatos()
         {
             txtCargo.Clear();
-            txtDiscapacidad.Clear();
+            //txtDiscapacidad.Clear();
             txtNombre.Clear();
             txtCargo.Clear();
             txtNombre.Clear();
             txtSueldo.Clear();
             txtCedula.Clear();
             txtCorreo.Clear();
-            txtDiscapacidad.Clear();
+            //txtDiscapacidad.Clear();
         }
 
         private void btnInactivar_Click(object sender, EventArgs e)
@@ -348,6 +367,38 @@ namespace ProyectoRolesConCrystal
         public void fInforme()
         {
           
+        }
+
+        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                {
+                    ValidarCedula validarCedula = new ValidarCedula();
+                    bool verificarCedula = validarCedula.P_Valida_Cedula(txtCedula.Text);
+                    if ((txtCedula.Text).Length == 10)
+                    {
+                        if (verificarCedula == true)
+                        {
+                            MessageBox.Show("Numero de cedula valido", "Cedula valida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                if(verificarCedula == false)
+                    {
+                           MessageBox.Show("Numero de cedula no valido", "Cedula no valida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+        }
+
+        private void txtPorcentajeD_Leave(object sender, EventArgs e)
+        {
+            int porcentajeIngresado = Convert.ToInt32(txtPorcentajeD.Text);
+            if (porcentajeIngresado < 30)
+            {
+                MessageBox.Show("No cumple con el % minimo de discapacidad","No califica",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                chkDiscapacidad.Checked = false;
+                cmbDiscapacidad.SelectedIndex = 0;
+                txtPorcentajeD.Text = string.Empty;
+            }
         }
     }
 }

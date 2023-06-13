@@ -186,6 +186,7 @@
             this.btnEditarN.TabIndex = 102;
             this.btnEditarN.Text = "Editar";
             this.btnEditarN.UseVisualStyleBackColor = true;
+            this.btnEditarN.Click += new System.EventHandler(this.btnEditarN_Click);
             // 
             // btnNewN
             // 

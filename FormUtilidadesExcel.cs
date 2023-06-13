@@ -101,8 +101,7 @@ namespace ProyectoRolesConCrystal
             ReportDocument report = new ReportDocument();
             string dir = "C:\\Users\\jayala\\source\\repos\\ProyectoRolesConCrystal\\CrystalReport1.rpt";
             report.Load(dir);
-            crystalReportViewer1.ReportSource = report;
-            crystalReportViewer1.RefreshReport();
+
         }
     }
 }

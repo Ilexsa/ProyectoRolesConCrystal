@@ -19,8 +19,7 @@ namespace ProyectoRolesConCrystal
 {
     public partial class FormSubirRoles : Form
     {
-        double vHorasExtras50;
-        double vHorasExtras100;
+
         SqlConnection conexion = new SqlConnection(ConexionBase.cadenaConexion);
 
         public FormSubirRoles()
@@ -30,8 +29,8 @@ namespace ProyectoRolesConCrystal
 
         private void FormSubirRoles_Load(object sender, EventArgs e)
         {
-            MostrarLastID();
             MostrarLastCedula();
+            MostrarLastID();
         }
         private void MostrarLastCedula()
         {
@@ -107,54 +106,11 @@ namespace ProyectoRolesConCrystal
 
         private void btnAddN_Click(object sender, EventArgs e)
         {
-            try
+            DialogResult respuesta =MessageBox.Show("¿Esta seguro de los datos para el registro del rol?","¿?",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if(respuesta == DialogResult.Yes)
             {
-                conexion.Open();
-                string add = "INSERT INTO NOMINA (CEDULA, MATER_ENFG, ALIMENTACION, MOVILIZACION, OTROS_INGRESOS_NA, OTROS_INGRESOS_A, R_NOCTURNO, R_NOCUTNO50, R_NOCTURNO100, " +
-                    "EXTRAS, INGRESOS_IESS, T_INGRESOS, A_QUINCENA, P_QUIROGRAFARIOS, P_HIPOTECARIOS, DESCUENTO_PERMISOS_MEDICOS, CxP, DESCUADRES, SUPA, EGRESOS_IESS, T_EGRESOS, " +
-                    "NETO_RECIBIR, MES_ROL, SUELDO_DIAS_TRABAJADOS, H_50, H_100, OTROS_DESCUENTOS, ATRASOS, FONDOS_RESERVA) VALUES(@CEDULA, @MATER_ENFG, @ALIMENTACION, @MOVILIZACION," +
-                    " @OTROS_INGRESOS_NA, @OTROS_INGRESOS_A, @R_NOCTURNO, @R_NOCUTNO50, @R_NOCTURNO100, @EXTRAS, @INGRESOS_IESS, @T_INGRESOS, @A_QUINCENA, @P_QUIROGRAFARIOS, " +
-                    "@P_HIPOTECARIOS, @DESCUENTO_PERMISOS_MEDICOS, @CxP, @DESCUADRES, @SUPA, @EGRESOS_IESS, @T_EGRESOS, @NETO_RECIBIR, GETDATE(), @SUELDO_DIAS_TRABAJADOS, " +
-                    "@H_50, @H_100, @OTROS_DESCUENTOS, @ATRASOS, @FONDOS_RESERVA)";
-                //string date = DateTime.Now.Date.ToString("yyyy-MM-dd");
-                SqlCommand comando = new SqlCommand(add, conexion);
-                //comando.Parameters.AddWithValue("@ID",(Convert.ToInt32(txtNomina.Text)));
-                comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
-                comando.Parameters.AddWithValue("@MATER_ENFG", (Convert.ToDouble(txtSubsidioEG.Text)));
-                comando.Parameters.AddWithValue("@ALIMENTACION", (Convert.ToDouble(txtAlimentacion.Text)));
-                comando.Parameters.AddWithValue("@MOVILIZACION", (Convert.ToDouble(txtMovilizacion.Text)));
-                comando.Parameters.AddWithValue("@OTROS_INGRESOS_NA", (Convert.ToDouble(txtOtrosINA.Text)));
-                comando.Parameters.AddWithValue("@OTROS_INGRESOS_A", (Convert.ToDouble(txtOtrosIA.Text)));
-                comando.Parameters.AddWithValue("@R_NOCTURNO", (Convert.ToDouble(txtRNocturno.Text)));
-                comando.Parameters.AddWithValue("@R_NOCUTNO50", 0);
-                comando.Parameters.AddWithValue("@R_NOCTURNO100", 0);
-                comando.Parameters.AddWithValue("@EXTRAS", 0);
-                comando.Parameters.AddWithValue("@INGRESOS_IESS", 0);
-                comando.Parameters.AddWithValue("@T_INGRESOS", (Convert.ToDouble(txtTotalIngresos.Text)));
-                comando.Parameters.AddWithValue("@A_QUINCENA", (Convert.ToDouble(txtAnticipoSueldo.Text)));
-                comando.Parameters.AddWithValue("@P_QUIROGRAFARIOS", (Convert.ToDouble(txtPrestamosQ.Text)));
-                comando.Parameters.AddWithValue("@P_HIPOTECARIOS", (Convert.ToDouble(txtPrestamosH.Text)));
-                comando.Parameters.AddWithValue("@DESCUENTO_PERMISOS_MEDICOS", (Convert.ToDouble(txtSubsidioEG.Text)));
-                comando.Parameters.AddWithValue("@CxP", (Convert.ToDouble(txtConsumoPersonal.Text)));
-                comando.Parameters.AddWithValue("@DESCUADRES", (Convert.ToDouble(txtDescuadres.Text)));
-                comando.Parameters.AddWithValue("@SUPA", (Convert.ToDouble(txtSupa.Text)));
-                comando.Parameters.AddWithValue("@EGRESOS_IESS", (Math.Round((Convert.ToDouble(txtTotalIngresos.Text) * 0.0945), 2)));
-                comando.Parameters.AddWithValue("@T_EGRESOS", (Convert.ToDouble(txtTEgresos.Text)));
-                comando.Parameters.AddWithValue("@NETO_RECIBIR", (Convert.ToDouble(txtNetoRecibir.Text)));
-                //comando.Parameters.AddWithValue("@MES_ROL", DBNull.Value);
-                comando.Parameters.AddWithValue("@SUELDO_DIAS_TRABAJADOS", (Convert.ToDouble(txtSueldoDT.Text)));
-                comando.Parameters.AddWithValue("@H_50", (Convert.ToDouble(txtNumE50.Text)));
-                comando.Parameters.AddWithValue("@H_100", (Convert.ToDouble(txtNumE100.Text)));
-                comando.Parameters.AddWithValue("@OTROS_DESCUENTOS", (Convert.ToDouble(txtOtrosD.Text)));
-                comando.Parameters.AddWithValue("@ATRASOS", ((Convert.ToDouble(txtAtrasos.Text) * 0.25)));
-                comando.Parameters.AddWithValue("@FONDOS_RESERVA", ((Convert.ToDouble(txtAtrasos.Text) * 0.25)));
-                comando.ExecuteNonQuery();
+                agregarRol();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            conexion.Close();
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -185,8 +141,6 @@ namespace ProyectoRolesConCrystal
                     txtCargoEmpleado.Text = reader["CARGO"].ToString();
                     txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
                     txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
-                    vHorasExtras50 = Convert.ToDouble(reader["H_E50"].ToString());
-                    vHorasExtras100 = Convert.ToDouble(reader["H_E100"].ToString());
                 }
             }
             catch (Exception ex)
@@ -215,6 +169,9 @@ namespace ProyectoRolesConCrystal
             try
             {
                 conexion.Open();
+                Tuple<double, double> valoresH = GetHorasExtras(txtCedula.Text);
+                double h50 = valoresH.Item1;
+                double h100 = valoresH.Item2;
                 SqlCommand comandoLR = new SqlCommand("sp_leerRol", conexion);
                 comandoLR.CommandType = System.Data.CommandType.StoredProcedure;
                 comandoLR.Parameters.AddWithValue("@ID_ROL", Convert.ToInt32(txtNomina.Text));
@@ -223,8 +180,13 @@ namespace ProyectoRolesConCrystal
                 {
                     txtSueldoDT.Text = lectorr["SUELDO_DIAS_TRABAJADOS"].ToString();
                     txtRNocturno.Text = lectorr["R_NOCTURNO"].ToString();
-                    txtNumE50.Text = lectorr["H_50"].ToString();
-                    txtNumE100.Text = lectorr["H_100"].ToString();
+                    double valorH50 = lectorr.GetDouble(lectorr.GetOrdinal("H_50"));
+                    double valorH100 = lectorr.GetDouble(lectorr.GetOrdinal("H_100"));
+                    //double he100 = Convert.ToDouble(lectorr["H_100"].ToString());
+                    string numHe50 = (valorH50 / h50).ToString("N2");
+                    string numHe100 = (valorH100/h100).ToString("N2");
+                    txtNumE50.Text = numHe50;
+                    txtNumE100.Text = numHe100;
                     txtFondosR.Text = lectorr["FONDOS_RESERVA"].ToString();
                     txtOtrosIA.Text = lectorr["OTROS_INGRESOS_A"].ToString();
                     txtOtrosINA.Text = lectorr["OTROS_INGRESOS_NA"].ToString();
@@ -382,44 +344,55 @@ namespace ProyectoRolesConCrystal
                 conexion.Close();
             }
         }
+        private void btnEditarN_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Está seguro de modificar el rol?", "¿?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes)
+            {
+                actualizarRol();
+            }
+        }
         private void agregarRol()
         {
-            conexion.Open();
             try
             {
+                Tuple<double, double> horasExtras = GetHorasExtras(txtCedula.Text);
+                double h50 = horasExtras.Item1;
+                double h100 = horasExtras.Item2;
                 SqlCommand comando = new SqlCommand("sp_registrarRol", conexion);
                 comando.CommandType = System.Data.CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
-                comando.Parameters.AddWithValue("", "");
+                comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
+                comando.Parameters.AddWithValue("@SUELDO_DT", Convert.ToDouble(txtSueldoDT.Text));
+                comando.Parameters.AddWithValue("@RECARGO_N", Convert.ToDouble(txtRNocturno.Text));
+                comando.Parameters.AddWithValue("@H_E50", Math.Round((Convert.ToDouble(txtNumE50.Text))*h50,2));
+                comando.Parameters.AddWithValue("@H_E100", Math.Round((Convert.ToDouble(txtNumE100.Text)) * h100, 2));
+                comando.Parameters.AddWithValue("@FONDOS_RESERVA", Convert.ToDouble(txtFondosR.Text));
+                comando.Parameters.AddWithValue("@OTROS_INGRESOS_APORTABLES", Convert.ToDouble(txtOtrosIA.Text));
+                comando.Parameters.AddWithValue("@OTROS_INGRESOS_NAPORTABLES", Convert.ToDouble(txtOtrosINA.Text));
+                comando.Parameters.AddWithValue("@ALIMENTACION", Convert.ToDouble(txtAlimentacion.Text));
+                comando.Parameters.AddWithValue("@MOVILIZACION", Convert.ToDouble(txtMovilizacion.Text));
+                comando.Parameters.AddWithValue("@TOTAL_INGRESOS", Convert.ToDouble(txtTotalIngresos.Text));
+                comando.Parameters.AddWithValue("@ANTICIPO_SUELDO", Convert.ToDouble(txtAnticipoSueldo.Text));
+                comando.Parameters.AddWithValue("@PRESTAMOS_Q", Convert.ToDouble(txtPrestamosQ.Text));
+                comando.Parameters.AddWithValue("@PRESTAMOS_H", Convert.ToDouble(txtPrestamosH.Text));
+                comando.Parameters.AddWithValue("@OTROS_DESCUENTOS", Convert.ToDouble(txtOtrosD.Text));
+                comando.Parameters.AddWithValue("@CxP", Convert.ToDouble(txtConsumoPersonal.Text));
+                comando.Parameters.AddWithValue("@SUBSIDIOS_MATER", Convert.ToDouble(txtSubsidioM.Text));
+                comando.Parameters.AddWithValue("@SUBISIDIOS_ENFER", Convert.ToDouble(txtSubsidioEG.Text));
+                comando.Parameters.AddWithValue("@DESCUADRES", Convert.ToDouble(txtDescuadres.Text));
+                comando.Parameters.AddWithValue("@SUPA", Convert.ToDouble(txtSupa.Text));
+                comando.Parameters.AddWithValue("@ATRASOS", Math.Round((Convert.ToDouble(txtAtrasos.Text))*0.25,2));
+                comando.Parameters.AddWithValue("IESS", Convert.ToDouble(txtIESS.Text));
+                comando.Parameters.AddWithValue("TOTAL_EGRESOS", Convert.ToDouble(txtTEgresos.Text));
+                comando.Parameters.AddWithValue("NETO_RECIBIR", Convert.ToDouble(txtNetoRecibir.Text));
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Registr exitoso","Rol subido");
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            conexion.Close();
         }
         private void limpiarTxts()
         {
@@ -484,6 +457,68 @@ namespace ProyectoRolesConCrystal
             {
                 MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+        }
+        private Tuple<double, double> GetHorasExtras(string cedula)
+        {
+            double hora50 = 0;
+            double hora100 = 0;
+            string query = "SELECT H_E50, H_E100 FROM TRABAJADORES WHERE CEDULA = @CEDULA";
+            conexion.Close();
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(query, conexion);
+            cmd.Parameters.AddWithValue("@CEDULA", cedula);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if(reader.Read())
+            {
+                hora50 = Convert.ToDouble(reader["H_E50"].ToString());
+                hora100 = Convert.ToDouble(reader["H_E100"].ToString());
+            }
+            reader.Close();
+            return new Tuple<double,double>(hora50,hora100);
+        }
+        private void actualizarRol()
+        {
+            try
+            {
+                Tuple<double, double> horasExtras = GetHorasExtras(txtCedula.Text);
+                double h50 = horasExtras.Item1;
+                double h100 = horasExtras.Item2;
+                SqlCommand comando = new SqlCommand("sp_modificarRol", conexion);
+                comando.CommandType = System.Data.CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@ID",Convert.ToInt32(txtNomina.Text));
+                comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
+                comando.Parameters.AddWithValue("@SUELDO_DT", Convert.ToDouble(txtSueldoDT.Text));
+                comando.Parameters.AddWithValue("@RECARGO_N", Convert.ToDouble(txtRNocturno.Text));
+                comando.Parameters.AddWithValue("@H_E50", Math.Round((Convert.ToDouble(txtNumE50.Text)) * h50, 2));
+                comando.Parameters.AddWithValue("@H_E100", Math.Round((Convert.ToDouble(txtNumE100.Text)) * h100, 2));
+                comando.Parameters.AddWithValue("@FONDOS_RESERVA", Convert.ToDouble(txtFondosR.Text));
+                comando.Parameters.AddWithValue("@OTROS_INGRESOS_APORTABLES", Convert.ToDouble(txtOtrosIA.Text));
+                comando.Parameters.AddWithValue("@OTROS_INGRESOS_NAPORTABLES", Convert.ToDouble(txtOtrosINA.Text));
+                comando.Parameters.AddWithValue("@ALIMENTACION", Convert.ToDouble(txtAlimentacion.Text));
+                comando.Parameters.AddWithValue("@MOVILIZACION", Convert.ToDouble(txtMovilizacion.Text));
+                comando.Parameters.AddWithValue("@TOTAL_INGRESOS", Convert.ToDouble(txtTotalIngresos.Text));
+                comando.Parameters.AddWithValue("@ANTICIPO_SUELDO", Convert.ToDouble(txtAnticipoSueldo.Text));
+                comando.Parameters.AddWithValue("@PRESTAMOS_Q", Convert.ToDouble(txtPrestamosQ.Text));
+                comando.Parameters.AddWithValue("@PRESTAMOS_H", Convert.ToDouble(txtPrestamosH.Text));
+                comando.Parameters.AddWithValue("@OTROS_DESCUENTOS", Convert.ToDouble(txtOtrosD.Text));
+                comando.Parameters.AddWithValue("@CxP", Convert.ToDouble(txtConsumoPersonal.Text));
+                comando.Parameters.AddWithValue("@SUBSIDIOS_MATER", Convert.ToDouble(txtSubsidioM.Text));
+                comando.Parameters.AddWithValue("@SUBSIDIOS_ENFER", Convert.ToDouble(txtSubsidioEG.Text));
+                comando.Parameters.AddWithValue("@DESCUADRES", Convert.ToDouble(txtDescuadres.Text));
+                comando.Parameters.AddWithValue("@SUPA", Convert.ToDouble(txtSupa.Text));
+                comando.Parameters.AddWithValue("@ATRASOS", Math.Round((Convert.ToDouble(txtAtrasos.Text)) * 0.25, 2));
+                comando.Parameters.AddWithValue("IESS", Convert.ToDouble(txtIESS.Text));
+                comando.Parameters.AddWithValue("TOTAL_EGRESOS", Convert.ToDouble(txtTEgresos.Text));
+                comando.Parameters.AddWithValue("NETO_RECIBIR", Convert.ToDouble(txtNetoRecibir.Text));
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Modificacion realizada con exito", "¡Rol Modificado!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            conexion.Close();
+
         }
     }
 }

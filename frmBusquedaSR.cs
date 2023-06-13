@@ -34,7 +34,7 @@ namespace ProyectoRolesConCrystal
         }
         private void dgvResultadoBusqueda_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            cedulaSeleccionada= dgvResultadoBusqueda.SelectedCells[1].Value.ToString();
+            cedulaSeleccionada = dgvResultadoBusqueda.SelectedCells[1].Value.ToString();
             Close();
         }
 

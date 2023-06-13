@@ -25,7 +25,7 @@ namespace ProyectoRolesConCrystal
 
         private void correoIndividualToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormSubirRoles formSubirIndividdual = new FormSubirRoles();
+            FormCIndividual formSubirIndividdual = new FormCIndividual();
             formSubirIndividdual.ShowDialog();
         }
 

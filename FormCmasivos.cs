@@ -16,7 +16,8 @@ using MailKit;
 using MimeKit;
 using System.Net.Security;
 using System.IO;
- 
+using ProyectoRoles;
+
 namespace ProyectoRolesConCrystal
 {
     public partial class FormCmasivos : Form
@@ -67,6 +68,30 @@ namespace ProyectoRolesConCrystal
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string baseFolderPath = "C:\\Roles";
+            int mes = DateTime.Now.Month;
+            int año = DateTime.Now.Year;
+            string nombreCarpeta = $"Roles-{mes:00}-{año}";
+            string carpetaPDFS = Path.Combine(baseFolderPath, nombreCarpeta);
+            EnviarCorreosAutomaticos enviarCorreos = new EnviarCorreosAutomaticos();
+            try
+            {
+                enviarCorreos.correosMasivos(carpetaPDFS);
+                MessageBox.Show("Correos enviados con exito", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private void FormCmasivos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
