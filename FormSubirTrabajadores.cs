@@ -102,14 +102,14 @@ namespace ProyectoRolesConCrystal
         private void FormSubirTrabajadores_Load(object sender, EventArgs e)
         {
             List<KeyValuePair<string, string>> discapacidades = new List<KeyValuePair<string, string>>{
-                new KeyValuePair<string, string>("1.Fisica" , "Fisica"),
-                new KeyValuePair<string, string>("2.Intelectual" , "Intelectual"),
-                new KeyValuePair<string, string>("3.Mental" , "Mental"),
-                new KeyValuePair<string, string>("4.Psicosocial" , "Psicosocial"),
-                new KeyValuePair<string, string>("5.Multiple" , "Multiple"),
-                new KeyValuePair<string, string>("6.Sensorial" , "Sensorial"),
-                new KeyValuePair<string, string>("7.Auditiva" , "Auditiva"),
-                new KeyValuePair<string, string>("8.Visual" , "Visual")
+                new KeyValuePair<string, string>("1. Fisica" , "Fisica"),
+                new KeyValuePair<string, string>("2. Intelectual" , "Intelectual"),
+                new KeyValuePair<string, string>("3. Mental" , "Mental"),
+                new KeyValuePair<string, string>("4. Psicosocial" , "Psicosocial"),
+                new KeyValuePair<string, string>("5. Multiple" , "Multiple"),
+                new KeyValuePair<string, string>("6. Sensorial" , "Sensorial"),
+                new KeyValuePair<string, string>("7. Auditiva" , "Auditiva"),
+                new KeyValuePair<string, string>("8. Visual" , "Visual")
             };
             cmbDiscapacidad.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDiscapacidad.DataSource = discapacidades;
@@ -144,9 +144,19 @@ namespace ProyectoRolesConCrystal
             cmbDepartamento.DataSource = dtDepartamentos;
             cmbDepartamento.DisplayMember = "DEPARTAMENTO";
             cmbDepartamento.ValueMember = "ID";
+            //rellenar cmb_contratos
+            DataTable dtContratos = new DataTable();
+            string llenarcmbC = "SELECT ID_TIPO_CONTRATO,TIPO_CONTRATO FROM TIPOS_CONTRATO";
+            SqlDataAdapter adaptadorContratos = new SqlDataAdapter(llenarcmbC,conexion);
+            adaptadorContratos.Fill(dtContratos);
+            cmbContrato.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbContrato.DataSource = dtContratos;
+            cmbContrato.DisplayMember = "TIPO_CONTRATO";
+            cmbContrato.ValueMember = "ID_TIPO_CONTRATO";
             //CAMBIAR FORMATO DATETIMEPICKER
             //dtpFechaI.Format = DateTimePickerFormat.Custom;
             dtpFechaI.CustomFormat = "dd-MM-yyyy";
+            dtpFechaNacimiento.CustomFormat = "dd-MM-yyyy";
         }
         private void btnMod_Click(object sender, EventArgs e)
         {
@@ -397,7 +407,27 @@ namespace ProyectoRolesConCrystal
                 MessageBox.Show("No cumple con el % minimo de discapacidad","No califica",MessageBoxButtons.OK, MessageBoxIcon.Information);
                 chkDiscapacidad.Checked = false;
                 cmbDiscapacidad.SelectedIndex = 0;
-                txtPorcentajeD.Text = string.Empty;
+                txtPorcentajeD.Text = "";
+            }
+        }
+
+        private void dtpFechaNacimiento_Leave(object sender, EventArgs e)
+        {
+            DateTime nacimiento = dtpFechaNacimiento.Value; //Fecha de nacimiento
+            int edad = DateTime.Today.AddTicks(-nacimiento.Ticks).Year - 1;
+            txtEdad.Text = edad.ToString();
+        }
+
+        private void txtCedula_Leave(object sender, EventArgs e)
+        {
+            ValidarCedula validarCedula = new ValidarCedula();
+            bool verificarCedula = validarCedula.P_Valida_Cedula(txtCedula.Text);
+            if (chkPasaporte.Checked == false)
+            {
+                if (verificarCedula == false)
+                {
+                    MessageBox.Show("Numero de cedula no valido", "Cedula no valida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

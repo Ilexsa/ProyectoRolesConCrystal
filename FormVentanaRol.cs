@@ -53,5 +53,22 @@ namespace ProyectoRolesConCrystal
                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 this.Close();
         }
+
+        private void FormVentanaRol_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tiposDeContratosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmContratos frmContratos = new frmContratos();
+            frmContratos.ShowDialog();
+        }
+
+        private void sectorialIESSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSectoriales frmSectoriales = new frmSectoriales();
+            frmSectoriales.ShowDialog();
+        }
     }
 }

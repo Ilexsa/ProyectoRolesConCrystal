@@ -262,17 +262,35 @@
     <Compile Include="frmBusquedaN.Designer.cs">
       <DependentUpon>frmBusquedaN.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBusquedaSectoriales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBusquedaSectoriales.Designer.cs">
+      <DependentUpon>frmBusquedaSectoriales.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBusquedaSR.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmBusquedaSR.Designer.cs">
       <DependentUpon>frmBusquedaSR.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmContratos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContratos.Designer.cs">
+      <DependentUpon>frmContratos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReporteColaboradores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmReporteColaboradores.Designer.cs">
       <DependentUpon>frmReporteColaboradores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSectoriales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSectoriales.Designer.cs">
+      <DependentUpon>frmSectoriales.cs</DependentUpon>
     </Compile>
     <Compile Include="GenerarReportes.cs" />
     <Compile Include="Operaciones.cs" />
@@ -327,11 +345,20 @@
     <EmbeddedResource Include="frmBusquedaN.resx">
       <DependentUpon>frmBusquedaN.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmBusquedaSectoriales.resx">
+      <DependentUpon>frmBusquedaSectoriales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBusquedaSR.resx">
       <DependentUpon>frmBusquedaSR.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmContratos.resx">
+      <DependentUpon>frmContratos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReporteColaboradores.resx">
       <DependentUpon>frmReporteColaboradores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSectoriales.resx">
+      <DependentUpon>frmSectoriales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -43,7 +43,6 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.utilidadesExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposDeContratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,6 +50,7 @@
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.discapacidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,13 +156,6 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(167, 6);
             // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
             // mantenimientoToolStripMenuItem
             // 
             this.mantenimientoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -181,6 +174,7 @@
             this.tiposDeContratosToolStripMenuItem.Name = "tiposDeContratosToolStripMenuItem";
             this.tiposDeContratosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tiposDeContratosToolStripMenuItem.Text = "Tipos de contratos";
+            this.tiposDeContratosToolStripMenuItem.Click += new System.EventHandler(this.tiposDeContratosToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
@@ -192,6 +186,7 @@
             this.sectorialIESSToolStripMenuItem.Name = "sectorialIESSToolStripMenuItem";
             this.sectorialIESSToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sectorialIESSToolStripMenuItem.Text = "Sectorial IESS";
+            this.sectorialIESSToolStripMenuItem.Click += new System.EventHandler(this.sectorialIESSToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
@@ -209,6 +204,13 @@
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(177, 6);
             // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
             // FormVentanaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,6 +220,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormVentanaRol";
             this.Text = "Roles TTHH";
+            this.Load += new System.EventHandler(this.FormVentanaRol_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
