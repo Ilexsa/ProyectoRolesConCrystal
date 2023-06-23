@@ -63,6 +63,7 @@
             this.dgvResultado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResultado.Size = new System.Drawing.Size(367, 190);
             this.dgvResultado.TabIndex = 2;
+            this.dgvResultado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultado_CellContentClick);
             // 
             // frmBusquedaSectoriales
             // 

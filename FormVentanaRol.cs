@@ -62,13 +62,31 @@ namespace ProyectoRolesConCrystal
         private void tiposDeContratosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmContratos frmContratos = new frmContratos();
-            frmContratos.ShowDialog();
+            frmContratos.Show();
         }
 
         private void sectorialIESSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSectoriales frmSectoriales = new frmSectoriales();
-            frmSectoriales.ShowDialog();
+            frmSectoriales.Show();
+        }
+
+        private void registrarTrabajadoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSubirTrabajadores formSubirTrabajadores = new FormSubirTrabajadores();
+            formSubirTrabajadores.Show();
+        }
+
+        private void correosMasivosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            FormCmasivos formCmasivos = new FormCmasivos();
+            formCmasivos.Show();
+        }
+
+        private void registrarNominaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSubirRoles formSubirRoles = new FormSubirRoles();
+            formSubirRoles.Show();
         }
     }
 }

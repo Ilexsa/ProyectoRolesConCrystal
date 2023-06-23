@@ -45,6 +45,20 @@ namespace ProyectoRolesConCrystal
         {
             leerNextSectorial(Convert.ToInt32(txtID.Text));
         }
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
+        }
+
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            frmBusquedaSectoriales frmBusquedaSectoriales = new frmBusquedaSectoriales();
+            frmBusquedaSectoriales.ShowDialog();
+            leerSectorialBuscado(Convert.ToInt32(frmBusquedaSectoriales.ID));
+
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (txtCargo.Enabled == true)
@@ -169,12 +183,6 @@ namespace ProyectoRolesConCrystal
                 conexion.Close();
             }
         }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            frmBusquedaSectoriales frmBusquedaSectoriales = new frmBusquedaSectoriales();
-            frmBusquedaSectoriales.ShowDialog();
-        }
         private void subirOActualizar(int id, string cargo, string codigo,string estructuraO, double salarioMin)
         {
             conexion.Open();
@@ -214,5 +222,44 @@ namespace ProyectoRolesConCrystal
                 txtSalarioMin.Enabled = false;
             }
         }
+
+        private void limpiarCampos()
+        {
+            txtID.Clear();
+            txtCodigoIESS.Clear();
+            txtCargo.Clear();
+            txtSalarioMin.Clear();
+            txtEstructuraOcupacional.Clear();
+        }
+        private void leerSectorialBuscado(int id)
+        {
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_obtenerSectorial",conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+                SqlDataReader lector = cmd.ExecuteReader();
+                if (lector.Read())
+                {
+                    txtID.Text = lector["ID_SECTORIAL"].ToString();
+                    txtCodigoIESS.Text = lector["CODIGO_IESS"].ToString();
+                    txtCargo.Text = lector["CARGO"].ToString();
+                    txtSalarioMin.Text = lector["ESTRUCTURA_OCUPACIONAL"].ToString();
+                    txtEstructuraOcupacional.Text = lector["SALARIO_MINIMO_SECTORIAL"].ToString();
+                    lector.Close();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
     }
 }

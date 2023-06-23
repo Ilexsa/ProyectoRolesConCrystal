@@ -17,6 +17,9 @@ namespace ProyectoRolesConCrystal
     {
         SqlConnection conexion = new SqlConnection(ConexionBase.cadenaConexion);
         public string ID { get; set; }
+        public string Sectorial { get; set; }
+        public string sueldo { get; set; }
+        public string cargo { get; set; }
         public frmBusquedaSectoriales()
         {
             InitializeComponent();
@@ -85,6 +88,15 @@ namespace ProyectoRolesConCrystal
             cmbTipoB.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoB.DisplayMember = "Key";
             cmbTipoB.ValueMember = "Value";
+        }
+
+        private void dgvResultado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ID = dgvResultado.SelectedCells[0].Value.ToString();
+            Sectorial = dgvResultado.SelectedCells[2].Value.ToString();
+            cargo = dgvResultado.SelectedCells[1].Value.ToString();
+            sueldo = dgvResultado.SelectedCells[3].Value.ToString();
+            Close();
         }
     }
 }
