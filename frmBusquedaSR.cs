@@ -52,10 +52,59 @@ namespace ProyectoRolesConCrystal
                 DataTable dataTable = new DataTable();
                 da.Fill(dataTable);
                 dgvResultadoBusqueda.DataSource = dataTable;
+                dgvResultadoBusqueda.RowHeadersVisible = false;
+                dgvResultadoBusqueda.KeyDown += evitarSalto;
                 conexion.Close();
                 }catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+                conexion.Close();
+            }
+        }
+
+        private void dgvResultadoBusqueda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Convert.ToInt32(Keys.Enter)))
+            {
+                cedulaSeleccionada = dgvResultadoBusqueda.SelectedCells[1].Value.ToString();
+                Close();
+            }
+        }
+
+        private void evitarSalto(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                cedulaSeleccionada = dgvResultadoBusqueda.SelectedCells[1].Value.ToString();
+                Close();
+            }
+        }
+
+        private void txtBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            if  (txtBusqueda.Text.Length >= 3)
+            {
+                try
+                {
+                    conexion.Open();
+                    string cadenaBusqueda = cmbOpcionesBusqueda.SelectedValue.ToString();
+                    SqlCommand cmd = new SqlCommand(cadenaBusqueda, conexion);
+                    cmd.Parameters.AddWithValue("@PARAMETRO", "%" + txtBusqueda.Text + "%");
+                    cmd.ExecuteNonQuery();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    da.Fill(dataTable);
+                    dgvResultadoBusqueda.DataSource = dataTable;
+                    dgvResultadoBusqueda.RowHeadersVisible = false;
+                    dgvResultadoBusqueda.KeyDown += evitarSalto;
+                    conexion.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 conexion.Close();
             }

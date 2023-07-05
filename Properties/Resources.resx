@@ -118,19 +118,67 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="quitar-usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\quitar-usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ICONOS PROGRAMA DPTO SISTEMAS-02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ICONOS PROGRAMA DPTO SISTEMAS-02.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="boton-editar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boton-editar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="agregar-usuario (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\agregar-usuario (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="recursos-humanos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\recursos-humanos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="quitar-usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\quitar-usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LOGO-FUNDASEN-CABECERA-3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LOGO-FUNDASEN-CABECERA-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cerrar-sesion (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cerrar-sesion (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ICONOS PROGRAMA DPTO SISTEMAS-01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ICONOS PROGRAMA DPTO SISTEMAS-01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="guardar-el-archivo (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\guardar-el-archivo (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LOGO FUNDASEN PNG BN-CL-08" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LOGO FUNDASEN PNG BN-CL-08.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="limpio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\limpio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ojo (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ojo (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="recursos-humanos (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\recursos-humanos (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar-usuario (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar-usuario (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="18771-scaled (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\18771-scaled (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ICONOS PROGRAMA DPTO SISTEMAS-04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ICONOS PROGRAMA DPTO SISTEMAS-04.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ICONOS PROGRAMA DPTO SISTEMAS-03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ICONOS PROGRAMA DPTO SISTEMAS-03.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar-archivo (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\agregar-archivo (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reclutamiento (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reclutamiento (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="curriculum (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\curriculum (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cerrar-sesion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cerrar-sesion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PDF_file_icon.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PDF_file_icon.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

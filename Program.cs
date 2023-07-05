@@ -16,8 +16,10 @@ namespace ProyectoRolesConCrystal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormVentanaRol());
+            //Application.Run(new FormVentanaRol());
             //Application.Run(new frmCargas());
+            //Application.Run(new frmLogin());
+            Application.Run(new frmSubirTrabajadores());
         }
     }
 }

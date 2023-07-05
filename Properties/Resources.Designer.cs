@@ -73,6 +73,16 @@ namespace ProyectoRolesConCrystal.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap agregar_archivo__1_ {
+            get {
+                object obj = ResourceManager.GetObject("agregar-archivo (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap agregar_usuario__1_ {
             get {
                 object obj = ResourceManager.GetObject("agregar-usuario (1)", resourceCulture);
@@ -93,6 +103,86 @@ namespace ProyectoRolesConCrystal.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cerrar_sesion {
+            get {
+                object obj = ResourceManager.GetObject("cerrar-sesion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cerrar_sesion__1_ {
+            get {
+                object obj = ResourceManager.GetObject("cerrar-sesion (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap curriculum__1_ {
+            get {
+                object obj = ResourceManager.GetObject("curriculum (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap guardar_el_archivo__1_ {
+            get {
+                object obj = ResourceManager.GetObject("guardar-el-archivo (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ICONOS_PROGRAMA_DPTO_SISTEMAS_01 {
+            get {
+                object obj = ResourceManager.GetObject("ICONOS PROGRAMA DPTO SISTEMAS-01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ICONOS_PROGRAMA_DPTO_SISTEMAS_02 {
+            get {
+                object obj = ResourceManager.GetObject("ICONOS PROGRAMA DPTO SISTEMAS-02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ICONOS_PROGRAMA_DPTO_SISTEMAS_03 {
+            get {
+                object obj = ResourceManager.GetObject("ICONOS PROGRAMA DPTO SISTEMAS-03", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ICONOS_PROGRAMA_DPTO_SISTEMAS_04 {
+            get {
+                object obj = ResourceManager.GetObject("ICONOS PROGRAMA DPTO SISTEMAS-04", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap limpio {
             get {
                 object obj = ResourceManager.GetObject("limpio", resourceCulture);
@@ -103,9 +193,79 @@ namespace ProyectoRolesConCrystal.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LOGO_FUNDASEN_CABECERA_3 {
+            get {
+                object obj = ResourceManager.GetObject("LOGO-FUNDASEN-CABECERA-3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LOGO_FUNDASEN_PNG_BN_CL_08 {
+            get {
+                object obj = ResourceManager.GetObject("LOGO FUNDASEN PNG BN-CL-08", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ojo__1_ {
+            get {
+                object obj = ResourceManager.GetObject("ojo (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PDF_file_icon_svg {
+            get {
+                object obj = ResourceManager.GetObject("PDF_file_icon.svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap quitar_usuario {
             get {
                 object obj = ResourceManager.GetObject("quitar-usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reclutamiento__1_ {
+            get {
+                object obj = ResourceManager.GetObject("reclutamiento (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap recursos_humanos {
+            get {
+                object obj = ResourceManager.GetObject("recursos-humanos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap recursos_humanos__1_ {
+            get {
+                object obj = ResourceManager.GetObject("recursos-humanos (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

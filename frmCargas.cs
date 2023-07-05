@@ -57,30 +57,30 @@ namespace ProyectoRolesConCrystal
 
         private void frmCargas_Load(object sender, EventArgs e)
         {
-            List<KeyValuePair<string, string>> discapacidades = new List<KeyValuePair<string, string>>{
-                new KeyValuePair<string, string>("1. Fisica" , "Fisica"),
-                new KeyValuePair<string, string>("2. Intelectual" , "Intelectual"),
-                new KeyValuePair<string, string>("3. Mental" , "Mental"),
-                new KeyValuePair<string, string>("4. Psicosocial" , "Psicosocial"),
-                new KeyValuePair<string, string>("5. Multiple" , "Multiple"),
-                new KeyValuePair<string, string>("6. Sensorial" , "Sensorial"),
-                new KeyValuePair<string, string>("7. Auditiva" , "Auditiva"),
-                new KeyValuePair<string, string>("8. Visual" , "Visual")
-            };
-            cmbDiscapacidad.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbDiscapacidad.DataSource = discapacidades;
-            cmbDiscapacidad.ValueMember = "Value";
-            cmbDiscapacidad.DisplayMember = "Key";
-            List<KeyValuePair<string, string>> tipoCarga = new List<KeyValuePair<string, string>>{
-                new KeyValuePair<string, string>("1. Esposa/Conyuge" , "Esposa/Conyuge"),
-                new KeyValuePair<string, string>("2. Hijo/Hija" , "Hijo/Hija"),
+            //List<KeyValuePair<string, string>> discapacidades = new List<KeyValuePair<string, string>>{
+            //    new KeyValuePair<string, string>("1. Fisica" , "Fisica"),
+            //    new KeyValuePair<string, string>("2. Intelectual" , "Intelectual"),
+            //    new KeyValuePair<string, string>("3. Mental" , "Mental"),
+            //    new KeyValuePair<string, string>("4. Psicosocial" , "Psicosocial"),
+            //    new KeyValuePair<string, string>("5. Multiple" , "Multiple"),
+            //    new KeyValuePair<string, string>("6. Sensorial" , "Sensorial"),
+            //    new KeyValuePair<string, string>("7. Auditiva" , "Auditiva"),
+            //    new KeyValuePair<string, string>("8. Visual" , "Visual")
+            //};
+            //cmbDiscapacidadCarga.DropDownStyle = ComboBoxStyle.DropDownList;
+            //cmbDiscapacidadCarga.DataSource = discapacidades;
+            //cmbDiscapacidadCarga.ValueMember = "Value";
+            //cmbDiscapacidadCarga.DisplayMember = "Key";
+            //List<KeyValuePair<string, string>> tipoCarga = new List<KeyValuePair<string, string>>{
+            //    new KeyValuePair<string, string>("1. Conyuge" , "Conyuge"),
+            //    new KeyValuePair<string, string>("2. Hijo/Hija" , "Hijo/Hija"),
 
-            };
-            cmbTipoCarga.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTipoCarga.DataSource = tipoCarga;
-            cmbTipoCarga.ValueMember = "Value";
-            cmbTipoCarga.DisplayMember = "Key";
-            dtpFechaNacimiento.CustomFormat = "dd-MM-yyyy";
+            //};
+            //cmbTipoCarga.DropDownStyle = ComboBoxStyle.DropDownList;
+            //cmbTipoCarga.DataSource = tipoCarga;
+            //cmbTipoCarga.ValueMember = "Value";
+            //cmbTipoCarga.DisplayMember = "Key";
+            //dtpFechaCarga.CustomFormat = "dd-MM-yyyy";
         }
         private void subirCargas()
         {
@@ -89,7 +89,7 @@ namespace ProyectoRolesConCrystal
                 conexion.Open();
                 SqlCommand cmd = new SqlCommand("sp_ingresarCarga", conexion);
                 cmd.CommandType= CommandType.StoredProcedure;
-                FormSubirTrabajadores formSubirTrabajadores = new FormSubirTrabajadores();
+                frmSubirTrabajadores formSubirTrabajadores = new frmSubirTrabajadores();
                 cmd.Parameters.AddWithValue("@CEDULA",formSubirTrabajadores.cedulaTrabajadorCarga);
                 cmd.Parameters.AddWithValue("@TIPO_CARGA", cmbTipoCarga.SelectedValue);
                 cmd.Parameters.AddWithValue("@APELLIDOS_NOMBRES_HIJO", txtNombres.Text);

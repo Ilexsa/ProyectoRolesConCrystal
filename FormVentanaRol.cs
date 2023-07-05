@@ -16,7 +16,7 @@ namespace ProyectoRolesConCrystal
         {
             InitializeComponent();
         }
-
+        
         private void correosMasivosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormCmasivos formCmasivos = new FormCmasivos();
@@ -31,7 +31,7 @@ namespace ProyectoRolesConCrystal
 
         private void subirTrabajadoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormSubirTrabajadores formSubirTrabajadores = new FormSubirTrabajadores();
+            frmSubirTrabajadores formSubirTrabajadores = new frmSubirTrabajadores();
             formSubirTrabajadores.ShowDialog();
         }
 
@@ -49,14 +49,16 @@ namespace ProyectoRolesConCrystal
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Está seguro que desea cerrar el sistema?", "Advertencia",
+            if (MessageBox.Show("¿Está seguro que desea cerrar el sesión?", "Advertencia",
                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 this.Close();
         }
 
         private void FormVentanaRol_Load(object sender, EventArgs e)
         {
-
+            lblUser.Text = CacheLogon.LoginName;
+            lblName.Text = CacheLogon.FirstName+" "+ CacheLogon.LastName;
+            lblKindUser.Text = CacheLogon.Position;
         }
 
         private void tiposDeContratosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -73,7 +75,7 @@ namespace ProyectoRolesConCrystal
 
         private void registrarTrabajadoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormSubirTrabajadores formSubirTrabajadores = new FormSubirTrabajadores();
+            frmSubirTrabajadores formSubirTrabajadores = new frmSubirTrabajadores();
             formSubirTrabajadores.Show();
         }
 

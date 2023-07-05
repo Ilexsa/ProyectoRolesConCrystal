@@ -64,6 +64,7 @@ namespace ProyectoRolesConCrystal
                         DataTable dataTable = new DataTable();
                         da.Fill(dataTable);
                         dgvResultado.DataSource = dataTable;
+                        dgvResultado.RowHeadersVisible = false;
                         conexion.Close();
                     }
                 }
@@ -97,6 +98,82 @@ namespace ProyectoRolesConCrystal
             cargo = dgvResultado.SelectedCells[1].Value.ToString();
             sueldo = dgvResultado.SelectedCells[3].Value.ToString();
             Close();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            if(txtBuscar.Text.Length >= 3)
+            {
+                try
+                {
+                    if (cmbTipoB.SelectedValue.ToString() == "SELECT ID_SECTORIAL AS 'ID', CARGO AS 'CARGO/ACTIVIDAD', CODIGO_IESS AS 'CÓDIGO IESS', " +
+                "SALARIO_MINIMO_SECTORIAL AS 'SALARIO MINIMO SECTORIAL' FROM SECTORIALES WHERE ID_SECTORIAL LIKE @PARAMETRO")
+                    {
+                        try
+                        {
+                            conexion.Open();
+                            string spSeñalado = cmbTipoB.SelectedValue.ToString();
+                            SqlCommand cmd = new SqlCommand(spSeñalado, conexion);
+                            cmd.Parameters.AddWithValue("@PARAMETRO", Convert.ToInt32(txtBuscar.Text));
+                            cmd.ExecuteNonQuery();
+                            SqlDataAdapter da = new SqlDataAdapter(cmd);
+                            DataTable dataTable = new DataTable();
+                            da.Fill(dataTable);
+                            dgvResultado.DataSource = dataTable;
+                            conexion.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        conexion.Close();
+                    }
+                    else
+                    {
+                        conexion.Open();
+                        string spSeñalado = cmbTipoB.SelectedValue.ToString();
+                        SqlCommand cmd = new SqlCommand(spSeñalado, conexion);
+                        cmd.Parameters.AddWithValue("@PARAMETRO", "%" + txtBuscar.Text + "%");
+                        cmd.ExecuteNonQuery();
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        da.Fill(dataTable);
+                        dgvResultado.DataSource = dataTable;
+                        dgvResultado.RowHeadersVisible = false;
+                        dgvResultado.KeyDown += evitarSalto;
+                        conexion.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void evitarSalto(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                ID = dgvResultado.SelectedCells[0].Value.ToString();
+                Sectorial = dgvResultado.SelectedCells[2].Value.ToString();
+                cargo = dgvResultado.SelectedCells[1].Value.ToString();
+                sueldo = dgvResultado.SelectedCells[3].Value.ToString();
+                Close();
+            }
+        }
+
+        private void dgvResultado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Convert.ToInt32(Keys.Enter)))
+            {
+                ID = dgvResultado.SelectedCells[0].Value.ToString();
+                Sectorial = dgvResultado.SelectedCells[2].Value.ToString();
+                cargo = dgvResultado.SelectedCells[1].Value.ToString();
+                sueldo = dgvResultado.SelectedCells[3].Value.ToString();
+                Close();
+            }
         }
     }
 }
