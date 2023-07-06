@@ -204,5 +204,12 @@ namespace ProyectoRolesConCrystal
                     }
                 }return false;
         }
+        public bool validarDiasT (int dias)
+        {
+            if (dias > 30)
+            {
+                return false;
+            }else return true;
+        }
     }
 }

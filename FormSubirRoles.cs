@@ -13,7 +13,7 @@ using System.Data.SqlTypes;
 using Microsoft.Identity.Client;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
-
+using Org.BouncyCastle.Crypto.Engines;
 
 namespace ProyectoRolesConCrystal
 {
@@ -21,7 +21,10 @@ namespace ProyectoRolesConCrystal
     {
 
         SqlConnection conexion = new SqlConnection(ConexionBase.cadenaConexion);
-
+        decimal sueldoXdia;
+        decimal hN;
+        decimal he50;
+        decimal he100;
         public FormSubirRoles()
         {
             InitializeComponent();
@@ -124,6 +127,11 @@ namespace ProyectoRolesConCrystal
             busquedaSR.ShowDialog();
             string cedulaSeleccionada = busquedaSR.cedulaSeleccionada;
             txtCedula.Text = cedulaSeleccionada;
+            DatosParaNomina.datosNomina(txtCedula.Text);
+            sueldoXdia = DatosParaNomina.sueldoXdia;
+            hN = DatosParaNomina.horaN;
+            he50 = DatosParaNomina.he50;
+            he100 = DatosParaNomina.he100;
         }
         private void txtCedula_TextChanged(object sender, EventArgs e)
         {
@@ -519,6 +527,18 @@ namespace ProyectoRolesConCrystal
             }
             conexion.Close();
 
+        }
+
+        private void txtSueldoDT_TextChanged(object sender, EventArgs e)
+        {
+            var validaciones = new Validaciones();
+            if (validaciones.validarDiasT(Convert.ToInt32(txtSueldoDT.Text))== false)
+            {
+                MessageBox.Show("No se puede ingresar dias adiconales", "Error");
+                txtSueldoDT.Text = "30";
+            }
+            decimal calculoSueldoxDia = Math.Round(Convert.ToDecimal(txtSueldoDT.Text)*sueldoXdia,2);
+            txtTotalIngresos.Text =calculoSueldoxDia.ToString();
         }
     }
 }

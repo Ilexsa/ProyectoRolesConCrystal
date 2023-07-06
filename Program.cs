@@ -19,7 +19,8 @@ namespace ProyectoRolesConCrystal
             //Application.Run(new FormVentanaRol());
             //Application.Run(new frmCargas());
             //Application.Run(new frmLogin());
-            Application.Run(new frmSubirTrabajadores());
+            //Application.Run(new frmSubirTrabajadores());
+            Application.Run(new FormSubirRoles());
         }
     }
 }

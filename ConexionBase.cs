@@ -11,7 +11,8 @@ namespace ProyectoRoles
     public class ConexionBase
     {
         //conexion a a la base de datos
-        public static string cadenaConexion = "Data Source=10.0.0.206;Initial Catalog=ROLES;User ID=sa;Password=";
+        //public static string cadenaConexion = "Data Source=10.0.0.206;Initial Catalog=ROLES;User ID=sa;Password=";
+        public static string cadenaConexion = "Data Source=DESKTOP-R8E20GK\\SQLEXPRESS01;Initial Catalog=ROLES;Integrated Security=True";
         //public SqlConnection conectarBD = new SqlConnection();
 
         //public ConexionBase()

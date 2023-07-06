@@ -142,6 +142,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnSubirCarga = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label36 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
@@ -154,20 +155,19 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.viewerPdf = new AxAcroPDFLib.AxAcroPDF();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.ptbCurriculu = new System.Windows.Forms.PictureBox();
-            this.lblFichaMedica = new System.Windows.Forms.Label();
-            this.lblAvisoEntrada = new System.Windows.Forms.Label();
-            this.lblCurriculun = new System.Windows.Forms.Label();
             this.btnPdfCurriculun = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblFichaMedica = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblCurriculun = new System.Windows.Forms.Label();
+            this.lblAvisoEntrada = new System.Windows.Forms.Label();
+            this.ptbCurriculu = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.cachedReporteColaboradores1 = new ProyectoRolesConCrystal.CachedReporteColaboradores();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tbpTrabajador.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -178,10 +178,10 @@
             this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewerPdf)).BeginInit();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbCurriculu)).BeginInit();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1541,6 +1541,14 @@
             this.tabPage2.Text = "Subir Archivos";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(37, 59);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 25);
+            this.comboBox1.TabIndex = 209;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Brown;
@@ -1693,79 +1701,6 @@
             this.viewerPdf.Size = new System.Drawing.Size(528, 480);
             this.viewerPdf.TabIndex = 10;
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Brown;
-            this.pictureBox3.Image = global::ProyectoRolesConCrystal.Properties.Resources.PDF_file_icon_svg;
-            this.pictureBox3.Location = new System.Drawing.Point(542, 35);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(44, 42);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 9;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Brown;
-            this.pictureBox2.Image = global::ProyectoRolesConCrystal.Properties.Resources.PDF_file_icon_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(387, 35);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(44, 42);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
-            // 
-            // ptbCurriculu
-            // 
-            this.ptbCurriculu.BackColor = System.Drawing.Color.Brown;
-            this.ptbCurriculu.Image = global::ProyectoRolesConCrystal.Properties.Resources.PDF_file_icon_svg;
-            this.ptbCurriculu.Location = new System.Drawing.Point(222, 35);
-            this.ptbCurriculu.Name = "ptbCurriculu";
-            this.ptbCurriculu.Size = new System.Drawing.Size(44, 42);
-            this.ptbCurriculu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptbCurriculu.TabIndex = 7;
-            this.ptbCurriculu.TabStop = false;
-            this.ptbCurriculu.Visible = false;
-            // 
-            // lblFichaMedica
-            // 
-            this.lblFichaMedica.AutoSize = true;
-            this.lblFichaMedica.BackColor = System.Drawing.Color.Brown;
-            this.lblFichaMedica.ForeColor = System.Drawing.Color.White;
-            this.lblFichaMedica.Location = new System.Drawing.Point(539, 80);
-            this.lblFichaMedica.Name = "lblFichaMedica";
-            this.lblFichaMedica.Size = new System.Drawing.Size(158, 17);
-            this.lblFichaMedica.TabIndex = 6;
-            this.lblFichaMedica.Text = "NombrePdfFichaMedica";
-            this.lblFichaMedica.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblFichaMedica.Visible = false;
-            // 
-            // lblAvisoEntrada
-            // 
-            this.lblAvisoEntrada.AutoSize = true;
-            this.lblAvisoEntrada.BackColor = System.Drawing.Color.Brown;
-            this.lblAvisoEntrada.ForeColor = System.Drawing.Color.White;
-            this.lblAvisoEntrada.Location = new System.Drawing.Point(394, 80);
-            this.lblAvisoEntrada.Name = "lblAvisoEntrada";
-            this.lblAvisoEntrada.Size = new System.Drawing.Size(124, 17);
-            this.lblAvisoEntrada.TabIndex = 5;
-            this.lblAvisoEntrada.Text = "NombrePdfIngreso";
-            this.lblAvisoEntrada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAvisoEntrada.Visible = false;
-            // 
-            // lblCurriculun
-            // 
-            this.lblCurriculun.AutoSize = true;
-            this.lblCurriculun.BackColor = System.Drawing.Color.Brown;
-            this.lblCurriculun.ForeColor = System.Drawing.Color.White;
-            this.lblCurriculun.Location = new System.Drawing.Point(225, 80);
-            this.lblCurriculun.Name = "lblCurriculun";
-            this.lblCurriculun.Size = new System.Drawing.Size(68, 17);
-            this.lblCurriculun.TabIndex = 4;
-            this.lblCurriculun.Text = "curriculun";
-            this.lblCurriculun.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblCurriculun.Visible = false;
-            // 
             // btnPdfCurriculun
             // 
             this.btnPdfCurriculun.Location = new System.Drawing.Point(37, 20);
@@ -1794,18 +1729,83 @@
             this.panel5.Controls.Add(this.lblCurriculun);
             this.panel5.Controls.Add(this.lblAvisoEntrada);
             this.panel5.Controls.Add(this.ptbCurriculu);
-            this.panel5.Location = new System.Drawing.Point(37, 144);
+            this.panel5.Location = new System.Drawing.Point(24, 103);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(758, 140);
             this.panel5.TabIndex = 208;
             // 
-            // comboBox1
+            // lblFichaMedica
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(37, 59);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 25);
-            this.comboBox1.TabIndex = 209;
+            this.lblFichaMedica.AutoSize = true;
+            this.lblFichaMedica.BackColor = System.Drawing.Color.Brown;
+            this.lblFichaMedica.ForeColor = System.Drawing.Color.White;
+            this.lblFichaMedica.Location = new System.Drawing.Point(539, 80);
+            this.lblFichaMedica.Name = "lblFichaMedica";
+            this.lblFichaMedica.Size = new System.Drawing.Size(158, 17);
+            this.lblFichaMedica.TabIndex = 6;
+            this.lblFichaMedica.Text = "NombrePdfFichaMedica";
+            this.lblFichaMedica.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFichaMedica.Visible = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Brown;
+            this.pictureBox3.Image = global::ProyectoRolesConCrystal.Properties.Resources.PDF_file_icon_svg;
+            this.pictureBox3.Location = new System.Drawing.Point(542, 35);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(44, 42);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 9;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Brown;
+            this.pictureBox2.Image = global::ProyectoRolesConCrystal.Properties.Resources.PDF_file_icon_svg;
+            this.pictureBox2.Location = new System.Drawing.Point(387, 35);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(44, 42);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
+            // 
+            // lblCurriculun
+            // 
+            this.lblCurriculun.AutoSize = true;
+            this.lblCurriculun.BackColor = System.Drawing.Color.Brown;
+            this.lblCurriculun.ForeColor = System.Drawing.Color.White;
+            this.lblCurriculun.Location = new System.Drawing.Point(156, 80);
+            this.lblCurriculun.Name = "lblCurriculun";
+            this.lblCurriculun.Size = new System.Drawing.Size(68, 17);
+            this.lblCurriculun.TabIndex = 4;
+            this.lblCurriculun.Text = "curriculun";
+            this.lblCurriculun.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCurriculun.Visible = false;
+            // 
+            // lblAvisoEntrada
+            // 
+            this.lblAvisoEntrada.AutoSize = true;
+            this.lblAvisoEntrada.BackColor = System.Drawing.Color.Brown;
+            this.lblAvisoEntrada.ForeColor = System.Drawing.Color.White;
+            this.lblAvisoEntrada.Location = new System.Drawing.Point(394, 80);
+            this.lblAvisoEntrada.Name = "lblAvisoEntrada";
+            this.lblAvisoEntrada.Size = new System.Drawing.Size(124, 17);
+            this.lblAvisoEntrada.TabIndex = 5;
+            this.lblAvisoEntrada.Text = "NombrePdfIngreso";
+            this.lblAvisoEntrada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAvisoEntrada.Visible = false;
+            // 
+            // ptbCurriculu
+            // 
+            this.ptbCurriculu.BackColor = System.Drawing.Color.Brown;
+            this.ptbCurriculu.Image = global::ProyectoRolesConCrystal.Properties.Resources.PDF_file_icon_svg;
+            this.ptbCurriculu.Location = new System.Drawing.Point(169, 35);
+            this.ptbCurriculu.Name = "ptbCurriculu";
+            this.ptbCurriculu.Size = new System.Drawing.Size(44, 42);
+            this.ptbCurriculu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbCurriculu.TabIndex = 7;
+            this.ptbCurriculu.TabStop = false;
+            this.ptbCurriculu.Visible = false;
             // 
             // frmSubirTrabajadores
             // 
@@ -1841,11 +1841,11 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.viewerPdf)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbCurriculu)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }

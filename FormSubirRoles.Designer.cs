@@ -148,6 +148,8 @@
             this.txtSueldoDT.Name = "txtSueldoDT";
             this.txtSueldoDT.Size = new System.Drawing.Size(101, 20);
             this.txtSueldoDT.TabIndex = 1;
+            this.txtSueldoDT.Text = "30";
+            this.txtSueldoDT.TextChanged += new System.EventHandler(this.txtSueldoDT_TextChanged);
             // 
             // txtNumE50
             // 
