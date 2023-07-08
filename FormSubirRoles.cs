@@ -25,6 +25,8 @@ namespace ProyectoRolesConCrystal
         decimal hN;
         decimal he50;
         decimal he100;
+        decimal tIngresos;
+        Validaciones validaciones = new Validaciones();
         public FormSubirRoles()
         {
             InitializeComponent();
@@ -109,8 +111,8 @@ namespace ProyectoRolesConCrystal
 
         private void btnAddN_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta =MessageBox.Show("¿Esta seguro de los datos para el registro del rol?","¿?",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if(respuesta == DialogResult.Yes)
+            DialogResult respuesta = MessageBox.Show("¿Esta seguro de los datos para el registro del rol?", "¿?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes)
             {
                 agregarRol();
             }
@@ -132,6 +134,9 @@ namespace ProyectoRolesConCrystal
             hN = DatosParaNomina.horaN;
             he50 = DatosParaNomina.he50;
             he100 = DatosParaNomina.he100;
+            decimal calculoSueldoxDia = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia, 2);
+            txtTotalIngresos.Text = calculoSueldoxDia.ToString();
+            txtAnticipoSueldo.Text = Math.Round(sueldoXdia * 30m * 0.40m, 2).ToString();
         }
         private void txtCedula_TextChanged(object sender, EventArgs e)
         {
@@ -192,7 +197,7 @@ namespace ProyectoRolesConCrystal
                     double valorH100 = lectorr.GetDouble(lectorr.GetOrdinal("H_100"));
                     //double he100 = Convert.ToDouble(lectorr["H_100"].ToString());
                     string numHe50 = (valorH50 / h50).ToString("N2");
-                    string numHe100 = (valorH100/h100).ToString("N2");
+                    string numHe100 = (valorH100 / h100).ToString("N2");
                     txtNumE50.Text = numHe50;
                     txtNumE100.Text = numHe100;
                     txtFondosR.Text = lectorr["FONDOS_RESERVA"].ToString();
@@ -268,20 +273,20 @@ namespace ProyectoRolesConCrystal
             {
                 SqlCommand comando = new SqlCommand("sp_NextID", conexion);
                 comando.CommandType = System.Data.CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@ID",Convert.ToInt32(txtNomina.Text));
+                comando.Parameters.AddWithValue("@ID", Convert.ToInt32(txtNomina.Text));
                 SqlDataReader reader = comando.ExecuteReader();
-                if(reader.Read())
+                if (reader.Read())
                 {
                     txtNomina.Text = reader["ID"].ToString();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally 
-            { 
-                conexion.Close(); 
+            finally
+            {
+                conexion.Close();
             }
         }
         private void mostrarNextCedula()
@@ -320,7 +325,8 @@ namespace ProyectoRolesConCrystal
                 {
                     txtNomina.Text = reader["ID"].ToString();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -372,7 +378,7 @@ namespace ProyectoRolesConCrystal
                 comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
                 comando.Parameters.AddWithValue("@SUELDO_DT", Convert.ToDouble(txtSueldoDT.Text));
                 comando.Parameters.AddWithValue("@RECARGO_N", Convert.ToDouble(txtRNocturno.Text));
-                comando.Parameters.AddWithValue("@H_E50", Math.Round((Convert.ToDouble(txtNumE50.Text))*h50,2));
+                comando.Parameters.AddWithValue("@H_E50", Math.Round((Convert.ToDouble(txtNumE50.Text)) * h50, 2));
                 comando.Parameters.AddWithValue("@H_E100", Math.Round((Convert.ToDouble(txtNumE100.Text)) * h100, 2));
                 comando.Parameters.AddWithValue("@FONDOS_RESERVA", Convert.ToDouble(txtFondosR.Text));
                 comando.Parameters.AddWithValue("@OTROS_INGRESOS_APORTABLES", Convert.ToDouble(txtOtrosIA.Text));
@@ -389,14 +395,14 @@ namespace ProyectoRolesConCrystal
                 comando.Parameters.AddWithValue("@SUBISIDIOS_ENFER", Convert.ToDouble(txtSubsidioEG.Text));
                 comando.Parameters.AddWithValue("@DESCUADRES", Convert.ToDouble(txtDescuadres.Text));
                 comando.Parameters.AddWithValue("@SUPA", Convert.ToDouble(txtSupa.Text));
-                comando.Parameters.AddWithValue("@ATRASOS", Math.Round((Convert.ToDouble(txtAtrasos.Text))*0.25,2));
+                comando.Parameters.AddWithValue("@ATRASOS", Math.Round((Convert.ToDouble(txtAtrasos.Text)) * 0.25, 2));
                 comando.Parameters.AddWithValue("IESS", Convert.ToDouble(txtIESS.Text));
                 comando.Parameters.AddWithValue("TOTAL_EGRESOS", Convert.ToDouble(txtTEgresos.Text));
                 comando.Parameters.AddWithValue("NETO_RECIBIR", Convert.ToDouble(txtNetoRecibir.Text));
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Registr exitoso","Rol subido");
+                MessageBox.Show("Registr exitoso", "Rol subido");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -463,7 +469,7 @@ namespace ProyectoRolesConCrystal
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private Tuple<double, double> GetHorasExtras(string cedula)
@@ -476,13 +482,13 @@ namespace ProyectoRolesConCrystal
             SqlCommand cmd = new SqlCommand(query, conexion);
             cmd.Parameters.AddWithValue("@CEDULA", cedula);
             SqlDataReader reader = cmd.ExecuteReader();
-            if(reader.Read())
+            if (reader.Read())
             {
                 hora50 = Convert.ToDouble(reader["H_E50"].ToString());
                 hora100 = Convert.ToDouble(reader["H_E100"].ToString());
             }
             reader.Close();
-            return new Tuple<double,double>(hora50,hora100);
+            return new Tuple<double, double>(hora50, hora100);
         }
         private void actualizarRol()
         {
@@ -493,7 +499,7 @@ namespace ProyectoRolesConCrystal
                 double h100 = horasExtras.Item2;
                 SqlCommand comando = new SqlCommand("sp_modificarRol", conexion);
                 comando.CommandType = System.Data.CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@ID",Convert.ToInt32(txtNomina.Text));
+                comando.Parameters.AddWithValue("@ID", Convert.ToInt32(txtNomina.Text));
                 comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
                 comando.Parameters.AddWithValue("@SUELDO_DT", Convert.ToDouble(txtSueldoDT.Text));
                 comando.Parameters.AddWithValue("@RECARGO_N", Convert.ToDouble(txtRNocturno.Text));
@@ -531,14 +537,31 @@ namespace ProyectoRolesConCrystal
 
         private void txtSueldoDT_TextChanged(object sender, EventArgs e)
         {
-            var validaciones = new Validaciones();
-            if (validaciones.validarDiasT(Convert.ToInt32(txtSueldoDT.Text))== false)
+            if (txtSueldoDT.Text != "")
             {
-                MessageBox.Show("No se puede ingresar dias adiconales", "Error");
-                txtSueldoDT.Text = "30";
+                if (validaciones.validarDiasT(Convert.ToInt32(txtSueldoDT.Text)) == false)
+                {
+                    MessageBox.Show("No se puede ingresar dias adiconales", "Error");
+                    txtSueldoDT.Text = "30";
+                }
+                decimal calculoSueldoxDia = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia, 2);
+                txtTotalIngresos.Text = (calculoSueldoxDia).ToString();
             }
-            decimal calculoSueldoxDia = Math.Round(Convert.ToDecimal(txtSueldoDT.Text)*sueldoXdia,2);
-            txtTotalIngresos.Text =calculoSueldoxDia.ToString();
+        }
+
+        private void txtTotalIngresos_TextChanged(object sender, EventArgs e)
+        {
+            txtIESS.Text = Math.Round(Convert.ToDecimal(txtTotalIngresos.Text)*0.0945m,2).ToString();
+            tIngresos = Convert.ToDecimal(txtTotalIngresos.Text);
+        }
+
+        private void txtRNocturno_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRNocturno.Text != "")
+            {
+                decimal calculoHN = Math.Round(Convert.ToDecimal(txtRNocturno.Text) * hN, 2);
+                txtTotalIngresos.Text = (Convert.ToDecimal(txtTotalIngresos.Text) + calculoHN).ToString();
+            }
         }
     }
 }
