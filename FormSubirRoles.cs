@@ -21,11 +21,17 @@ namespace ProyectoRolesConCrystal
     {
 
         SqlConnection conexion = new SqlConnection(ConexionBase.cadenaConexion);
-        decimal sueldoXdia;
-        decimal hN;
-        decimal he50;
-        decimal he100;
-        decimal tIngresos;
+        decimal sueldoXdia = 0;
+        decimal hN = 0;
+        decimal he50 = 0;
+        decimal he100 = 0;
+        decimal tIngresos = 0;
+        decimal tEgresos = 0;
+        decimal valorAtrasos= 0;
+        decimal valorHN = 0;
+        decimal valorHE50 = 0;
+        decimal valorHE100 = 0;
+        decimal valorIESS = 0;
         Validaciones validaciones = new Validaciones();
         public FormSubirRoles()
         {
@@ -551,7 +557,9 @@ namespace ProyectoRolesConCrystal
 
         private void txtTotalIngresos_TextChanged(object sender, EventArgs e)
         {
-            txtIESS.Text = Math.Round(Convert.ToDecimal(txtTotalIngresos.Text)*0.0945m,2).ToString();
+            decimal iess = Math.Round(Convert.ToDecimal(txtTotalIngresos.Text) * 0.0945m, 2);
+            valorIESS = iess;
+            txtIESS.Text = iess.ToString();
             tIngresos = Convert.ToDecimal(txtTotalIngresos.Text);
         }
 
@@ -560,7 +568,48 @@ namespace ProyectoRolesConCrystal
             if (txtRNocturno.Text != "")
             {
                 decimal calculoHN = Math.Round(Convert.ToDecimal(txtRNocturno.Text) * hN, 2);
-                txtTotalIngresos.Text = (Convert.ToDecimal(txtTotalIngresos.Text) + calculoHN).ToString();
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE100 + valorHE50 + valorHN, 2).ToString();
+                valorHN = calculoHN;
+            }
+        }
+
+        private void txtNumE50_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNumE50.Text != "")
+            {
+                decimal calculoHN = Math.Round(Convert.ToDecimal(txtNumE50.Text) * he50, 2);
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN+ valorHE100 + valorHE50 + valorHN, 2).ToString();
+                valorHE50 = calculoHN;
+            }
+        }
+
+        private void txtNumE100_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNumE100.Text != "")
+            {
+                decimal calculoHN = Math.Round(Convert.ToDecimal(txtNumE100.Text) * he100, 2);
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE50 + valorHN , 2).ToString();
+                valorHE100 = calculoHN;
+            } 
+        }
+
+        private void txtAtrasos_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAtrasos.Text != "")
+            {
+                decimal calculoHN = Math.Round(Convert.ToDecimal(txtAtrasos.Text) * 0.25m, 2);
+                txtTEgresos.Text = (calculoHN + valorIESS).ToString();
+                valorAtrasos = calculoHN;
+            }
+        }
+
+        private void txtIESS_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAtrasos.Text != "")
+            {
+                decimal calculoHN = Math.Round(Convert.ToDecimal(txtAtrasos.Text) * 0.25m, 2);
+                txtTEgresos.Text = (calculoHN + valorIESS).ToString();
+                valorAtrasos = calculoHN;
             }
         }
     }

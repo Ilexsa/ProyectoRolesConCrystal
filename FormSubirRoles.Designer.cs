@@ -160,6 +160,7 @@
             this.txtNumE50.Size = new System.Drawing.Size(101, 20);
             this.txtNumE50.TabIndex = 3;
             this.txtNumE50.Text = "0";
+            this.txtNumE50.TextChanged += new System.EventHandler(this.txtNumE50_TextChanged);
             // 
             // txtFondosR
             // 
@@ -176,6 +177,7 @@
             this.txtNumE100.Size = new System.Drawing.Size(101, 20);
             this.txtNumE100.TabIndex = 4;
             this.txtNumE100.Text = "0";
+            this.txtNumE100.TextChanged += new System.EventHandler(this.txtNumE100_TextChanged);
             // 
             // btnPrimerN
             // 
@@ -718,6 +720,7 @@
             this.txtAtrasos.Size = new System.Drawing.Size(101, 20);
             this.txtAtrasos.TabIndex = 19;
             this.txtAtrasos.Text = "0";
+            this.txtAtrasos.TextChanged += new System.EventHandler(this.txtAtrasos_TextChanged);
             // 
             // txtIESS
             // 
@@ -726,6 +729,7 @@
             this.txtIESS.Size = new System.Drawing.Size(101, 20);
             this.txtIESS.TabIndex = 20;
             this.txtIESS.Text = "0";
+            this.txtIESS.TextChanged += new System.EventHandler(this.txtIESS_TextChanged);
             // 
             // txtEmpleado
             // 
