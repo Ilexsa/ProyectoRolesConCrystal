@@ -50,11 +50,11 @@ namespace ProyectoRolesConCrystal
 
         private void txtUser_Enter(object sender, EventArgs e)
         {
-            if(txtUser.Text == "USUARIO")
-            {
-                txtUser.Text = "";
-                txtUser.ForeColor = ColorTranslator.FromHtml("#393d42");
-            }
+                if(txtUser.Text == "USUARIO")
+                {
+                    txtUser.Text = "";
+                    txtUser.ForeColor = ColorTranslator.FromHtml("#393d42");
+                }
         }
 
         private void txtUser_Leave(object sender, EventArgs e)

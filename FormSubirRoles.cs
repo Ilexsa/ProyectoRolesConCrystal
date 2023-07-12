@@ -14,6 +14,7 @@ using Microsoft.Identity.Client;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using Org.BouncyCastle.Crypto.Engines;
+using System.IO;
 
 namespace ProyectoRolesConCrystal
 {
@@ -32,12 +33,102 @@ namespace ProyectoRolesConCrystal
         decimal valorHE50 = 0;
         decimal valorHE100 = 0;
         decimal valorIESS = 0;
+        decimal netoRecibir = 0;
         Validaciones validaciones = new Validaciones();
         public FormSubirRoles()
         {
             InitializeComponent();
+            agregar0();
+        }
+        private void txtSueldoDT_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSueldoDT.Text != "")
+            {
+                if (validaciones.validarDiasT(Convert.ToInt32(txtSueldoDT.Text)) == false)
+                {
+                    MessageBox.Show("No se puede ingresar dias adiconales", "Error");
+                    txtSueldoDT.Text = "30";
+                }
+                decimal calculoSueldoxDia = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia, 2);
+                txtTotalIngresos.Text = (calculoSueldoxDia).ToString();
+            }
         }
 
+        private void txtTotalIngresos_TextChanged(object sender, EventArgs e)
+        {
+            decimal iess = Math.Round(Convert.ToDecimal(txtTotalIngresos.Text) * 0.0945m, 2);
+            valorIESS = iess;
+            txtIESS.Text = iess.ToString();
+            tIngresos = Convert.ToDecimal(txtTotalIngresos.Text);
+        }
+
+        private void txtRNocturno_TextChanged(object sender, EventArgs e)
+        {
+            if (txtRNocturno.Text != "")
+            {
+                decimal calculoHN = Math.Round(Convert.ToDecimal(txtRNocturno.Text) * hN, 2);
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE100 + valorHE50 + valorHN, 2).ToString();
+                valorHN = calculoHN;
+            }
+        }
+
+        private void txtNumE50_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNumE50.Text != "")
+            {
+                decimal calculoHN = Math.Round(Convert.ToDecimal(txtNumE50.Text) * he50, 2);
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE100 + valorHE50 + valorHN, 2).ToString();
+                valorHE50 = calculoHN;
+            }
+        }
+
+        private void txtNumE100_TextChanged(object sender, EventArgs e)
+        {
+            if (txtNumE100.Text != "")
+            {
+                decimal calculoHN = Math.Round(Convert.ToDecimal(txtNumE100.Text) * he100, 2);
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE50 + valorHN, 2).ToString();
+                valorHE100 = calculoHN;
+            }
+        }
+
+        private void txtAtrasos_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAtrasos.Text != "")
+            {
+                decimal calculoHN = Math.Round(Convert.ToDecimal(txtAtrasos.Text) * 0.25m, 2);
+                txtTEgresos.Text = (calculoHN + valorIESS).ToString();
+                valorAtrasos = calculoHN;
+            }
+        }
+
+        private void txtIESS_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAtrasos.Text != "")
+            {
+                decimal calculoHN = Math.Round(Convert.ToDecimal(txtAtrasos.Text) * 0.25m, 2);
+                txtTEgresos.Text = (calculoHN + valorIESS).ToString();
+                valorAtrasos = calculoHN;
+            }
+        }
+
+        private void txtSueldoDT_Enter(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text == "0")
+            {
+                textBox.Text = "";
+            }
+        }
+
+        private void txtSueldoDT_Leave(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text == "")
+            {
+                textBox.Text = "0";
+            }
+        }
         private void FormSubirRoles_Load(object sender, EventArgs e)
         {
             MostrarLastCedula();
@@ -171,7 +262,7 @@ namespace ProyectoRolesConCrystal
 
         private void btnPruebas_Click(object sender, EventArgs e)
         {
-            //leerDatosT();
+         
         }
 
         private void btnBuscarN_Click(object sender, EventArgs e)
@@ -540,77 +631,107 @@ namespace ProyectoRolesConCrystal
             conexion.Close();
 
         }
-
-        private void txtSueldoDT_TextChanged(object sender, EventArgs e)
+        private void agregar0()
         {
-            if (txtSueldoDT.Text != "")
-            {
-                if (validaciones.validarDiasT(Convert.ToInt32(txtSueldoDT.Text)) == false)
-                {
-                    MessageBox.Show("No se puede ingresar dias adiconales", "Error");
-                    txtSueldoDT.Text = "30";
-                }
-                decimal calculoSueldoxDia = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia, 2);
-                txtTotalIngresos.Text = (calculoSueldoxDia).ToString();
-            }
-        }
+            txtIESS.Enter += txtSueldoDT_Enter;
+            txtIESS.Leave += txtSueldoDT_Leave;
 
-        private void txtTotalIngresos_TextChanged(object sender, EventArgs e)
-        {
-            decimal iess = Math.Round(Convert.ToDecimal(txtTotalIngresos.Text) * 0.0945m, 2);
-            valorIESS = iess;
-            txtIESS.Text = iess.ToString();
-            tIngresos = Convert.ToDecimal(txtTotalIngresos.Text);
-        }
+            txtAtrasos.Enter += txtSueldoDT_Enter;
+            txtAtrasos.Leave += txtSueldoDT_Leave;
 
-        private void txtRNocturno_TextChanged(object sender, EventArgs e)
-        {
-            if (txtRNocturno.Text != "")
-            {
-                decimal calculoHN = Math.Round(Convert.ToDecimal(txtRNocturno.Text) * hN, 2);
-                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE100 + valorHE50 + valorHN, 2).ToString();
-                valorHN = calculoHN;
-            }
-        }
+            txtSupa.Enter += txtSueldoDT_Enter;
+            txtSupa.Leave += txtSueldoDT_Leave;
 
-        private void txtNumE50_TextChanged(object sender, EventArgs e)
-        {
-            if (txtNumE50.Text != "")
-            {
-                decimal calculoHN = Math.Round(Convert.ToDecimal(txtNumE50.Text) * he50, 2);
-                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN+ valorHE100 + valorHE50 + valorHN, 2).ToString();
-                valorHE50 = calculoHN;
-            }
-        }
+            txtDescuadres.Enter += txtSueldoDT_Enter;
+            txtDescuadres.Leave += txtSueldoDT_Leave;
 
-        private void txtNumE100_TextChanged(object sender, EventArgs e)
-        {
-            if (txtNumE100.Text != "")
-            {
-                decimal calculoHN = Math.Round(Convert.ToDecimal(txtNumE100.Text) * he100, 2);
-                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE50 + valorHN , 2).ToString();
-                valorHE100 = calculoHN;
-            } 
-        }
+            txtSubsidioEG.Enter += txtSueldoDT_Enter;
+            txtSubsidioEG.Leave += txtSueldoDT_Leave;
 
-        private void txtAtrasos_TextChanged(object sender, EventArgs e)
-        {
-            if (txtAtrasos.Text != "")
-            {
-                decimal calculoHN = Math.Round(Convert.ToDecimal(txtAtrasos.Text) * 0.25m, 2);
-                txtTEgresos.Text = (calculoHN + valorIESS).ToString();
-                valorAtrasos = calculoHN;
-            }
-        }
+            txtSubsidioM.Enter += txtSueldoDT_Enter;
+            txtSubsidioM.Leave += txtSueldoDT_Leave;
 
-        private void txtIESS_TextChanged(object sender, EventArgs e)
-        {
-            if (txtAtrasos.Text != "")
-            {
-                decimal calculoHN = Math.Round(Convert.ToDecimal(txtAtrasos.Text) * 0.25m, 2);
-                txtTEgresos.Text = (calculoHN + valorIESS).ToString();
-                valorAtrasos = calculoHN;
-            }
+            txtOtrosD.Enter += txtSueldoDT_Enter;
+            txtOtrosD.Leave += txtSueldoDT_Leave;
+
+            txtConsumoPersonal.Enter += txtSueldoDT_Enter;
+            txtConsumoPersonal.Leave += txtSueldoDT_Leave;
+
+            txtPrestamosH.Enter += txtSueldoDT_Enter;
+            txtPrestamosH.Leave += txtSueldoDT_Leave;
+
+            txtAnticipoSueldo.Enter += txtSueldoDT_Enter;
+            txtAnticipoSueldo.Leave += txtSueldoDT_Leave;
+
+            txtPrestamosQ.Enter += txtSueldoDT_Enter;
+            txtPrestamosQ.Leave += txtSueldoDT_Leave;
+
+            txtCargoEmpleado.Enter += txtSueldoDT_Enter;
+            txtCargoEmpleado.Leave += txtSueldoDT_Leave;
+
+            txtTEgresos.Enter += txtSueldoDT_Enter;
+            txtTEgresos.Leave += txtSueldoDT_Leave;
+
+            txtNetoRecibir.Enter += txtSueldoDT_Enter;
+            txtNetoRecibir.Leave += txtSueldoDT_Leave;
+
+            txtTotalIngresos.Enter += txtSueldoDT_Enter;
+            txtTotalIngresos.Leave += txtSueldoDT_Leave;
+
+            txtMovilizacion.Enter += txtSueldoDT_Enter;
+            txtMovilizacion.Leave += txtSueldoDT_Leave;
+
+            txtAlimentacion.Enter += txtSueldoDT_Enter;
+            txtAlimentacion.Leave += txtSueldoDT_Leave;
+
+            txtOtrosINA.Enter += txtSueldoDT_Enter;
+            txtOtrosINA.Leave += txtSueldoDT_Leave;
+
+            txtOtrosIA.Enter += txtSueldoDT_Enter;
+            txtOtrosIA.Leave += txtSueldoDT_Leave;
+
+            txtNumE100.Enter += txtSueldoDT_Enter;
+            txtNumE100.Leave += txtSueldoDT_Leave;
+
+            txtFondosR.Enter += txtSueldoDT_Enter;
+            txtFondosR.Leave += txtSueldoDT_Leave;
+
+            txtNumE50.Enter += txtSueldoDT_Enter;
+            txtNumE50.Leave += txtSueldoDT_Leave;
+
+            txtSueldoDT.Enter += txtSueldoDT_Enter;
+            txtSueldoDT.Leave += txtSueldoDT_Leave;
+
+            txtRNocturno.Enter += txtSueldoDT_Enter;
+            txtRNocturno.Leave += txtSueldoDT_Leave;
+
+            txtNomina.Enter += txtSueldoDT_Enter;
+            txtNomina.Leave += txtSueldoDT_Leave;
+            txtIESS.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtAtrasos.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtSupa.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtDescuadres.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtSubsidioEG.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtSubsidioM.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtOtrosD.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtConsumoPersonal.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtPrestamosH.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtAnticipoSueldo.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtPrestamosQ.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtCargoEmpleado.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtTEgresos.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtNetoRecibir.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtTotalIngresos.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtMovilizacion.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtAlimentacion.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtOtrosINA.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtOtrosIA.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtNumE100.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtFondosR.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtNumE50.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtSueldoDT.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtRNocturno.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtNomina.KeyPress += Validaciones.validarSoloNumeroYpunto;
         }
     }
 }

@@ -152,6 +152,8 @@
             this.txtSueldoDT.TabIndex = 1;
             this.txtSueldoDT.Text = "30";
             this.txtSueldoDT.TextChanged += new System.EventHandler(this.txtSueldoDT_TextChanged);
+            this.txtSueldoDT.Enter += new System.EventHandler(this.txtSueldoDT_Enter);
+            this.txtSueldoDT.Leave += new System.EventHandler(this.txtSueldoDT_Leave);
             // 
             // txtNumE50
             // 
