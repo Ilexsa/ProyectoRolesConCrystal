@@ -796,6 +796,7 @@
             this.btnPruebas.TabIndex = 72;
             this.btnPruebas.Text = "Pruebas";
             this.btnPruebas.UseVisualStyleBackColor = true;
+            this.btnPruebas.Visible = false;
             this.btnPruebas.Click += new System.EventHandler(this.btnPruebas_Click);
             // 
             // btnBuscarN
@@ -806,6 +807,7 @@
             this.btnBuscarN.TabIndex = 73;
             this.btnBuscarN.Text = "Buscar";
             this.btnBuscarN.UseVisualStyleBackColor = true;
+            this.btnBuscarN.Visible = false;
             this.btnBuscarN.Click += new System.EventHandler(this.btnBuscarN_Click);
             // 
             // panel1
@@ -901,7 +903,7 @@
             this.btnEdicion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdicion.Font = new System.Drawing.Font("Berlin Sans FB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdicion.Image = global::ProyectoRolesConCrystal.Properties.Resources.ICONOS_PROGRAMA_DPTO_SISTEMAS_03;
-            this.btnEdicion.Location = new System.Drawing.Point(723, 6);
+            this.btnEdicion.Location = new System.Drawing.Point(625, 6);
             this.btnEdicion.Name = "btnEdicion";
             this.btnEdicion.Size = new System.Drawing.Size(43, 35);
             this.btnEdicion.TabIndex = 28;
@@ -913,7 +915,7 @@
             this.btnLimpiar.FlatAppearance.BorderSize = 0;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Image = global::ProyectoRolesConCrystal.Properties.Resources.ICONOS_PROGRAMA_DPTO_SISTEMAS_04;
-            this.btnLimpiar.Location = new System.Drawing.Point(572, 6);
+            this.btnLimpiar.Location = new System.Drawing.Point(689, 6);
             this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(43, 35);
@@ -926,12 +928,13 @@
             this.btnAgg.FlatAppearance.BorderSize = 0;
             this.btnAgg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgg.Image = global::ProyectoRolesConCrystal.Properties.Resources.ICONOS_PROGRAMA_DPTO_SISTEMAS_01;
-            this.btnAgg.Location = new System.Drawing.Point(643, 6);
+            this.btnAgg.Location = new System.Drawing.Point(747, 6);
             this.btnAgg.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgg.Name = "btnAgg";
             this.btnAgg.Size = new System.Drawing.Size(43, 35);
             this.btnAgg.TabIndex = 26;
             this.btnAgg.UseVisualStyleBackColor = true;
+            this.btnAgg.Click += new System.EventHandler(this.btnAgg_Click);
             // 
             // btnBuscar
             // 
@@ -945,6 +948,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(43, 35);
             this.btnBuscar.TabIndex = 29;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // FormSubirRoles
             // 

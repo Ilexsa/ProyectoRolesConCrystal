@@ -39,6 +39,7 @@ namespace ProyectoRolesConCrystal
         {
             InitializeComponent();
             agregar0();
+            KeyPreview = true ;
         }
         private void txtSueldoDT_TextChanged(object sender, EventArgs e)
         {
@@ -732,6 +733,31 @@ namespace ProyectoRolesConCrystal
             txtSueldoDT.KeyPress += Validaciones.validarSoloNumeroYpunto;
             txtRNocturno.KeyPress += Validaciones.validarSoloNumeroYpunto;
             txtNomina.KeyPress += Validaciones.validarSoloNumeroYpunto;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            frmBusquedaSR busquedaSR = new frmBusquedaSR();
+            busquedaSR.ShowDialog();
+            string cedulaSeleccionada = busquedaSR.cedulaSeleccionada;
+            txtCedula.Text = cedulaSeleccionada;
+            DatosParaNomina.datosNomina(txtCedula.Text);
+            sueldoXdia = DatosParaNomina.sueldoXdia;
+            hN = DatosParaNomina.horaN;
+            he50 = DatosParaNomina.he50;
+            he100 = DatosParaNomina.he100;
+            decimal calculoSueldoxDia = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia, 2);
+            txtTotalIngresos.Text = calculoSueldoxDia.ToString();
+            txtAnticipoSueldo.Text = Math.Round(sueldoXdia * 30m * 0.40m, 2).ToString();
+        }
+
+        private void btnAgg_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Esta seguro de los datos para el registro del rol?", "¿?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta == DialogResult.Yes)
+            {
+                agregarRol();
+            }
         }
     }
 }
