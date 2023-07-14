@@ -117,11 +117,12 @@
             // 
             // txtNomina
             // 
-            this.txtNomina.Location = new System.Drawing.Point(88, 64);
+            this.txtNomina.Location = new System.Drawing.Point(167, 64);
             this.txtNomina.Name = "txtNomina";
             this.txtNomina.ReadOnly = true;
             this.txtNomina.Size = new System.Drawing.Size(76, 20);
             this.txtNomina.TabIndex = 0;
+            this.txtNomina.TabStop = false;
             this.txtNomina.TextChanged += new System.EventHandler(this.txtNomina_TextChanged);
             // 
             // label1
@@ -129,7 +130,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(7, 67);
+            this.label1.Location = new System.Drawing.Point(86, 67);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 1;
@@ -171,6 +172,7 @@
             this.txtFondosR.Size = new System.Drawing.Size(101, 20);
             this.txtFondosR.TabIndex = 5;
             this.txtFondosR.Text = "0";
+            this.txtFondosR.TextChanged += new System.EventHandler(this.txtFondosR_TextChanged);
             // 
             // txtNumE100
             // 
@@ -281,7 +283,7 @@
             this.label2.Enabled = false;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Brown;
-            this.label2.Location = new System.Drawing.Point(12, 103);
+            this.label2.Location = new System.Drawing.Point(91, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 17;
@@ -293,7 +295,7 @@
             this.label3.Enabled = false;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Brown;
-            this.label3.Location = new System.Drawing.Point(28, 129);
+            this.label3.Location = new System.Drawing.Point(107, 129);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 18;
@@ -417,7 +419,7 @@
             this.label15.Enabled = false;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Brown;
-            this.label15.Location = new System.Drawing.Point(332, 129);
+            this.label15.Location = new System.Drawing.Point(411, 129);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(113, 13);
             this.label15.TabIndex = 30;
@@ -429,7 +431,7 @@
             this.label16.Enabled = false;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Brown;
-            this.label16.Location = new System.Drawing.Point(397, 103);
+            this.label16.Location = new System.Drawing.Point(476, 103);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(48, 13);
             this.label16.TabIndex = 31;
@@ -585,6 +587,7 @@
             this.txtOtrosIA.Size = new System.Drawing.Size(101, 20);
             this.txtOtrosIA.TabIndex = 6;
             this.txtOtrosIA.Text = "0";
+            this.txtOtrosIA.TextChanged += new System.EventHandler(this.txtOtrosIA_TextChanged);
             // 
             // txtOtrosINA
             // 
@@ -593,6 +596,7 @@
             this.txtOtrosINA.Size = new System.Drawing.Size(101, 20);
             this.txtOtrosINA.TabIndex = 7;
             this.txtOtrosINA.Text = "0";
+            this.txtOtrosINA.TextChanged += new System.EventHandler(this.txtOtrosINA_TextChanged);
             // 
             // txtAlimentacion
             // 
@@ -601,6 +605,7 @@
             this.txtAlimentacion.Size = new System.Drawing.Size(101, 20);
             this.txtAlimentacion.TabIndex = 8;
             this.txtAlimentacion.Text = "0";
+            this.txtAlimentacion.TextChanged += new System.EventHandler(this.txtAlimentacion_TextChanged);
             // 
             // txtMovilizacion
             // 
@@ -609,6 +614,7 @@
             this.txtMovilizacion.Size = new System.Drawing.Size(101, 20);
             this.txtMovilizacion.TabIndex = 9;
             this.txtMovilizacion.Text = "0";
+            this.txtMovilizacion.TextChanged += new System.EventHandler(this.txtMovilizacion_TextChanged);
             // 
             // txtTotalIngresos
             // 
@@ -634,11 +640,12 @@
             this.txtTEgresos.Size = new System.Drawing.Size(101, 20);
             this.txtTEgresos.TabIndex = 52;
             this.txtTEgresos.Text = "0";
+            this.txtTEgresos.TextChanged += new System.EventHandler(this.txtTEgresos_TextChanged);
             // 
             // txtCargoEmpleado
             // 
             this.txtCargoEmpleado.Enabled = false;
-            this.txtCargoEmpleado.Location = new System.Drawing.Point(451, 100);
+            this.txtCargoEmpleado.Location = new System.Drawing.Point(530, 100);
             this.txtCargoEmpleado.Name = "txtCargoEmpleado";
             this.txtCargoEmpleado.Size = new System.Drawing.Size(217, 20);
             this.txtCargoEmpleado.TabIndex = 53;
@@ -706,6 +713,7 @@
             this.txtAnticipoSueldo.Size = new System.Drawing.Size(101, 20);
             this.txtAnticipoSueldo.TabIndex = 10;
             this.txtAnticipoSueldo.Text = "0";
+            this.txtAnticipoSueldo.TextChanged += new System.EventHandler(this.txtAnticipoSueldo_TextChanged);
             // 
             // txtPrestamosQ
             // 
@@ -714,6 +722,7 @@
             this.txtPrestamosQ.Size = new System.Drawing.Size(101, 20);
             this.txtPrestamosQ.TabIndex = 11;
             this.txtPrestamosQ.Text = "0";
+            this.txtPrestamosQ.TextChanged += new System.EventHandler(this.txtPrestamosQ_TextChanged);
             // 
             // txtAtrasos
             // 
@@ -736,7 +745,7 @@
             // txtEmpleado
             // 
             this.txtEmpleado.Enabled = false;
-            this.txtEmpleado.Location = new System.Drawing.Point(88, 100);
+            this.txtEmpleado.Location = new System.Drawing.Point(167, 100);
             this.txtEmpleado.Name = "txtEmpleado";
             this.txtEmpleado.Size = new System.Drawing.Size(185, 20);
             this.txtEmpleado.TabIndex = 65;
@@ -744,7 +753,7 @@
             // txtSueldoEmpleado
             // 
             this.txtSueldoEmpleado.Enabled = false;
-            this.txtSueldoEmpleado.Location = new System.Drawing.Point(88, 126);
+            this.txtSueldoEmpleado.Location = new System.Drawing.Point(167, 126);
             this.txtSueldoEmpleado.Name = "txtSueldoEmpleado";
             this.txtSueldoEmpleado.Size = new System.Drawing.Size(76, 20);
             this.txtSueldoEmpleado.TabIndex = 66;
@@ -752,7 +761,7 @@
             // txtFechaIngEm
             // 
             this.txtFechaIngEm.Enabled = false;
-            this.txtFechaIngEm.Location = new System.Drawing.Point(451, 126);
+            this.txtFechaIngEm.Location = new System.Drawing.Point(530, 126);
             this.txtFechaIngEm.Name = "txtFechaIngEm";
             this.txtFechaIngEm.Size = new System.Drawing.Size(66, 20);
             this.txtFechaIngEm.TabIndex = 67;
@@ -762,7 +771,7 @@
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label31.Location = new System.Drawing.Point(306, 67);
+            this.label31.Location = new System.Drawing.Point(452, 67);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(72, 13);
             this.label31.TabIndex = 68;
@@ -770,7 +779,7 @@
             // 
             // txtCedula
             // 
-            this.txtCedula.Location = new System.Drawing.Point(384, 64);
+            this.txtCedula.Location = new System.Drawing.Point(530, 64);
             this.txtCedula.MaxLength = 10;
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.ReadOnly = true;
@@ -780,17 +789,18 @@
             // 
             // btnBusqueda
             // 
-            this.btnBusqueda.Location = new System.Drawing.Point(508, 62);
+            this.btnBusqueda.Location = new System.Drawing.Point(627, 21);
             this.btnBusqueda.Name = "btnBusqueda";
             this.btnBusqueda.Size = new System.Drawing.Size(75, 23);
             this.btnBusqueda.TabIndex = 71;
             this.btnBusqueda.Text = "Buscar";
             this.btnBusqueda.UseVisualStyleBackColor = true;
+            this.btnBusqueda.Visible = false;
             this.btnBusqueda.Click += new System.EventHandler(this.btnBusqueda_Click);
             // 
             // btnPruebas
             // 
-            this.btnPruebas.Location = new System.Drawing.Point(589, 61);
+            this.btnPruebas.Location = new System.Drawing.Point(708, 21);
             this.btnPruebas.Name = "btnPruebas";
             this.btnPruebas.Size = new System.Drawing.Size(75, 23);
             this.btnPruebas.TabIndex = 72;
@@ -801,7 +811,7 @@
             // 
             // btnBuscarN
             // 
-            this.btnBuscarN.Location = new System.Drawing.Point(170, 61);
+            this.btnBuscarN.Location = new System.Drawing.Point(249, 61);
             this.btnBuscarN.Name = "btnBuscarN";
             this.btnBuscarN.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarN.TabIndex = 73;
@@ -839,6 +849,7 @@
             this.lblKindUser.Size = new System.Drawing.Size(66, 17);
             this.lblKindUser.TabIndex = 206;
             this.lblKindUser.Text = "Kind User";
+            this.lblKindUser.Visible = false;
             // 
             // label39
             // 
@@ -850,6 +861,7 @@
             this.label39.Size = new System.Drawing.Size(110, 17);
             this.label39.TabIndex = 200;
             this.label39.Text = "Tipo de usuario :";
+            this.label39.Visible = false;
             // 
             // lblName
             // 
@@ -861,6 +873,7 @@
             this.lblName.Size = new System.Drawing.Size(61, 17);
             this.lblName.TabIndex = 199;
             this.lblName.Text = "lblName";
+            this.lblName.Visible = false;
             // 
             // label37
             // 
@@ -872,6 +885,7 @@
             this.label37.Size = new System.Drawing.Size(72, 17);
             this.label37.TabIndex = 198;
             this.label37.Text = "Nombres :";
+            this.label37.Visible = false;
             // 
             // lblUser
             // 
@@ -883,6 +897,7 @@
             this.lblUser.Size = new System.Drawing.Size(54, 17);
             this.lblUser.TabIndex = 197;
             this.lblUser.Text = "Usuario";
+            this.lblUser.Visible = false;
             // 
             // label35
             // 
@@ -894,6 +909,7 @@
             this.label35.Size = new System.Drawing.Size(62, 17);
             this.label35.TabIndex = 196;
             this.label35.Text = "Usuario :";
+            this.label35.Visible = false;
             // 
             // btnEdicion
             // 
@@ -903,11 +919,12 @@
             this.btnEdicion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdicion.Font = new System.Drawing.Font("Berlin Sans FB", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdicion.Image = global::ProyectoRolesConCrystal.Properties.Resources.ICONOS_PROGRAMA_DPTO_SISTEMAS_03;
-            this.btnEdicion.Location = new System.Drawing.Point(625, 6);
+            this.btnEdicion.Location = new System.Drawing.Point(578, 6);
             this.btnEdicion.Name = "btnEdicion";
             this.btnEdicion.Size = new System.Drawing.Size(43, 35);
             this.btnEdicion.TabIndex = 28;
             this.btnEdicion.UseVisualStyleBackColor = false;
+            this.btnEdicion.Visible = false;
             // 
             // btnLimpiar
             // 
@@ -915,7 +932,7 @@
             this.btnLimpiar.FlatAppearance.BorderSize = 0;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Image = global::ProyectoRolesConCrystal.Properties.Resources.ICONOS_PROGRAMA_DPTO_SISTEMAS_04;
-            this.btnLimpiar.Location = new System.Drawing.Point(689, 6);
+            this.btnLimpiar.Location = new System.Drawing.Point(754, 6);
             this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(43, 35);
@@ -928,7 +945,7 @@
             this.btnAgg.FlatAppearance.BorderSize = 0;
             this.btnAgg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgg.Image = global::ProyectoRolesConCrystal.Properties.Resources.ICONOS_PROGRAMA_DPTO_SISTEMAS_01;
-            this.btnAgg.Location = new System.Drawing.Point(747, 6);
+            this.btnAgg.Location = new System.Drawing.Point(805, 6);
             this.btnAgg.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgg.Name = "btnAgg";
             this.btnAgg.Size = new System.Drawing.Size(43, 35);
@@ -943,7 +960,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Berlin Sans FB", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Image = global::ProyectoRolesConCrystal.Properties.Resources.ICONOS_PROGRAMA_DPTO_SISTEMAS_02;
-            this.btnBuscar.Location = new System.Drawing.Point(796, 6);
+            this.btnBuscar.Location = new System.Drawing.Point(704, 6);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(43, 35);
             this.btnBuscar.TabIndex = 29;
@@ -954,6 +971,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(848, 606);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnBuscarN);
@@ -1032,6 +1050,7 @@
             this.Name = "FormSubirRoles";
             this.Text = "Registro de Nomina";
             this.Load += new System.EventHandler(this.FormSubirRoles_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormSubirRoles_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

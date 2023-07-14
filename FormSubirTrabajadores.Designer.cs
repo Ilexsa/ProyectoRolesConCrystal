@@ -1200,11 +1200,11 @@
             this.dgvCargas.AllowUserToDeleteRows = false;
             this.dgvCargas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCargas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCargas.Location = new System.Drawing.Point(14, 32);
+            this.dgvCargas.Location = new System.Drawing.Point(8, 32);
             this.dgvCargas.Name = "dgvCargas";
             this.dgvCargas.ReadOnly = true;
             this.dgvCargas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCargas.Size = new System.Drawing.Size(1452, 262);
+            this.dgvCargas.Size = new System.Drawing.Size(1449, 262);
             this.dgvCargas.TabIndex = 63;
             this.dgvCargas.TabStop = false;
             this.dgvCargas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCargas_CellContentClick);
@@ -1548,6 +1548,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 25);
             this.comboBox1.TabIndex = 209;
+            this.comboBox1.Visible = false;
             // 
             // panel3
             // 
@@ -1729,9 +1730,9 @@
             this.panel5.Controls.Add(this.lblCurriculun);
             this.panel5.Controls.Add(this.lblAvisoEntrada);
             this.panel5.Controls.Add(this.ptbCurriculu);
-            this.panel5.Location = new System.Drawing.Point(24, 103);
+            this.panel5.Location = new System.Drawing.Point(137, 103);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(758, 140);
+            this.panel5.Size = new System.Drawing.Size(213, 140);
             this.panel5.TabIndex = 208;
             // 
             // lblFichaMedica
@@ -1757,6 +1758,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 9;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
             // 
             // pictureBox2
             // 
@@ -1768,13 +1770,14 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
             // lblCurriculun
             // 
             this.lblCurriculun.AutoSize = true;
             this.lblCurriculun.BackColor = System.Drawing.Color.Brown;
             this.lblCurriculun.ForeColor = System.Drawing.Color.White;
-            this.lblCurriculun.Location = new System.Drawing.Point(156, 80);
+            this.lblCurriculun.Location = new System.Drawing.Point(76, 80);
             this.lblCurriculun.Name = "lblCurriculun";
             this.lblCurriculun.Size = new System.Drawing.Size(68, 17);
             this.lblCurriculun.TabIndex = 4;
@@ -1799,7 +1802,7 @@
             // 
             this.ptbCurriculu.BackColor = System.Drawing.Color.Brown;
             this.ptbCurriculu.Image = global::ProyectoRolesConCrystal.Properties.Resources.PDF_file_icon_svg;
-            this.ptbCurriculu.Location = new System.Drawing.Point(169, 35);
+            this.ptbCurriculu.Location = new System.Drawing.Point(88, 35);
             this.ptbCurriculu.Name = "ptbCurriculu";
             this.ptbCurriculu.Size = new System.Drawing.Size(44, 42);
             this.ptbCurriculu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

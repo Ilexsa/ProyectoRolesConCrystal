@@ -34,6 +34,20 @@ namespace ProyectoRolesConCrystal
         decimal valorHE100 = 0;
         decimal valorIESS = 0;
         decimal netoRecibir = 0;
+        decimal valorFR = 0;
+        decimal valorIA = 0;
+        decimal valorINA = 0;
+        decimal valorAlimentacion = 0;
+        decimal valorMovilizacion = 0;
+        decimal anticipoS = 0;
+        decimal prestamosQ = 0;
+        decimal prestamosH = 0;
+        decimal otrosDescuentos = 0;
+        decimal consumosP = 0;
+        decimal subsidiosMater = 0;
+        decimal subsidiosEnfer = 0;
+        decimal descuadres = 0;
+        decimal supa = 0;
         Validaciones validaciones = new Validaciones();
         public FormSubirRoles()
         {
@@ -57,10 +71,11 @@ namespace ProyectoRolesConCrystal
 
         private void txtTotalIngresos_TextChanged(object sender, EventArgs e)
         {
-            decimal iess = Math.Round(Convert.ToDecimal(txtTotalIngresos.Text) * 0.0945m, 2);
+            decimal iess = Math.Round((Convert.ToDecimal(txtTotalIngresos.Text)-(valorFR+valorINA + valorMovilizacion + valorAlimentacion)) * 0.0945m, 2);
             valorIESS = iess;
             txtIESS.Text = iess.ToString();
-            tIngresos = Convert.ToDecimal(txtTotalIngresos.Text);
+            tIngresos = Convert.ToDecimal(txtTotalIngresos.Text); 
+            txtNetoRecibir.Text = Convert.ToString(tIngresos - tEgresos);
         }
 
         private void txtRNocturno_TextChanged(object sender, EventArgs e)
@@ -68,7 +83,8 @@ namespace ProyectoRolesConCrystal
             if (txtRNocturno.Text != "")
             {
                 decimal calculoHN = Math.Round(Convert.ToDecimal(txtRNocturno.Text) * hN, 2);
-                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE100 + valorHE50 + valorHN, 2).ToString();
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE100 + valorHE50 + valorIA
+                + valorINA + valorFR + valorAlimentacion + valorMovilizacion, 2).ToString();
                 valorHN = calculoHN;
             }
         }
@@ -78,7 +94,8 @@ namespace ProyectoRolesConCrystal
             if (txtNumE50.Text != "")
             {
                 decimal calculoHN = Math.Round(Convert.ToDecimal(txtNumE50.Text) * he50, 2);
-                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE100 + valorHE50 + valorHN, 2).ToString();
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE100 + valorHN + valorIA
+                + valorINA + valorFR + valorAlimentacion + valorMovilizacion, 2).ToString();
                 valorHE50 = calculoHN;
             }
         }
@@ -88,7 +105,8 @@ namespace ProyectoRolesConCrystal
             if (txtNumE100.Text != "")
             {
                 decimal calculoHN = Math.Round(Convert.ToDecimal(txtNumE100.Text) * he100, 2);
-                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE50 + valorHN, 2).ToString();
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + calculoHN + valorHE50 + valorHN + valorIA
+                + valorINA + valorFR + valorAlimentacion + valorMovilizacion, 2).ToString();
                 valorHE100 = calculoHN;
             }
         }
@@ -98,7 +116,8 @@ namespace ProyectoRolesConCrystal
             if (txtAtrasos.Text != "")
             {
                 decimal calculoHN = Math.Round(Convert.ToDecimal(txtAtrasos.Text) * 0.25m, 2);
-                txtTEgresos.Text = (calculoHN + valorIESS).ToString();
+                txtTEgresos.Text = (calculoHN + valorIESS + valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa).ToString();
                 valorAtrasos = calculoHN;
             }
         }
@@ -108,7 +127,7 @@ namespace ProyectoRolesConCrystal
             if (txtAtrasos.Text != "")
             {
                 decimal calculoHN = Math.Round(Convert.ToDecimal(txtAtrasos.Text) * 0.25m, 2);
-                txtTEgresos.Text = (calculoHN + valorIESS).ToString();
+                txtTEgresos.Text = (calculoHN + valorIESS + anticipoS).ToString();
                 valorAtrasos = calculoHN;
             }
         }
@@ -473,32 +492,33 @@ namespace ProyectoRolesConCrystal
                 double h100 = horasExtras.Item2;
                 SqlCommand comando = new SqlCommand("sp_registrarRol", conexion);
                 comando.CommandType = System.Data.CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@id", Convert.ToInt32(txtNomina.Text));
                 comando.Parameters.AddWithValue("@CEDULA", txtCedula.Text);
-                comando.Parameters.AddWithValue("@SUELDO_DT", Convert.ToDouble(txtSueldoDT.Text));
-                comando.Parameters.AddWithValue("@RECARGO_N", Convert.ToDouble(txtRNocturno.Text));
-                comando.Parameters.AddWithValue("@H_E50", Math.Round((Convert.ToDouble(txtNumE50.Text)) * h50, 2));
-                comando.Parameters.AddWithValue("@H_E100", Math.Round((Convert.ToDouble(txtNumE100.Text)) * h100, 2));
-                comando.Parameters.AddWithValue("@FONDOS_RESERVA", Convert.ToDouble(txtFondosR.Text));
-                comando.Parameters.AddWithValue("@OTROS_INGRESOS_APORTABLES", Convert.ToDouble(txtOtrosIA.Text));
-                comando.Parameters.AddWithValue("@OTROS_INGRESOS_NAPORTABLES", Convert.ToDouble(txtOtrosINA.Text));
-                comando.Parameters.AddWithValue("@ALIMENTACION", Convert.ToDouble(txtAlimentacion.Text));
-                comando.Parameters.AddWithValue("@MOVILIZACION", Convert.ToDouble(txtMovilizacion.Text));
-                comando.Parameters.AddWithValue("@TOTAL_INGRESOS", Convert.ToDouble(txtTotalIngresos.Text));
-                comando.Parameters.AddWithValue("@ANTICIPO_SUELDO", Convert.ToDouble(txtAnticipoSueldo.Text));
-                comando.Parameters.AddWithValue("@PRESTAMOS_Q", Convert.ToDouble(txtPrestamosQ.Text));
-                comando.Parameters.AddWithValue("@PRESTAMOS_H", Convert.ToDouble(txtPrestamosH.Text));
-                comando.Parameters.AddWithValue("@OTROS_DESCUENTOS", Convert.ToDouble(txtOtrosD.Text));
-                comando.Parameters.AddWithValue("@CxP", Convert.ToDouble(txtConsumoPersonal.Text));
-                comando.Parameters.AddWithValue("@SUBSIDIOS_MATER", Convert.ToDouble(txtSubsidioM.Text));
-                comando.Parameters.AddWithValue("@SUBISIDIOS_ENFER", Convert.ToDouble(txtSubsidioEG.Text));
-                comando.Parameters.AddWithValue("@DESCUADRES", Convert.ToDouble(txtDescuadres.Text));
-                comando.Parameters.AddWithValue("@SUPA", Convert.ToDouble(txtSupa.Text));
-                comando.Parameters.AddWithValue("@ATRASOS", Math.Round((Convert.ToDouble(txtAtrasos.Text)) * 0.25, 2));
-                comando.Parameters.AddWithValue("IESS", Convert.ToDouble(txtIESS.Text));
-                comando.Parameters.AddWithValue("TOTAL_EGRESOS", Convert.ToDouble(txtTEgresos.Text));
-                comando.Parameters.AddWithValue("NETO_RECIBIR", Convert.ToDouble(txtNetoRecibir.Text));
+                comando.Parameters.AddWithValue("@SUELDO_DT", Convert.ToDecimal(txtSueldoDT.Text));
+                comando.Parameters.AddWithValue("@RECARGO_N", Convert.ToDecimal(txtRNocturno.Text));
+                comando.Parameters.AddWithValue("@H_E50", valorHE50);
+                comando.Parameters.AddWithValue("@H_E100", valorHE100);
+                comando.Parameters.AddWithValue("@FONDOS_RESERVA", Convert.ToDecimal(txtFondosR.Text));
+                comando.Parameters.AddWithValue("@OTROS_INGRESOS_APORTABLES", Convert.ToDecimal(txtOtrosIA.Text));
+                comando.Parameters.AddWithValue("@OTROS_INGRESOS_NAPORTABLES", Convert.ToDecimal(txtOtrosINA.Text));
+                comando.Parameters.AddWithValue("@ALIMENTACION", Convert.ToDecimal(txtAlimentacion.Text));
+                comando.Parameters.AddWithValue("@MOVILIZACION", Convert.ToDecimal(txtMovilizacion.Text));
+                comando.Parameters.AddWithValue("@TOTAL_INGRESOS", tIngresos);
+                comando.Parameters.AddWithValue("@ANTICIPO_SUELDO", Convert.ToDecimal(txtAnticipoSueldo.Text));
+                comando.Parameters.AddWithValue("@PRESTAMOS_Q", Convert.ToDecimal(txtPrestamosQ.Text));
+                comando.Parameters.AddWithValue("@PRESTAMOS_H", Convert.ToDecimal(txtPrestamosH.Text));
+                comando.Parameters.AddWithValue("@OTROS_DESCUENTOS", Convert.ToDecimal(txtOtrosD.Text));
+                comando.Parameters.AddWithValue("@CxP", Convert.ToDecimal(txtConsumoPersonal.Text));
+                comando.Parameters.AddWithValue("@SUBSIDIOS_MATER", Convert.ToDecimal(txtSubsidioM.Text));
+                comando.Parameters.AddWithValue("@SUBISIDIOS_ENFER", Convert.ToDecimal(txtSubsidioEG.Text));
+                comando.Parameters.AddWithValue("@DESCUADRES", Convert.ToDecimal(txtDescuadres.Text));
+                comando.Parameters.AddWithValue("@SUPA", Convert.ToDecimal(txtSupa.Text));
+                comando.Parameters.AddWithValue("@ATRASOS", valorAtrasos);
+                comando.Parameters.AddWithValue("IESS", valorIESS);
+                comando.Parameters.AddWithValue("TOTAL_EGRESOS", tEgresos);
+                comando.Parameters.AddWithValue("NETO_RECIBIR", Convert.ToDecimal(txtNetoRecibir.Text));
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Registr exitoso", "Rol subido");
+                MessageBox.Show("RegistrO exitoso", "Rol subido");
             }
             catch (Exception ex)
             {
@@ -608,7 +628,7 @@ namespace ProyectoRolesConCrystal
                 comando.Parameters.AddWithValue("@OTROS_INGRESOS_NAPORTABLES", Convert.ToDouble(txtOtrosINA.Text));
                 comando.Parameters.AddWithValue("@ALIMENTACION", Convert.ToDouble(txtAlimentacion.Text));
                 comando.Parameters.AddWithValue("@MOVILIZACION", Convert.ToDouble(txtMovilizacion.Text));
-                comando.Parameters.AddWithValue("@TOTAL_INGRESOS", Convert.ToDouble(txtTotalIngresos.Text));
+                comando.Parameters.AddWithValue("@TOTAL_INGRESOS", tIngresos);
                 comando.Parameters.AddWithValue("@ANTICIPO_SUELDO", Convert.ToDouble(txtAnticipoSueldo.Text));
                 comando.Parameters.AddWithValue("@PRESTAMOS_Q", Convert.ToDouble(txtPrestamosQ.Text));
                 comando.Parameters.AddWithValue("@PRESTAMOS_H", Convert.ToDouble(txtPrestamosH.Text));
@@ -758,6 +778,116 @@ namespace ProyectoRolesConCrystal
             {
                 agregarRol();
             }
+        }
+
+        private void FormSubirRoles_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.N) // Atajo F1 para guardar registros
+            {
+                //habilitarEdicion();
+                //limpiarCanmpos();
+            }
+
+            if (e.Control && e.KeyCode == Keys.G) // Atajo Ctrl+S para guardar registros
+            {
+                if (txtCedula.Enabled == true)
+                {
+                    //aggTrabajador();
+                }
+                else
+                {
+                    MessageBox.Show("La edicion/creacion no esta habilitada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            if (e.Control && e.KeyCode == Keys.E) // Atajo Ctrl+S para guardar registros
+            {
+                //habilitarEdicion();
+            }
+            if (e.Control && e.KeyCode == Keys.B) // Atajo Ctrl+S para guardar registros
+            {
+                frmBusquedaSR busquedaSR = new frmBusquedaSR();
+                busquedaSR.ShowDialog();
+                string cedulaSeleccionada = busquedaSR.cedulaSeleccionada;
+                txtCedula.Text = cedulaSeleccionada;
+                DatosParaNomina.datosNomina(txtCedula.Text);
+                sueldoXdia = DatosParaNomina.sueldoXdia;
+                hN = DatosParaNomina.horaN;
+                he50 = DatosParaNomina.he50;
+                he100 = DatosParaNomina.he100;
+                decimal calculoSueldoxDia = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia, 2);
+                txtTotalIngresos.Text = calculoSueldoxDia.ToString();
+                txtAnticipoSueldo.Text = Math.Round(sueldoXdia * 30m * 0.40m, 2).ToString();
+            }
+        }
+
+        private void txtTEgresos_TextChanged(object sender, EventArgs e)
+        {
+            tEgresos = Convert.ToDecimal(txtTEgresos.Text);
+            txtNetoRecibir.Text = Convert.ToString(tIngresos - tEgresos);
+        }
+
+        private void txtFondosR_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFondosR.Text != "")
+            {
+                valorFR = Convert.ToDecimal(txtFondosR.Text);
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + valorFR + valorHE100 + valorHE50 + valorHN +valorIA 
+                + valorINA, 2).ToString();
+            }
+        }
+
+        private void txtOtrosIA_TextChanged(object sender, EventArgs e)
+        {
+            if (txtOtrosIA.Text != "")
+            {
+                valorIA = Convert.ToDecimal(txtOtrosIA.Text);
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + valorFR + valorHE100 + valorHE50 + valorHN + valorIA 
+                + valorINA, 2).ToString();
+            }
+        }
+
+        private void txtOtrosINA_TextChanged(object sender, EventArgs e)
+        {
+            if (txtOtrosINA.Text != "")
+            {
+                valorINA = Convert.ToDecimal(txtOtrosINA.Text);
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + valorFR + valorHE100 + valorHE50 + valorHN + valorIA
+                + valorINA, 2).ToString();
+            }
+        }
+
+        private void txtAlimentacion_TextChanged(object sender, EventArgs e)
+        {
+            if (txtAlimentacion.Text != "")
+            {
+                valorAlimentacion = Convert.ToDecimal(txtAlimentacion.Text);
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + valorFR + valorHE100 + valorHE50 + valorHN + valorIA
+                + valorINA + valorAlimentacion + valorMovilizacion, 2).ToString();
+            }
+        }
+
+        private void txtMovilizacion_TextChanged(object sender, EventArgs e)
+        {
+            if (txtMovilizacion.Text != "")
+            {
+                valorMovilizacion = Convert.ToDecimal(txtMovilizacion.Text);
+                txtTotalIngresos.Text = Math.Round(Convert.ToDecimal(txtSueldoDT.Text) * sueldoXdia + valorFR + valorHE100 + valorHE50 + valorHN + valorIA
+                + valorINA + valorAlimentacion + valorMovilizacion, 2).ToString();
+            }
+        }
+
+        private void txtAnticipoSueldo_TextChanged(object sender, EventArgs e)
+        {
+            anticipoS = Convert.ToDecimal(txtAnticipoSueldo.Text);
+            txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ+ prestamosH + otrosDescuentos 
+                + consumosP + subsidiosEnfer+ subsidiosMater + descuadres + supa );
+        }
+
+        private void txtPrestamosQ_TextChanged(object sender, EventArgs e)
+        {
+            prestamosQ = Convert.ToDecimal(txtPrestamosQ.Text);
+            txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
         }
     }
 }
