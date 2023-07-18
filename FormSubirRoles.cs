@@ -116,19 +116,19 @@ namespace ProyectoRolesConCrystal
             if (txtAtrasos.Text != "")
             {
                 decimal calculoHN = Math.Round(Convert.ToDecimal(txtAtrasos.Text) * 0.25m, 2);
-                txtTEgresos.Text = (calculoHN + valorIESS + valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
-                + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa).ToString();
                 valorAtrasos = calculoHN;
+                txtTEgresos.Text = (valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa).ToString();
+                
             }
         }
 
         private void txtIESS_TextChanged(object sender, EventArgs e)
         {
-            if (txtAtrasos.Text != "")
+            if (txtIESS.Text != "")
             {
-                decimal calculoHN = Math.Round(Convert.ToDecimal(txtAtrasos.Text) * 0.25m, 2);
-                txtTEgresos.Text = (calculoHN + valorIESS + anticipoS).ToString();
-                valorAtrasos = calculoHN;
+                txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                    + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
             }
         }
 
@@ -752,7 +752,7 @@ namespace ProyectoRolesConCrystal
             txtNumE50.KeyPress += Validaciones.validarSoloNumeroYpunto;
             txtSueldoDT.KeyPress += Validaciones.validarSoloNumeroYpunto;
             txtRNocturno.KeyPress += Validaciones.validarSoloNumeroYpunto;
-            txtNomina.KeyPress += Validaciones.validarSoloNumeroYpunto;
+            txtNomina.KeyPress += Validaciones.validarSoloNumeroYpunto; 
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -878,16 +878,98 @@ namespace ProyectoRolesConCrystal
 
         private void txtAnticipoSueldo_TextChanged(object sender, EventArgs e)
         {
-            anticipoS = Convert.ToDecimal(txtAnticipoSueldo.Text);
-            txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ+ prestamosH + otrosDescuentos 
-                + consumosP + subsidiosEnfer+ subsidiosMater + descuadres + supa );
+            if (txtAnticipoSueldo.Text != "")
+            {
+                anticipoS = Convert.ToDecimal(txtAnticipoSueldo.Text);
+                txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                    + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
+            }
         }
 
         private void txtPrestamosQ_TextChanged(object sender, EventArgs e)
         {
-            prestamosQ = Convert.ToDecimal(txtPrestamosQ.Text);
-            txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
-                + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
+            if (txtPrestamosQ.Text != "")
+            {
+                prestamosQ = Convert.ToDecimal(txtPrestamosQ.Text);
+                txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                    + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
+            }
+        }
+
+        private void txtPrestamosH_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPrestamosH.Text != "")
+            {
+                prestamosH = Convert.ToDecimal(txtPrestamosH.Text);
+                txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                    + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
+            }
+        }
+
+        private void txtOtrosD_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text != "")
+            {
+                otrosDescuentos = Convert.ToDecimal(textBox.Text);
+                txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                    + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
+            }
+        }
+
+        private void txtConsumoPersonal_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text != "")
+            {
+                consumosP = Convert.ToDecimal(textBox.Text);
+                txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                    + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
+            }
+        }
+
+        private void txtSubsidioM_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text != "")
+            {
+                subsidiosMater = Convert.ToDecimal(textBox.Text);
+                txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                    + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
+            }
+        }
+
+        private void txtSubsidioEG_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text != "")
+            {
+                subsidiosEnfer = Convert.ToDecimal(textBox.Text);
+                txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                    + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
+            }
+        }
+
+        private void txtDescuadres_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text != "")
+            {
+                descuadres = Convert.ToDecimal(textBox.Text);
+                txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                    + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
+            }
+        }
+
+        private void txtSupa_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (textBox.Text != "")
+            {
+                supa = Convert.ToDecimal(textBox.Text);
+                txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
+                    + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
+            }
         }
     }
 }

@@ -657,6 +657,7 @@
             this.txtSupa.Size = new System.Drawing.Size(101, 20);
             this.txtSupa.TabIndex = 18;
             this.txtSupa.Text = "0";
+            this.txtSupa.TextChanged += new System.EventHandler(this.txtSupa_TextChanged);
             // 
             // txtDescuadres
             // 
@@ -665,6 +666,7 @@
             this.txtDescuadres.Size = new System.Drawing.Size(101, 20);
             this.txtDescuadres.TabIndex = 17;
             this.txtDescuadres.Text = "0";
+            this.txtDescuadres.TextChanged += new System.EventHandler(this.txtDescuadres_TextChanged);
             // 
             // txtSubsidioEG
             // 
@@ -673,6 +675,7 @@
             this.txtSubsidioEG.Size = new System.Drawing.Size(101, 20);
             this.txtSubsidioEG.TabIndex = 16;
             this.txtSubsidioEG.Text = "0";
+            this.txtSubsidioEG.TextChanged += new System.EventHandler(this.txtSubsidioEG_TextChanged);
             // 
             // txtSubsidioM
             // 
@@ -681,6 +684,7 @@
             this.txtSubsidioM.Size = new System.Drawing.Size(101, 20);
             this.txtSubsidioM.TabIndex = 15;
             this.txtSubsidioM.Text = "0";
+            this.txtSubsidioM.TextChanged += new System.EventHandler(this.txtSubsidioM_TextChanged);
             // 
             // txtOtrosD
             // 
@@ -689,6 +693,7 @@
             this.txtOtrosD.Size = new System.Drawing.Size(101, 20);
             this.txtOtrosD.TabIndex = 13;
             this.txtOtrosD.Text = "0";
+            this.txtOtrosD.TextChanged += new System.EventHandler(this.txtOtrosD_TextChanged);
             // 
             // txtConsumoPersonal
             // 
@@ -697,6 +702,7 @@
             this.txtConsumoPersonal.Size = new System.Drawing.Size(101, 20);
             this.txtConsumoPersonal.TabIndex = 14;
             this.txtConsumoPersonal.Text = "0";
+            this.txtConsumoPersonal.TextChanged += new System.EventHandler(this.txtConsumoPersonal_TextChanged);
             // 
             // txtPrestamosH
             // 
@@ -705,6 +711,7 @@
             this.txtPrestamosH.Size = new System.Drawing.Size(101, 20);
             this.txtPrestamosH.TabIndex = 12;
             this.txtPrestamosH.Text = "0";
+            this.txtPrestamosH.TextChanged += new System.EventHandler(this.txtPrestamosH_TextChanged);
             // 
             // txtAnticipoSueldo
             // 
