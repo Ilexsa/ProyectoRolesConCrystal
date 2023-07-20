@@ -213,6 +213,7 @@
             this.btnEditarN.TabIndex = 102;
             this.btnEditarN.Text = "Editar";
             this.btnEditarN.UseVisualStyleBackColor = true;
+            this.btnEditarN.Visible = false;
             this.btnEditarN.Click += new System.EventHandler(this.btnEditarN_Click);
             // 
             // btnNewN
@@ -223,6 +224,7 @@
             this.btnNewN.TabIndex = 103;
             this.btnNewN.Text = "Nuevo";
             this.btnNewN.UseVisualStyleBackColor = true;
+            this.btnNewN.Visible = false;
             this.btnNewN.Click += new System.EventHandler(this.btnNewN_Click);
             // 
             // btnAddN
@@ -233,6 +235,7 @@
             this.btnAddN.TabIndex = 104;
             this.btnAddN.Text = "Agregar";
             this.btnAddN.UseVisualStyleBackColor = true;
+            this.btnAddN.Visible = false;
             this.btnAddN.Click += new System.EventHandler(this.btnAddN_Click);
             // 
             // btnSiguiente
@@ -945,6 +948,7 @@
             this.btnLimpiar.Size = new System.Drawing.Size(43, 35);
             this.btnLimpiar.TabIndex = 27;
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnAgg
             // 

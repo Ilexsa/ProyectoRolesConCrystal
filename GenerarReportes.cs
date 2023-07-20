@@ -27,7 +27,7 @@ namespace ProyectoRolesConCrystal
             DataTable cedulasTable = GetCedula(ConexionBase.cadenaConexion);
             //creacion de directorio
             string nombreCarpeta = $"Roles-{mes:00}-{año}";
-            string creacionR = Path.Combine("C:\\Roles", nombreCarpeta);
+            string creacionR = Path.Combine("\\\\10.0.0.206\\sirhu\\NOMINA\\ROLES", nombreCarpeta);
             Directory.CreateDirectory(creacionR);
             //ciclo que generara los pdfs individuales 
             foreach(DataRow row in cedulasTable.Rows)

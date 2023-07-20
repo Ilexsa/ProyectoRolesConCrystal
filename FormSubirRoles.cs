@@ -271,7 +271,13 @@ namespace ProyectoRolesConCrystal
                     txtCargoEmpleado.Text = reader["CARGO"].ToString();
                     txtFechaIngEm.Text = reader["FECHA_INGRESO"].ToString();
                     txtSueldoEmpleado.Text = reader["SUELDO_BASE"].ToString();
+
                 }
+                DatosParaNomina.datosNomina(txtCedula.Text);
+                sueldoXdia = DatosParaNomina.sueldoXdia;
+                hN = DatosParaNomina.horaN;
+                he50 = DatosParaNomina.he50;
+                he100 = DatosParaNomina.he100;
             }
             catch (Exception ex)
             {
@@ -310,13 +316,8 @@ namespace ProyectoRolesConCrystal
                 {
                     txtSueldoDT.Text = lectorr["SUELDO_DIAS_TRABAJADOS"].ToString();
                     txtRNocturno.Text = lectorr["R_NOCTURNO"].ToString();
-                    double valorH50 = lectorr.GetDouble(lectorr.GetOrdinal("H_50"));
-                    double valorH100 = lectorr.GetDouble(lectorr.GetOrdinal("H_100"));
-                    //double he100 = Convert.ToDouble(lectorr["H_100"].ToString());
-                    string numHe50 = (valorH50 / h50).ToString("N2");
-                    string numHe100 = (valorH100 / h100).ToString("N2");
-                    txtNumE50.Text = numHe50;
-                    txtNumE100.Text = numHe100;
+                    txtNumE50.Text = lectorr["H_50"].ToString();
+                    txtNumE100.Text = lectorr["H_100"].ToString();
                     txtFondosR.Text = lectorr["FONDOS_RESERVA"].ToString();
                     txtOtrosIA.Text = lectorr["OTROS_INGRESOS_A"].ToString();
                     txtOtrosINA.Text = lectorr["OTROS_INGRESOS_NA"].ToString();
@@ -498,25 +499,25 @@ namespace ProyectoRolesConCrystal
                 comando.Parameters.AddWithValue("@RECARGO_N", Convert.ToDecimal(txtRNocturno.Text));
                 comando.Parameters.AddWithValue("@H_E50", valorHE50);
                 comando.Parameters.AddWithValue("@H_E100", valorHE100);
-                comando.Parameters.AddWithValue("@FONDOS_RESERVA", Convert.ToDecimal(txtFondosR.Text));
-                comando.Parameters.AddWithValue("@OTROS_INGRESOS_APORTABLES", Convert.ToDecimal(txtOtrosIA.Text));
-                comando.Parameters.AddWithValue("@OTROS_INGRESOS_NAPORTABLES", Convert.ToDecimal(txtOtrosINA.Text));
-                comando.Parameters.AddWithValue("@ALIMENTACION", Convert.ToDecimal(txtAlimentacion.Text));
-                comando.Parameters.AddWithValue("@MOVILIZACION", Convert.ToDecimal(txtMovilizacion.Text));
+                comando.Parameters.AddWithValue("@FONDOS_RESERVA", valorFR);
+                comando.Parameters.AddWithValue("@OTROS_INGRESOS_APORTABLES", valorIA);
+                comando.Parameters.AddWithValue("@OTROS_INGRESOS_NAPORTABLES", valorINA);
+                comando.Parameters.AddWithValue("@ALIMENTACION", valorAlimentacion);
+                comando.Parameters.AddWithValue("@MOVILIZACION", valorMovilizacion);
                 comando.Parameters.AddWithValue("@TOTAL_INGRESOS", tIngresos);
-                comando.Parameters.AddWithValue("@ANTICIPO_SUELDO", Convert.ToDecimal(txtAnticipoSueldo.Text));
-                comando.Parameters.AddWithValue("@PRESTAMOS_Q", Convert.ToDecimal(txtPrestamosQ.Text));
-                comando.Parameters.AddWithValue("@PRESTAMOS_H", Convert.ToDecimal(txtPrestamosH.Text));
-                comando.Parameters.AddWithValue("@OTROS_DESCUENTOS", Convert.ToDecimal(txtOtrosD.Text));
-                comando.Parameters.AddWithValue("@CxP", Convert.ToDecimal(txtConsumoPersonal.Text));
-                comando.Parameters.AddWithValue("@SUBSIDIOS_MATER", Convert.ToDecimal(txtSubsidioM.Text));
-                comando.Parameters.AddWithValue("@SUBISIDIOS_ENFER", Convert.ToDecimal(txtSubsidioEG.Text));
-                comando.Parameters.AddWithValue("@DESCUADRES", Convert.ToDecimal(txtDescuadres.Text));
-                comando.Parameters.AddWithValue("@SUPA", Convert.ToDecimal(txtSupa.Text));
+                comando.Parameters.AddWithValue("@ANTICIPO_SUELDO", anticipoS);
+                comando.Parameters.AddWithValue("@PRESTAMOS_Q", prestamosQ);
+                comando.Parameters.AddWithValue("@PRESTAMOS_H", prestamosH);
+                comando.Parameters.AddWithValue("@OTROS_DESCUENTOS", otrosDescuentos);
+                comando.Parameters.AddWithValue("@CxP", consumosP);
+                comando.Parameters.AddWithValue("@SUBSIDIOS_MATER", subsidiosMater);
+                comando.Parameters.AddWithValue("@SUBISIDIOS_ENFER", subsidiosEnfer);
+                comando.Parameters.AddWithValue("@DESCUADRES", descuadres);
+                comando.Parameters.AddWithValue("@SUPA", supa);
                 comando.Parameters.AddWithValue("@ATRASOS", valorAtrasos);
                 comando.Parameters.AddWithValue("IESS", valorIESS);
                 comando.Parameters.AddWithValue("TOTAL_EGRESOS", tEgresos);
-                comando.Parameters.AddWithValue("NETO_RECIBIR", Convert.ToDecimal(txtNetoRecibir.Text));
+                comando.Parameters.AddWithValue("NETO_RECIBIR", netoRecibir);
                 comando.ExecuteNonQuery();
                 MessageBox.Show("RegistrO exitoso", "Rol subido");
             }
@@ -528,36 +529,35 @@ namespace ProyectoRolesConCrystal
         }
         private void limpiarTxts()
         {
-            txtCedula.Clear();
-            txtAlimentacion.Clear();
-            txtAnticipoSueldo.Clear();
-            txtCargoEmpleado.Clear();
-            txtConsumoPersonal.Clear();
-            txtTotalIngresos.Clear();
-            txtAtrasos.Clear();
-            txtConsumoPersonal.Clear();
-            txtDescuadres.Clear();
-            txtEmpleado.Clear();
-            txtFechaIngEm.Clear();
-            txtFondosR.Clear();
-            txtIESS.Clear();
-            txtMovilizacion.Clear();
-            txtNetoRecibir.Clear();
-            txtNumE100.Clear();
-            txtNumE50.Clear();
-            txtOtrosD.Clear();
-            txtOtrosIA.Clear();
-            txtOtrosINA.Clear();
-            txtPrestamosH.Clear();
-            txtPrestamosQ.Clear();
-            txtRNocturno.Clear();
-            txtSubsidioEG.Clear();
-            txtSubsidioM.Clear();
-            txtSueldoDT.Clear();
-            txtSueldoEmpleado.Clear();
-            txtSupa.Clear();
-            txtTEgresos.Clear();
-            txtTotalIngresos.Clear();
+            //txtCedula.Text = "0";
+            txtAlimentacion.Text = "0";
+            //txtAnticipoSueldo.Text = "0";
+            //txtCargoEmpleado.Text = "0";
+            //txtTotalIngresos.Text = "0";
+            txtAtrasos.Text = "0";
+            txtConsumoPersonal.Text = "0";
+            txtDescuadres.Text = "0";
+            //txtEmpleado.Text = "0";
+            //txtFechaIngEm.Text = "0";
+            txtFondosR.Text = "0";
+            //txtIESS.Text = "0";
+            txtMovilizacion.Text = "0";
+            //txtNetoRecibir.Text = "0";
+            txtNumE100.Text = "0";
+            txtNumE50.Text = "0";
+            txtOtrosD.Text = "0";
+            txtOtrosIA.Text = "0";
+            txtOtrosINA.Text = "0";
+            txtPrestamosH.Text = "0";
+            txtPrestamosQ.Text = "0";
+            txtRNocturno.Text = "0";
+            txtSubsidioEG.Text = "0";
+            txtSubsidioM.Text = "0";
+            //txtSueldoDT.Text = "0";
+            //txtSueldoEmpleado.Text = "0";
+            txtSupa.Text = "0";
+            //txtTEgresos.Text = "0";
+            //txtTotalIngresos.Text = "0";
         }
         private void btnPrimerN_Click(object sender, EventArgs e)
         {
@@ -970,6 +970,11 @@ namespace ProyectoRolesConCrystal
                 txtTEgresos.Text = Convert.ToString(valorAtrasos + valorIESS + anticipoS + prestamosQ + prestamosH + otrosDescuentos
                     + consumosP + subsidiosEnfer + subsidiosMater + descuadres + supa);
             }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            limpiarTxts();
         }
     }
 }
