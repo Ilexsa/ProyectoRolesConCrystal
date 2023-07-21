@@ -1057,6 +1057,7 @@
             this.Controls.Add(this.txtRNocturno);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNomina);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSubirRoles";
             this.Text = "Registro de Nomina";

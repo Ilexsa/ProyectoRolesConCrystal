@@ -20,8 +20,8 @@ namespace ProyectoRolesConCrystal
 
         public void generarPDFS()
         {
-            string direccionRpt = "C:\\Users\\jayala\\source\\repos\\ProyectoRolesConCrystal\\reporteRol.rpt";
-
+            //string direccionRpt = "C:\\Users\\jayala\\source\\repos\\ProyectoRolesConCrystal\\reporteRol.rpt";
+            string direccionRpt = "\\\\10.0.0.206\\sirhu\\NOMINA\\ROLES";
             int mes = DateTime.Now.Month;
             int año = DateTime.Now.Year;
             DataTable cedulasTable = GetCedula(ConexionBase.cadenaConexion);

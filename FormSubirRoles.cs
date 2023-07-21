@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using ProyectoRoles;
 using System.Data.SqlTypes;
+using System.Data.Sql;
 using Microsoft.Identity.Client;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
@@ -529,33 +530,54 @@ namespace ProyectoRolesConCrystal
         }
         private void limpiarTxts()
         {
-            //txtCedula.Text = "0";
-            txtAlimentacion.Text = "0";
-            //txtAnticipoSueldo.Text = "0";
-            //txtCargoEmpleado.Text = "0";
-            //txtTotalIngresos.Text = "0";
-            txtAtrasos.Text = "0";
-            txtConsumoPersonal.Text = "0";
-            txtDescuadres.Text = "0";
-            //txtEmpleado.Text = "0";
-            //txtFechaIngEm.Text = "0";
-            txtFondosR.Text = "0";
-            //txtIESS.Text = "0";
-            txtMovilizacion.Text = "0";
-            //txtNetoRecibir.Text = "0";
-            txtNumE100.Text = "0";
-            txtNumE50.Text = "0";
-            txtOtrosD.Text = "0";
-            txtOtrosIA.Text = "0";
-            txtOtrosINA.Text = "0";
-            txtPrestamosH.Text = "0";
-            txtPrestamosQ.Text = "0";
-            txtRNocturno.Text = "0";
-            txtSubsidioEG.Text = "0";
-            txtSubsidioM.Text = "0";
-            //txtSueldoDT.Text = "0";
-            //txtSueldoEmpleado.Text = "0";
-            txtSupa.Text = "0";
+            using (SqlConnection cone = new SqlConnection(ConexionBase.cadenaConexion))
+            {
+                cone.Open();
+                try
+                {
+                    using (var cmd = new SqlCommand())
+                    {
+                        cmd.Connection = cone;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "sp_NextTrabajador";
+                        cmd.Parameters.AddWithValue("@NOMBRES",txtEmpleado.Text);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                txtCedula.Text = reader.GetString(1);
+                                txtAlimentacion.Text = "0";
+                                txtAtrasos.Text = "0";
+                                txtConsumoPersonal.Text = "0";
+                                txtDescuadres.Text = "0";
+                                txtFondosR.Text = "0";
+                                txtMovilizacion.Text = "0";
+                                txtNumE100.Text = "0";
+                                txtNumE50.Text = "0";
+                                txtOtrosD.Text = "0";
+                                txtOtrosIA.Text = "0";
+                                txtOtrosINA.Text = "0";
+                                txtPrestamosH.Text = "0";
+                                txtPrestamosQ.Text = "0";
+                                txtRNocturno.Text = "0";
+                                txtSubsidioEG.Text = "0";
+                                txtSubsidioM.Text = "0";
+                                txtSupa.Text = "0";
+                                int nomina = Convert.ToInt32(txtNomina.Text) + 1;
+                                txtNomina.Text = nomina.ToString();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya llego al ultimo trabajador","Listo");
+                        }
+                    }
+                }catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message,"Error");
+                }
+            }
             //txtTEgresos.Text = "0";
             //txtTotalIngresos.Text = "0";
         }
