@@ -103,6 +103,16 @@ namespace ProyectoRolesConCrystal.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cerrar_el_simbolo_de_la_cruz_en_un_circulo_blanco {
+            get {
+                object obj = ResourceManager.GetObject("cerrar-el-simbolo-de-la-cruz-en-un-circulo blanco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cerrar_sesion {
             get {
                 object obj = ResourceManager.GetObject("cerrar-sesion", resourceCulture);
@@ -123,9 +133,39 @@ namespace ProyectoRolesConCrystal.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cuadricula__1_ {
+            get {
+                object obj = ResourceManager.GetObject("cuadricula (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap curriculum__1_ {
             get {
                 object obj = ResourceManager.GetObject("curriculum (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap equipo {
+            get {
+                object obj = ResourceManager.GetObject("equipo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap equipo__1_ {
+            get {
+                object obj = ResourceManager.GetObject("equipo (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +243,29 @@ namespace ProyectoRolesConCrystal.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LOGO_FUNDASEN_CABECERA_31 {
+            get {
+                object obj = ResourceManager.GetObject("LOGO-FUNDASEN-CABECERA-31", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LOGO_FUNDASEN_PNG_BN_CL_08 {
             get {
                 object obj = ResourceManager.GetObject("LOGO FUNDASEN PNG BN-CL-08", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimizar_signo__2_ {
+            get {
+                object obj = ResourceManager.GetObject("minimizar-signo (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -116,6 +116,7 @@
             // 
             // tiposDeContratosToolStripMenuItem
             // 
+            this.tiposDeContratosToolStripMenuItem.Image = global::ProyectoRolesConCrystal.Properties.Resources.cuadricula__1_;
             this.tiposDeContratosToolStripMenuItem.Name = "tiposDeContratosToolStripMenuItem";
             this.tiposDeContratosToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.tiposDeContratosToolStripMenuItem.Text = "Tipos de contratos";

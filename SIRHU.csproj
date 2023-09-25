@@ -346,6 +346,12 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainMenu.Designer.cs">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReporteColaboradores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -432,6 +438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainMenu.resx">
+      <DependentUpon>frmMainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmReporteColaboradores.resx">
       <DependentUpon>frmReporteColaboradores.cs</DependentUpon>
@@ -571,6 +580,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="recursos-humanos %281%29.ico" />
+    <None Include="Resources\minimizar-signo %282%291.png" />
+    <None Include="Resources\LOGO-FUNDASEN-CABECERA-31.png" />
+    <None Include="Resources\equipo1.png" />
+    <None Include="Resources\equipo %281%291.png" />
+    <None Include="Resources\cuadricula %281%291.png" />
+    <None Include="Resources\cerrar-el-simbolo-de-la-cruz-en-un-circulo blanco1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.1.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.1.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

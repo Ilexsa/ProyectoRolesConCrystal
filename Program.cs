@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1;
 
 namespace ProyectoRolesConCrystal
 {
@@ -16,11 +17,12 @@ namespace ProyectoRolesConCrystal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormVentanaRol());
+            Application.Run(new FormVentanaRol());
             //Application.Run(new frmCargas());
             //Application.Run(new frmLogin());
+            //Application.Run(new frmMainMenu());
             //Application.Run(new frmSubirTrabajadores());
-            Application.Run(new FormSubirRoles());
+            //Application.Run(new FormSubirRoles());
         }
     }
 }
